@@ -119,20 +119,21 @@
 
     <abstract>
       <t>Data models for service and network management provides a
-      programmatic approach for representing services or networks and deriving
-      (1) configuration information that will be communicated to network and
-      service components that are used to build and deliver the service and
-      (2) state information that will be monitored and tracked. Indeed, data
-      models can be used during various phases of the service and network
-      management life cycle, such as service instantiation, provisioning,
-      optimization, monitoring, diagnostic, and assurance. Also, data models
-      are instrumental in the automation of network management. They also
-      provide closed-loop control for the sake of adaptive and deterministic
-      service creation, delivery, and maintenance.</t>
+      programmatic approach for representing services or networks. Concretely,
+      data models are used to derive (1) configuration information that will
+      be communicated to network and service components that are used to build
+      and deliver the service and (2) state information that will be monitored
+      and tracked. Data models can be used during various phases of the
+      service and network management life cycle, such as service
+      instantiation, provisioning, optimization, monitoring, diagnostic, and
+      assurance. Also, data models are instrumental in the automation of
+      network management. They also provide closed-loop control for the sake
+      of adaptive and deterministic service creation, delivery, and
+      maintenance.</t>
 
       <t>This document describes an architecture for service and network
       management automation that takes advantage of YANG modeling
-      technologies. This architecture is drawn from a network provider
+      technologies. This architecture is drawn from a Network Operator
       perspective irrespective of the origin of a data module; it can thus
       accommodate modules that are developed outside the IETF.</t>
     </abstract>
@@ -146,9 +147,9 @@
       service delivery and operation, typically assume the manipulation of
       data sequentially into multiple OSS/BSS applications that may be managed
       by different departments within the service provider's organization
-      (e.g., billing factory, design factory, network operation center, etc.).
-      In addition, many of these applications have been developed in-house
-      over the years and operating in a silo mode:<list style="symbols">
+      (e.g., billing factory, design factory, network operation center). In
+      addition, many of these applications have been developed in-house over
+      the years and operating in a silo mode:<list style="symbols">
           <t>The lack of standard data input/output (i.e., data model) raises
           many challenges in system integration and often results in manual
           configuration tasks.</t>
@@ -159,16 +160,16 @@
         </list></t>
 
       <t>Software Defined Networking (SDN) becomes crucial to address these
-      challenges. SDN techniques <xref target="RFC7149"></xref> are meant to
-      automate the overall service delivery procedures and typically rely upon
-      (standard) data models that are used to not only reflect service
-      providers'savoir-faire but also to dynamically instantiate and enforce a
-      set of (service-inferred) policies that best accommodate what has been
-      (contractually) defined (and possibly negotiated) with the customer.
-      <xref target="RFC7149"></xref> provides a first tentative to rationalize
-      that service provider's view on the SDN space by identifying concrete
-      technical domains that need to be considered and for which solutions can
-      be provided: <list style="symbols">
+      challenges. SDN techniques are meant to automate the overall service
+      delivery procedures and typically rely upon standard data models. These
+      models are used to not only reflect service providers'savoir-faire but
+      also to dynamically instantiate and enforce a set of service-inferred
+      policies that best accommodate what has been defined and possibly
+      negotiated with the customer. <xref target="RFC7149"></xref> provides a
+      first tentative to rationalize that service provider's view on the SDN
+      space by identifying concrete technical domains that need to be
+      considered and for which solutions can be provided: <list
+          style="symbols">
           <t>Techniques for the dynamic discovery of topology, devices, and
           capabilities, along with relevant information and data models that
           are meant to precisely document such topology, devices, and their
@@ -212,7 +213,7 @@
       mapping, model composing) in the context of service delivery and
       fulfillment (<xref target="compo"></xref>).</t>
 
-      <t>This framework is drawn from a network provider perspective
+      <t>This framework is drawn from a Network Operator perspective
       irrespective of the origin of a data module; it can accommodate modules
       that are developed outside the IETF.</t>
 
@@ -246,17 +247,18 @@
             <t hangText="Network Model:">Describes a network level abstraction
             (or a subset of aspects of a network infrastructure), including
             devices and their subsystems, and relevant protocols operating at
-            the link and network layers across multiple devices. It can be
-            used by a network operator to allocate resources (e.g., tunnel
-            resource, topology resource) for the service or schedule resources
-            to meet the service requirements defined in a Service Model.</t>
+            the link and network layers across multiple devices. <vspace
+            blankLines="1" />It can be used by a Network Operator to allocate
+            resources (e.g., tunnel resource, topology resource) for the
+            service or schedule resources to meet the service requirements
+            defined in a Service Model.</t>
 
             <t hangText="Device Model:">Refers to the Network Element YANG
-            data module described in <xref target="RFC8199"></xref>. Device
-            Models are also used to refer to model a function embedded in a
-            device (e.g., Network Address Translation (NAT) <xref
-            target="RFC8512"></xref>, Access Control Lists (ACLs) <xref
-            target="RFC8519"></xref>).</t>
+            data module described in <xref target="RFC8199"></xref>. <vspace
+            blankLines="1" />Device Models are also used to refer to model a
+            function embedded in a device (e.g., Network Address Translation
+            (NAT) <xref target="RFC8512"></xref>, Access Control Lists (ACLs)
+            <xref target="RFC8519"></xref>).</t>
           </list></t>
       </section>
 
@@ -320,14 +322,14 @@
         <t>Service Models traditionally follow top-down approach and are
         mostly customer-facing YANG modules providing a common model construct
         for higher level network services (e.g., Layer 3 Virtual Private
-        Network (L3VPN)), which can be mapped to network technology-specific
-        modules at lower layers (e.g., tunnel, routing, Quality of Service
-        (QoS), security). For example, the service level can be used to
-        characterise the network service(s) to be ensured between service
-        nodes (ingress/egress) such as the communication scope (pipe, hose,
-        funnel, ...), the directionality (inbound/outbound), the traffic
-        performance guarantees (one-way delay (OWD), one-way loss, ...),
-        etc.</t>
+        Network (L3VPN)). Such modules can be mapped to network
+        technology-specific modules at lower layers (e.g., tunnel, routing,
+        Quality of Service (QoS), security). For example, the service level
+        can be used to characterise the network service(s) to be ensured
+        between service nodes (ingress/egress) such as the communication scope
+        (pipe, hose, funnel, ...), the directionality (inbound/outbound), the
+        traffic performance guarantees (one-way delay (OWD), one-way loss,
+        ...), etc.</t>
 
         <t><xref target="service_ex"></xref> depicts the example of a VoIP
         service provider that relies upon connectivity services offered by a
@@ -452,13 +454,14 @@ Notifications (including feedback)
       </section>
 
       <section anchor="del" title="Automation of Service Delivery Procedures">
-        <t>Service Models can be used by an operator to expose its services to
-        its customers. Exposing such models allows to automate the activation
-        of service orders and thus the service delivery. One or more
-        monolithic Service Models can be used in the context of a composite
-        service activation request (e.g., delivery of a caching infrastructure
-        over a VPN). Such models are used to feed a decision-making
-        intelligence to adequately accommodate customer's needs.</t>
+        <t>Service Models can be used by a Network Operator to expose its
+        services to its customers. Exposing such models allows to automate the
+        activation of service orders and thus the service delivery. One or
+        more monolithic Service Models can be used in the context of a
+        composite service activation request (e.g., delivery of a caching
+        infrastructure over a VPN). Such models are used to feed a
+        decision-making intelligence to adequately accommodate customer's
+        needs.</t>
 
         <t>Also, such models may be used jointly with services that require
         dynamic invocation. An example is provided by the service modules
@@ -471,33 +474,36 @@ Notifications (including feedback)
         management of network resources. Doing so is meant to:</t>
 
         <t><list style="symbols">
-            <t>expose network resources to customers (including other
-            operators) to provide service fulfillment and assurance</t>
+            <t>expose network resources to customers (including other Network
+            Operators) to provide service fulfillment and assurance</t>
 
-            <t>allow customers (or operators) to dynamically adjust the
-            network resources based on service requirements as described in
-            Service Models (e.g., <xref target="service_ex2"></xref>) and the
-            current network performance information described in the telemetry
-            modules.</t>
+            <t>allow customers (or Network Operators) to dynamically adjust
+            the network resources based on service requirements as described
+            in Service Models (e.g., <xref target="service_ex2"></xref>) and
+            the current network performance information described in the
+            telemetry modules.</t>
           </list></t>
       </section>
 
       <section anchor="ful" title="Service Fullfillment Automation">
         <t>To operate a service, Device Models derived from Service Models
-        and/or Network Models can be used to provision each involved network
-        function/device with the proper configuration information, and operate
-        the network based on service requirements as described in the Service
-        Model(s) and local operational guidelines.</t>
+        and/or Network Models can be used to:<list style="symbols">
+            <t>Provision each involved network function/device with the proper
+            configuration information.</t>
+
+            <t>Operate the network based on service requirements as described
+            in the Service Model(s) and local operational guidelines.</t>
+          </list></t>
 
         <t>In addition, the operational state including configuration that is
         in effect together with statistics should be exposed to upper layers
-        to provide better network visibility (and assess to what extent the
+        to provide better network visibility and assess to what extent the
         derived low level modules are consistent with the upper level
-        inputs).</t>
+        inputs.</t>
 
         <t>Filters are enforced on the notifications that are communicated to
-        Service layers. The type (and frequency) of notifications may be
-        agreed in the Service Model.</t>
+        Service layers. The type and frequency of notifications may be agreed
+        in the Service Model.</t>
 
         <t>Note that it is important to correlate telemetry data with
         configuration data to be used for closed loops at the different stages
@@ -510,7 +516,7 @@ Notifications (including feedback)
         levels or at the same level need to be integrated together for proper
         service delivery (including, proper network setup). For example, the
         service parameters captured in Service Models need to be decomposed
-        into a set of (configuration/notification) parameters that may be
+        into a set of configuration/notification parameters that may be
         specific to one or more technologies; these technology-specific
         parameters are grouped together to define technology-specific device
         level models or network level models.</t>
@@ -606,12 +612,12 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
         </section>
 
         <section anchor="crea" title="Service Creation/Modification">
-          <t>A customer is (usually) unaware of the technology that the
-          network operator has available to deliver the service, so the
-          customer does not make requests specific to the underlying
-          technology but is limited to making requests specific to the service
-          that is to be delivered. This service request can be issued using
-          the Service Model.</t>
+          <t>A customer is usually unaware of the technology that the Network
+          Operator has available to deliver the service, so the customer does
+          not make requests specific to the underlying technology but is
+          limited to making requests specific to the service that is to be
+          delivered. This service request can be issued using the Service
+          Model.</t>
 
           <t>Upon receiving a service request, the service
           orchestrator/management system should first verify whether the
@@ -980,10 +986,10 @@ Legend:
             <t>To control which state a network device should be in or is
             allowed to be in at any given time, a set of conditions and
             actions are defined and correlated with network events (e.g.,
-            allow the NETCONF server send updates only when the value exceeds
-            a certain threshold for the first time but not again until the
-            threshold is cleared), which constitute an event-driven policy or
-            network control logic in the controller.</t>
+            allow the NETCONF server to send updates only when the value
+            exceeds a certain threshold for the first time but not again until
+            the threshold is cleared), which constitute an event-driven policy
+            or network control logic in the controller.</t>
 
             <t>The controller pushes ECA policy to the network device and
             delegate network control logic to the network device.</t>
@@ -1055,8 +1061,8 @@ Legend:
     </section>
 
     <section anchor="ack" title="Acknowledgements">
-      <t>Thanks to Joe Clark, Greg Mirsky, and Shunsuke Homma for the
-      review.</t>
+      <t>Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, and Brian Carpenter
+      for the review.</t>
     </section>
 
     <section title="Contributors">
@@ -1238,7 +1244,7 @@ Legend:
       <section anchor="ns" title="Service Models: Definition and Samples">
         <t>As described in <xref target="RFC8309"></xref>, the service is
         "some form of connectivity between customer sites and the Internet
-        and/or between customer sites across the network operator's network
+        and/or between customer sites across the Network Operator's network
         and across the Internet". More concretely, an IP connectivity service
         can be defined as the IP transfer capability characterized by a
         (Source Nets, Destination Nets, Guarantees, Scope) tuple where "Source
@@ -1250,10 +1256,10 @@ Legend:
 
         <t>For example:<list style="symbols">
             <t>The L3SM model <xref target="RFC8299"></xref> defines the L3VPN
-            service ordered by a customer from a network operator.</t>
+            service ordered by a customer from a Network Operator.</t>
 
             <t>The L2SM model <xref target="RFC8466"></xref> defines the L2VPN
-            service ordered by a customer from a network operator.</t>
+            service ordered by a customer from a Network Operator.</t>
 
             <t>The Virtual Network (VN) model <xref
             target="I-D.ietf-teas-actn-vn-yang"></xref> provides a YANG data

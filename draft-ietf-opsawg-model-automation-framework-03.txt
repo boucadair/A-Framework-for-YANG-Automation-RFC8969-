@@ -5,14 +5,14 @@
 OPSAWG                                                        Q. Wu, Ed.
 Internet-Draft                                                    Huawei
 Intended status: Informational                         M. Boucadair, Ed.
-Expires: December 5, 2020                                         Orange
+Expires: December 6, 2020                                         Orange
                                                                 D. Lopez
                                                           Telefonica I+D
                                                                   C. Xie
                                                            China Telecom
                                                                  L. Geng
                                                             China Mobile
-                                                            June 3, 2020
+                                                            June 4, 2020
 
 
   A Framework for Automating Service and Network Management with YANG
@@ -21,21 +21,21 @@ Expires: December 5, 2020                                         Orange
 Abstract
 
    Data models for service and network management provides a
-   programmatic approach for representing services or networks and
-   deriving (1) configuration information that will be communicated to
-   network and service components that are used to build and deliver the
-   service and (2) state information that will be monitored and tracked.
-   Indeed, data models can be used during various phases of the service
-   and network management life cycle, such as service instantiation,
-   provisioning, optimization, monitoring, diagnostic, and assurance.
-   Also, data models are instrumental in the automation of network
-   management.  They also provide closed-loop control for the sake of
-   adaptive and deterministic service creation, delivery, and
-   maintenance.
+   programmatic approach for representing services or networks.
+   Concretely, data models are used to derive (1) configuration
+   information that will be communicated to network and service
+   components that are used to build and deliver the service and (2)
+   state information that will be monitored and tracked.  Data models
+   can be used during various phases of the service and network
+   management life cycle, such as service instantiation, provisioning,
+   optimization, monitoring, diagnostic, and assurance.  Also, data
+   models are instrumental in the automation of network management.
+   They also provide closed-loop control for the sake of adaptive and
+   deterministic service creation, delivery, and maintenance.
 
    This document describes an architecture for service and network
    management automation that takes advantage of YANG modeling
-   technologies.  This architecture is drawn from a network provider
+   technologies.  This architecture is drawn from a Network Operator
    perspective irrespective of the origin of a data module; it can thus
    accommodate modules that are developed outside the IETF.
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 1]
+Wu, et al.              Expires December 6, 2020                [Page 1]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -63,7 +63,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 5, 2020.
+   This Internet-Draft will expire on December 6, 2020.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 2]
+Wu, et al.              Expires December 6, 2020                [Page 2]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -141,9 +141,8 @@ Internet-Draft  Service and Network Management Automation      June 2020
    of data sequentially into multiple OSS/BSS applications that may be
    managed by different departments within the service provider's
    organization (e.g., billing factory, design factory, network
-   operation center, etc.).  In addition, many of these applications
-   have been developed in-house over the years and operating in a silo
-   mode:
+   operation center).  In addition, many of these applications have been
+   developed in-house over the years and operating in a silo mode:
 
    o  The lack of standard data input/output (i.e., data model) raises
       many challenges in system integration and often results in manual
@@ -153,25 +152,23 @@ Internet-Draft  Service and Network Management Automation      June 2020
       network state and therefore have slow response to network changes.
 
    Software Defined Networking (SDN) becomes crucial to address these
-   challenges.  SDN techniques [RFC7149] are meant to automate the
-   overall service delivery procedures and typically rely upon
-   (standard) data models that are used to not only reflect service
-   providers'savoir-faire but also to dynamically instantiate and
-   enforce a set of (service-inferred) policies that best accommodate
-   what has been (contractually) defined (and possibly negotiated) with
-   the customer.  [RFC7149] provides a first tentative to rationalize
-   that service provider's view on the SDN space by identifying concrete
+   challenges.  SDN techniques are meant to automate the overall service
+   delivery procedures and typically rely upon standard data models.
+   These models are used to not only reflect service providers'savoir-
+   faire but also to dynamically instantiate and enforce a set of
+   service-inferred policies that best accommodate what has been defined
+   and possibly negotiated with the customer.  [RFC7149] provides a
+   first tentative to rationalize that service provider's view on the
+   SDN space by identifying concrete technical domains that need to be
+   considered and for which solutions can be provided:
 
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 3]
+Wu, et al.              Expires December 6, 2020                [Page 3]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
-
-   technical domains that need to be considered and for which solutions
-   can be provided:
 
    o  Techniques for the dynamic discovery of topology, devices, and
       capabilities, along with relevant information and data models that
@@ -214,20 +211,20 @@ Internet-Draft  Service and Network Management Automation      June 2020
    composing) in the context of service delivery and fulfillment
    (Section 4).
 
-   This framework is drawn from a network provider perspective
+   This framework is drawn from a Network Operator perspective
    irrespective of the origin of a data module; it can accommodate
    modules that are developed outside the IETF.
 
+   The document identifies a list of use cases to exemplify the proposed
+   approach (Section 5), but it does not claim nor aim to be exhaustive.
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 4]
+
+Wu, et al.              Expires December 6, 2020                [Page 4]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
-
-   The document identifies a list of use cases to exemplify the proposed
-   approach (Section 5), but it does not claim nor aim to be exhaustive.
 
 2.  Terminology and Acronyms
 
@@ -253,16 +250,19 @@ Internet-Draft  Service and Network Management Automation      June 2020
    Network Model:  Describes a network level abstraction (or a subset of
       aspects of a network infrastructure), including devices and their
       subsystems, and relevant protocols operating at the link and
-      network layers across multiple devices.  It can be used by a
-      network operator to allocate resources (e.g., tunnel resource,
-      topology resource) for the service or schedule resources to meet
-      the service requirements defined in a Service Model.
+      network layers across multiple devices.
+
+      It can be used by a Network Operator to allocate resources (e.g.,
+      tunnel resource, topology resource) for the service or schedule
+      resources to meet the service requirements defined in a Service
+      Model.
 
    Device Model:  Refers to the Network Element YANG data module
-      described in [RFC8199].  Device Models are also used to refer to
-      model a function embedded in a device (e.g., Network Address
-      Translation (NAT) [RFC8512], Access Control Lists (ACLs)
-      [RFC8519]).
+      described in [RFC8199].
+
+      Device Models are also used to refer to model a function embedded
+      in a device (e.g., Network Address Translation (NAT) [RFC8512],
+      Access Control Lists (ACLs) [RFC8519]).
 
 2.2.  Acronyms
 
@@ -277,7 +277,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 5]
+Wu, et al.              Expires December 6, 2020                [Page 5]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -310,9 +310,9 @@ Internet-Draft  Service and Network Management Automation      June 2020
    Service Models traditionally follow top-down approach and are mostly
    customer-facing YANG modules providing a common model construct for
    higher level network services (e.g., Layer 3 Virtual Private Network
-   (L3VPN)), which can be mapped to network technology-specific modules
-   at lower layers (e.g., tunnel, routing, Quality of Service (QoS),
-   security).  For example, the service level can be used to
+   (L3VPN)).  Such modules can be mapped to network technology-specific
+   modules at lower layers (e.g., tunnel, routing, Quality of Service
+   (QoS), security).  For example, the service level can be used to
    characterise the network service(s) to be ensured between service
    nodes (ingress/egress) such as the communication scope (pipe, hose,
    funnel, ...), the directionality (inbound/outbound), the traffic
@@ -333,7 +333,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 6]
+Wu, et al.              Expires December 6, 2020                [Page 6]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -389,7 +389,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 7]
+Wu, et al.              Expires December 6, 2020                [Page 7]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -445,7 +445,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 8]
+Wu, et al.              Expires December 6, 2020                [Page 8]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -490,10 +490,10 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 3.2.  Automation of Service Delivery Procedures
 
-   Service Models can be used by an operator to expose its services to
-   its customers.  Exposing such models allows to automate the
-   activation of service orders and thus the service delivery.  One or
-   more monolithic Service Models can be used in the context of a
+   Service Models can be used by a Network Operator to expose its
+   services to its customers.  Exposing such models allows to automate
+   the activation of service orders and thus the service delivery.  One
+   or more monolithic Service Models can be used in the context of a
    composite service activation request (e.g., delivery of a caching
    infrastructure over a VPN).  Such models are used to feed a decision-
    making intelligence to adequately accommodate customer's needs.
@@ -501,7 +501,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020                [Page 9]
+Wu, et al.              Expires December 6, 2020                [Page 9]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -515,30 +515,32 @@ Internet-Draft  Service and Network Management Automation      June 2020
    provision, monitor, instantiate the service, and provide lifecycle
    management of network resources.  Doing so is meant to:
 
-   o  expose network resources to customers (including other operators)
-      to provide service fulfillment and assurance
+   o  expose network resources to customers (including other Network
+      Operators) to provide service fulfillment and assurance
 
-   o  allow customers (or operators) to dynamically adjust the network
-      resources based on service requirements as described in Service
-      Models (e.g., Figure 2) and the current network performance
-      information described in the telemetry modules.
+   o  allow customers (or Network Operators) to dynamically adjust the
+      network resources based on service requirements as described in
+      Service Models (e.g., Figure 2) and the current network
+      performance information described in the telemetry modules.
 
 3.3.  Service Fullfillment Automation
 
    To operate a service, Device Models derived from Service Models and/
-   or Network Models can be used to provision each involved network
-   function/device with the proper configuration information, and
-   operate the network based on service requirements as described in the
-   Service Model(s) and local operational guidelines.
+   or Network Models can be used to:
+
+   o  Provision each involved network function/device with the proper
+      configuration information.
+
+   o  Operate the network based on service requirements as described in
+      the Service Model(s) and local operational guidelines.
 
    In addition, the operational state including configuration that is in
    effect together with statistics should be exposed to upper layers to
-   provide better network visibility (and assess to what extent the
-   derived low level modules are consistent with the upper level
-   inputs).
+   provide better network visibility and assess to what extent the
+   derived low level modules are consistent with the upper level inputs.
 
    Filters are enforced on the notifications that are communicated to
-   Service layers.  The type (and frequency) of notifications may be
+   Service layers.  The type and frequency of notifications may be
    agreed in the Service Model.
 
    Note that it is important to correlate telemetry data with
@@ -552,16 +554,16 @@ Internet-Draft  Service and Network Management Automation      June 2020
    levels or at the same level need to be integrated together for proper
    service delivery (including, proper network setup).  For example, the
    service parameters captured in Service Models need to be decomposed
-   into a set of (configuration/notification) parameters that may be
-   specific to one or more technologies; these technology-specific
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 10]
+Wu, et al.              Expires December 6, 2020               [Page 10]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
+   into a set of configuration/notification parameters that may be
+   specific to one or more technologies; these technology-specific
    parameters are grouped together to define technology-specific device
    level models or network level models.
 
@@ -611,9 +613,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-
-
-Wu, et al.              Expires December 5, 2020               [Page 11]
+Wu, et al.              Expires December 6, 2020               [Page 11]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -669,7 +669,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 12]
+Wu, et al.              Expires December 6, 2020               [Page 12]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -692,8 +692,8 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 4.1.2.  Service Creation/Modification
 
-   A customer is (usually) unaware of the technology that the network
-   operator has available to deliver the service, so the customer does
+   A customer is usually unaware of the technology that the Network
+   Operator has available to deliver the service, so the customer does
    not make requests specific to the underlying technology but is
    limited to making requests specific to the service that is to be
    delivered.  This service request can be issued using the Service
@@ -725,7 +725,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 13]
+Wu, et al.              Expires December 6, 2020               [Page 13]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -781,7 +781,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 14]
+Wu, et al.              Expires December 6, 2020               [Page 14]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -837,7 +837,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 15]
+Wu, et al.              Expires December 6, 2020               [Page 15]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -893,7 +893,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 16]
+Wu, et al.              Expires December 6, 2020               [Page 16]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -949,7 +949,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 17]
+Wu, et al.              Expires December 6, 2020               [Page 17]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 18]
+Wu, et al.              Expires December 6, 2020               [Page 18]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 19]
+Wu, et al.              Expires December 6, 2020               [Page 19]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 20]
+Wu, et al.              Expires December 6, 2020               [Page 20]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1125,10 +1125,10 @@ Internet-Draft  Service and Network Management Automation      June 2020
    1.  To control which state a network device should be in or is
        allowed to be in at any given time, a set of conditions and
        actions are defined and correlated with network events (e.g.,
-       allow the NETCONF server send updates only when the value exceeds
-       a certain threshold for the first time but not again until the
-       threshold is cleared), which constitute an event-driven policy or
-       network control logic in the controller.
+       allow the NETCONF server to send updates only when the value
+       exceeds a certain threshold for the first time but not again
+       until the threshold is cleared), which constitute an event-driven
+       policy or network control logic in the controller.
 
    2.  The controller pushes ECA policy to the network device and
        delegate network control logic to the network device.
@@ -1173,7 +1173,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 21]
+Wu, et al.              Expires December 6, 2020               [Page 21]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1204,7 +1204,8 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 8.  Acknowledgements
 
-   Thanks to Joe Clark, Greg Mirsky, and Shunsuke Homma for the review.
+   Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, and Brian Carpenter
+   for the review.
 
 9.  Contributors
 
@@ -1228,8 +1229,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-
-Wu, et al.              Expires December 5, 2020               [Page 22]
+Wu, et al.              Expires December 6, 2020               [Page 22]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 23]
+Wu, et al.              Expires December 6, 2020               [Page 23]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 24]
+Wu, et al.              Expires December 6, 2020               [Page 24]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 25]
+Wu, et al.              Expires December 6, 2020               [Page 25]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 26]
+Wu, et al.              Expires December 6, 2020               [Page 26]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 27]
+Wu, et al.              Expires December 6, 2020               [Page 27]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 28]
+Wu, et al.              Expires December 6, 2020               [Page 28]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 29]
+Wu, et al.              Expires December 6, 2020               [Page 29]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 30]
+Wu, et al.              Expires December 6, 2020               [Page 30]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1692,7 +1692,7 @@ A.1.  Service Models: Definition and Samples
 
    As described in [RFC8309], the service is "some form of connectivity
    between customer sites and the Internet and/or between customer sites
-   across the network operator's network and across the Internet".  More
+   across the Network Operator's network and across the Internet".  More
    concretely, an IP connectivity service can be defined as the IP
    transfer capability characterized by a (Source Nets, Destination
    Nets, Guarantees, Scope) tuple where "Source Nets" is a group of
@@ -1705,10 +1705,10 @@ A.1.  Service Models: Definition and Samples
    For example:
 
    o  The L3SM model [RFC8299] defines the L3VPN service ordered by a
-      customer from a network operator.
+      customer from a Network Operator.
 
    o  The L2SM model [RFC8466] defines the L2VPN service ordered by a
-      customer from a network operator.
+      customer from a Network Operator.
 
    o  The Virtual Network (VN) model [I-D.ietf-teas-actn-vn-yang]
       provides a YANG data model applicable to any mode of VN operation.
@@ -1733,7 +1733,7 @@ A.2.  Network Models: Samples
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 31]
+Wu, et al.              Expires December 6, 2020               [Page 31]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 32]
+Wu, et al.              Expires December 6, 2020               [Page 32]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 33]
+Wu, et al.              Expires December 6, 2020               [Page 33]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1901,7 +1901,7 @@ A.3.  Device Models: Samples
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 34]
+Wu, et al.              Expires December 6, 2020               [Page 34]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -1957,7 +1957,7 @@ A.3.1.  Model Composition
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 35]
+Wu, et al.              Expires December 6, 2020               [Page 35]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -2013,7 +2013,7 @@ A.3.2.  Device Models: Samples
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 36]
+Wu, et al.              Expires December 6, 2020               [Page 36]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -2069,7 +2069,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 37]
+Wu, et al.              Expires December 6, 2020               [Page 37]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 38]
+Wu, et al.              Expires December 6, 2020               [Page 38]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
@@ -2181,4 +2181,4 @@ Authors' Addresses
 
 
 
-Wu, et al.              Expires December 5, 2020               [Page 39]
+Wu, et al.              Expires December 6, 2020               [Page 39]
