@@ -118,18 +118,16 @@
     <keyword>SDN</keyword>
 
     <abstract>
-      <t>Data models for service and network management provides a
-      programmatic approach for representing services or networks. Concretely,
-      data models are used to derive (1) configuration information that will
-      be communicated to network and service components that are used to build
-      and deliver the service and (2) state information that will be monitored
-      and tracked. Data models can be used during various phases of the
+      <t>Data models provide a programmatic approach to represent services and
+      networks. Concretely, they can be used to derive configuration
+      information for network and service components, and state information
+      that will be monitored and tracked. Data models can be used during the
       service and network management life cycle, such as service
       instantiation, provisioning, optimization, monitoring, diagnostic, and
-      assurance. Also, data models are instrumental in the automation of
-      network management. They also provide closed-loop control for the sake
-      of adaptive and deterministic service creation, delivery, and
-      maintenance.</t>
+      assurance. Data models are also instrumental in the automation of
+      network management, and they can provide closed-loop control for
+      adaptive and deterministic service creation, delivery, and maintenance.
+      </t>
 
       <t>This document describes an architecture for service and network
       management automation that takes advantage of YANG modeling
@@ -143,13 +141,13 @@
     <section anchor="intro" title="Introduction">
       <t>Service management systems usually comprise service
       activation/provision and service operation. Current service delivery
-      procedures, from the processing of customer's requirements and order to
+      procedures, from the processing of customer's requirements and orders to
       service delivery and operation, typically assume the manipulation of
       data sequentially into multiple OSS/BSS applications that may be managed
       by different departments within the service provider's organization
       (e.g., billing factory, design factory, network operation center). In
       addition, many of these applications have been developed in-house over
-      the years and operating in a silo mode:<list style="symbols">
+      the years and operate in a silo mode:<list style="symbols">
           <t>The lack of standard data input/output (i.e., data model) raises
           many challenges in system integration and often results in manual
           configuration tasks.</t>
@@ -162,12 +160,12 @@
       <t>Software Defined Networking (SDN) becomes crucial to address these
       challenges. SDN techniques are meant to automate the overall service
       delivery procedures and typically rely upon standard data models. These
-      models are used to not only reflect service providers'savoir-faire but
+      models are used to not only reflect service providers' savoir-faire, but
       also to dynamically instantiate and enforce a set of service-inferred
       policies that best accommodate what has been defined and possibly
       negotiated with the customer. <xref target="RFC7149"></xref> provides a
-      first tentative to rationalize that service provider's view on the SDN
-      space by identifying concrete technical domains that need to be
+      first tentative attempt to rationalize that service provider's view on
+      the SDN space by identifying concrete technical domains that need to be
       considered and for which solutions can be provided: <list
           style="symbols">
           <t>Techniques for the dynamic discovery of topology, devices, and
@@ -195,16 +193,15 @@
       <t>YANG <xref target="RFC7950"></xref> module developers have taken both
       top-down and bottom-up approaches to develop modules <xref
       target="RFC8199"></xref> and to establish a mapping between a network
-      technology and customer requirements on the top or abstracting common
-      construct from various network technologies on the bottom. At the time
+      technology and customer requirements at the top or abstracting common
+      constructs from various network technologies at the bottom. At the time
       of writing this document (2020), there are many data models including
       configuration and service models that have been specified or are being
       specified by the IETF. They cover many of the networking protocols and
       techniques. However, how these models work together to configure a
       device, manage a set of devices involved in a service, or provide a
       service is something that is not currently documented either within the
-      IETF or other Standards Development Organizations (SDOs) (e.g.,
-      MEF).</t>
+      IETF or other Standards Development Organizations (SDOs).</t>
 
       <t>This document describes an architectural framework for service and
       network management automation (<xref target="concept"></xref>) that
@@ -247,18 +244,21 @@
             <t hangText="Network Model:">Describes a network level abstraction
             (or a subset of aspects of a network infrastructure), including
             devices and their subsystems, and relevant protocols operating at
-            the link and network layers across multiple devices. <vspace
-            blankLines="1" />It can be used by a Network Operator to allocate
-            resources (e.g., tunnel resource, topology resource) for the
-            service or schedule resources to meet the service requirements
-            defined in a Service Model.</t>
+            the link and network layers across multiple devices. This model
+            corresponds to the Network Configuration Model discussed in <xref
+            target="RFC8309"></xref>.<vspace blankLines="1" />It can be used
+            by a Network Operator to allocate resources (e.g., tunnel
+            resource, topology resource) for the service or schedule resources
+            to meet the service requirements defined in a Service Model.</t>
 
             <t hangText="Device Model:">Refers to the Network Element YANG
-            data module described in <xref target="RFC8199"></xref>. <vspace
-            blankLines="1" />Device Models are also used to refer to model a
-            function embedded in a device (e.g., Network Address Translation
-            (NAT) <xref target="RFC8512"></xref>, Access Control Lists (ACLs)
-            <xref target="RFC8519"></xref>).</t>
+            data model described in <xref target="RFC8199"></xref> or the
+            Device Configuration Model discussed in <xref
+            target="RFC8309"></xref>.<vspace blankLines="1" />Device Models
+            are also used to refer to model a function embedded in a device
+            (e.g., Network Address Translation (NAT) <xref
+            target="RFC8512"></xref>, Access Control Lists (ACLs) <xref
+            target="RFC8519"></xref>).</t>
           </list></t>
       </section>
 
@@ -293,9 +293,6 @@
             <t hangText="SDN">Software Defined Networking</t>
 
             <t hangText="TE">Traffic Engineering</t>
-
-            <t hangText="TEAS">Traffic Engineering Architecture and
-            Signaling</t>
 
             <t hangText="VN">Virtual Network</t>
 
@@ -332,11 +329,18 @@
         ...), etc.</t>
 
         <t><xref target="service_ex"></xref> depicts the example of a VoIP
-        service provider that relies upon connectivity services offered by a
-        Network Operator. These connectivity services can be captured in a
-        YANG Service Module that reflects the service attributes that are
-        shown in <xref target="service_ex2"></xref>. This example follows the
-        IP Connectivity Provisioning Profile template defined in <xref
+        service that relies upon connectivity services offered by a Network
+        Operator. In this example, the VoIP service is offered to the Network
+        Operator's customers by Service Provider (SP1). In order to provide
+        global VoIP reachability, SP1 service site interconnects with other
+        Service Providers service sites typically by interconnecting Session
+        Border Elements (SBEs) and Data Border Elements (DBEs) <xref
+        target="RFC5486"></xref><xref target="RFC6406"></xref>. For other VoIP
+        destinations, sessions are forwarded over Internet. These connectivity
+        services can be captured in a YANG Service Module that reflects the
+        service attributes that are shown in <xref
+        target="service_ex2"></xref>. This example follows the IP Connectivity
+        Provisioning Profile template defined in <xref
         target="RFC7297"></xref>.</t>
 
         <t><figure anchor="service_ex"
@@ -353,8 +357,9 @@
         ,-' x    o  * * * * * * * * *       `-. 
        (    x    o       +----(     Internet    )
 User---(x x x      o o o o o o o o o o o o o o o o o o 
-        `-. Provider  ,-'     `-.          ,-'   (3)
-           `--'--'--'           `--'--'--'    
+        `-.          ,-'       `-.          ,-'   (3)
+           `--'--'--'             `--'--'--'    
+        Network Operator
 
 **** (1) Inter-SP connectivity
 xxxx (2) Customer to SP connectivity
@@ -367,7 +372,7 @@ oooo (3) SP to any destination connectivity
             title="Sample Attributes Captured in a Service Model">
             <artwork><![CDATA[Connectivity: Scope and Guarantees
    * Inter-SP connectivity (1)
-      - Pipe scope from the local to the remote VoIP gateway
+      - Pipe scope from the local to the remote VoIP gateway 
       - Full guarantees class
    * Customer to SP connectivity (2)
       - Hose/Funnel scope connecting the local VoIP gateway 
@@ -378,9 +383,7 @@ oooo (3) SP to any destination connectivity
         Internet gateway
       - Delay guarantees class
 Flow Identification
-   * Destination IP address 
-     (Session Border Element (SBE), Data Border Element (DBE))
-      [RFC5486]
+   * Destination IP address (SBE, DBE)
    * DSCP marking
 Traffic Isolation
    * VPN
@@ -486,8 +489,11 @@ Notifications (including feedback)
       </section>
 
       <section anchor="ful" title="Service Fullfillment Automation">
-        <t>To operate a service, Device Models derived from Service Models
-        and/or Network Models can be used to:<list style="symbols">
+        <t>To operate a service, the settings of the parameters in the Device
+        Models are derived from Service Models and/or Network Models and are
+        used to: </t>
+
+        <t><list style="symbols">
             <t>Provision each involved network function/device with the proper
             configuration information.</t>
 
@@ -546,40 +552,41 @@ Notifications (including feedback)
 
     <section anchor="compo" title="Functional Bocks and Interactions">
       <t>The architectural considerations described in <xref
-      target="concept"></xref> led to the architecture described in this
+      target="concept"></xref> lead to the architecture described in this
       section and illustrated in <xref target="arc"></xref>.</t>
 
       <figure anchor="arc" title="Service and Network Lifecycle Management">
-        <artwork align="center"><![CDATA[                 +------------------+
-  Service level  |                  |
- -----------     V                  |
-   E2E          E2E                E2E              E2E
- Service  -- Service -------->   Service      --->Service   ---+
- Exposure    Creation     ^    Optimization    | Diagnosis     |
-            /Modification |                    |               |
-                 |        |Diff                |               V
-  Multi-layer    |        |         E2E        |              E2E
-  Multi-domain   |        |       Service      |           Service
-  Service Mapping|        +------ Assurance ---+        Decommission
-                 |                     ^
-                 |<-----------------+  |
-  Network level  |                  |  +----+
-------------     V                  |       |
-             Specific           Specific    |     
-             Service  ----+--->  Service ---+--+
-             Creation     ^    Optimization |  |  
-            /Modification |                 |  |    
-                 |        |Diff             |  |      
-                 |        |     Specific----+  |      
-        Service  |        |      Service       |     
-     Decomposing |        +------Assurance ----+
-                 |                  ^
-                 |                  |    Aggregation
-  Device level   |                  +------------+
-------------     V                               |
-Service      Intent                         
-Fullfillment Config  ------> Config   ----> Performance   -->Fault
-             Provision       Validate       Monitoring     Diagnostic
+        <artwork align="center"><![CDATA[                    +------------------+
+  ................. |                  |
+     Service level  |                  |
+                    V                  |
+      E2E          E2E                E2E              E2E
+    Service --> Service --------->  Service   -----> Service -----+
+    Exposure    Creation     ^    Optimization   ^  Diagnosis     |
+               /Modification |                   |                |
+                    |        |Diff               |                V
+     Multi-layer    |        |         E2E       |               E2E
+     Multi-domain   |        |        Service    |            Service
+     Service Mapping|        +------ Assurance --+         Decommission
+                    |                     ^
+   ................ |<-----------------+  |
+     Network level  |                  |  +-------+
+                    V                  |          |
+                Specific           Specific       |
+                Service  -------->  Service <--+  |
+                Creation     ^    Optimization |  |
+              /Modification  |                 |  |
+                    |        |Diff             |  |
+                    |        |      Specific --+  |
+           Service  |        |       Service      |
+        Decomposing |        +----- Assurance ----+
+                    |                  ^
+   ................ |                  |  Aggregation
+     Device level   |                  +------------+
+                    V                               |
+   Service       Intent                             |
+   Fullfillment  Config  -----> Config  -----> Performance ---> Fault
+                 Provision      Validate       Monitoring     Diagnostic
 ]]></artwork>
       </figure>
 
@@ -616,14 +623,15 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
           Operator has available to deliver the service, so the customer does
           not make requests specific to the underlying technology but is
           limited to making requests specific to the service that is to be
-          delivered. This service request can be issued using the Service
+          delivered. This service request can be issued using a Service
           Model.</t>
 
-          <t>Upon receiving a service request, the service
-          orchestrator/management system should first verify whether the
-          service requirements in the service request can be met (i.e.,
-          whether there is sufficient resources that can be allocated with the
-          requested guarantees).</t>
+          <t>Upon receiving a service request, and assuming that appropriate
+          authentication and authoirzation checks have been made, the service
+          orchestrator/management system should verify whether the service
+          requirements in the service request can be met (i.e., whether there
+          is sufficient resources that can be allocated with the requested
+          guarantees). </t>
 
           <t>If the request is accepted, the service orchestrator/management
           system maps such service request to its view. This view can be
@@ -643,7 +651,7 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
           of the network updated due to network changes, incidents mitigation,
           or new service requirements. One typical example is once a tunnel or
           a VPN is setup, Performance monitoring information or telemetry
-          information per tunnel (or per VPN) can be collected and feed into
+          information per tunnel (or per VPN) can be collected and fed into
           the management system. If the network performance doesn't meet the
           service requirements, the management system can create new VPN
           policies capturing network service requirements and populate them
@@ -776,7 +784,7 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
         </section>
       </section>
 
-      <section anchor="inter" title="Multi-layer/Multi-domain Service Mapping">
+      <section anchor="inter" title="Multi-Layer/Multi-Domain Service Mapping">
         <t>Multi-layer/Multi-domain Service Mapping allows to map an
         end-to-end abstract view of the service segmented at different layers
         or different administrative domains into domain-specific view.</t>
@@ -788,8 +796,8 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
         <t>Another example is to map service parameters in L3VPN service model
         into Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE
         model and Virtual Network (VN) parameters (e.g., Access Point (AP)
-        list, VN members) in Traffic Engineering Architecture and Signaling
-        (TEAS) VN model <xref target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
+        list, VN members) in the YANG data model for VN operation <xref
+        target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
       </section>
 
       <section anchor="dec" title="Service Decomposing">
@@ -843,37 +851,34 @@ Fullfillment Config  ------> Config   ----> Performance   -->Fault
 
         <t><figure anchor="l3"
             title="L3VPN Service Delivery Example (Current)">
-            <artwork align="center"><![CDATA[              L3SM    |    
-            Service   |     
-             Model    |     
- +--------------------+----------------------------+
- |              +-----V- -------+                  |
- | Orchestrator |Service Mapping|                  |
- |              +-----+---------+                  |
- |                    |                            |
- +--------------------+----------------------------+
-                L3NM  |       
-               Network|         
-                Model |         
- +--------------------+----------------------------+
- | Controller+--------V-----------+                |
- |           | Service Decomposing|                |
- |           +-++------------++---+                |
- |             ||            ||                    |
- |             ||            ||                    |
- +-------------++----------  ++--------------------+
-               ||            ||
-               ||            ||
-               ||BGP,QoS     ||
-               ||            ||
-    +----------+|NI,Intf,IP  |+-----------------+
- +--+--+      +++---+      --+---+           +--+--+
- | CE1 |------| PE1 |      | PE2 |  ---------+ CE2 |
- +-----+      +-----+      +-----+           +-----+
-
-
-Legend:
-  Intf: Interface]]></artwork>
+            <artwork align="center"><![CDATA[                L3SM    |    
+              Service   |     
+               Model    |     
+ +----------------------+--------------------------+
+ |             +--------V-------+                  |
+ |             | Service Mapping|                  |
+ |             +--------+-------+                  |
+ | Orchestrator         |                          |
+ +----------------------+--------------------------+
+                  L3NM  |       
+                 Network|         
+                  Model |         
+ +----------------------+--------------------------+
+ |           +----------V-----------+              |
+ |           | Service Decomposing  |              |
+ |           +---++--------------++-+              |
+ |               ||              ||                |
+ | Controller    ||              ||                |
+ +---------------++--------------++----------------+
+                 ||              ||
+                 ||     BGP,     ||
+                 ||     QoS,     ||
+                 ||   Interface, ||
+    +------------+|      NI,     |+--------------+
+    |             |      IP      |               |
+ +--+--+       +--+--+        +--+--+         +--+--+
+ | CE1 +-------+ PE1 |        | PE2 +---------+ CE2 |
+ +-----+       +-----+        +-----+         +-----+]]></artwork>
           </figure></t>
 
         <t>L3NM inherits some of data elements from the L3SM. Nevertheless,
@@ -887,36 +892,35 @@ Legend:
 
         <t><figure anchor="l3-target"
             title="L3VPN Service Delivery Example (Target)">
-            <artwork align="center"><![CDATA[
-                 L3SM    |    ^
-               Service   |    | Notifications
-                Model    |    |
-    +--------------------+----------------------------+
-    |              +-----V---------+                  |
-    | Orchestrator |Service Mapping|                  |
-    |              +-----+---------+                  |
-    |                    |                            |
-    +--------------------+----------------------------+
-                   L3NM  |        ^
-                  Network|        | L3NM Notifications
-                   Model |        | L3NM Capabilities
-    +--------------------+----------------------------+
-    | Controller+--------V-----------+                |
-    |           | Service Decomposing|                |
-    |           +-++------------++---+                |
-    |             ||            ||                    |
-    |             ||            ||                    |
-    +-------------++----------  ++--------------------+
-                  ||            ||
-                  ||            ||
-                  ||BGP,QoS     ||
-                  ||            ||
-       +----------+|NI,Intf,IP  |+-----------------+
-    +--+--+      +++---+      --+---+           +--+--+
-    | CE1 |------| PE1 |      | PE2 |  ---------+ CE2 |
-    +-----+      +-----+      +-----+           +-----+
-Legend:
-  Intf: Interface]]></artwork>
+            <artwork align="center"><![CDATA[                L3SM    |     ^ 
+              Service   |     |  Notifications
+               Model    |     |    
+ +----------------------+--------------------------+
+ |             +--------V-------+                  |
+ |             | Service Mapping|                  |
+ |             +--------+-------+                  |
+ | Orchestrator         |                          |
+ +----------------------+--------------------------+
+                  L3NM  |       ^   
+                 Network|       | L3NM Notifications    
+                  Model |       | L3NM Capabilities     
+ +----------------------+--------------------------+
+ |           +----------V-----------+              |
+ |           | Service Decomposing  |              |
+ |           +---++--------------++-+              |
+ |               ||              ||                |
+ | Controller    ||              ||                |
+ +---------------++--------------++----------------+
+                 ||              ||
+                 ||     BGP,     ||
+                 ||     QoS,     ||
+                 ||   Interface, ||
+    +------------+|      NI,     |+--------------+
+    |             |      IP      |               |
+ +--+--+       +--+--+        +--+--+         +--+--+
+ | CE1 +-------+ PE1 |        | PE2 +---------+ CE2 |
+ +-----+       +-----+        +-----+         +-----+
+]]></artwork>
           </figure></t>
 
         <t>Note that a similar analysis can be performed for Layer 2 VPNs
@@ -943,7 +947,7 @@ Legend:
             between source and destination endpoints (service creation
             operation in <xref target="crea"></xref>).</t>
 
-            <t>The telemetry model which augments the TEAS VN model and
+            <t>The telemetry model which augments the VN model and
             corresponding TE tunnel model can be used to subscribe to
             performance measurement data and notify all the parameter changes
             and network performance change related to VN topology or Tunnel
@@ -966,14 +970,14 @@ Legend:
                 TE      |                Telemetry
                Tunnel   |                  Model
                Model    |                    |
- +----------------------V--------------------+----+
+ +----------------------V--------------------+-----+
  | Controller                                      |
  |                                                 |
  +-------------------------------------------------+
 
- +-----+      +-----+        +-----+         +-----+
- | CE1 |------| PE1 |        | PE2 |---------+ CE2 |
- +-----+      +-----+        +-----+         +-----+]]></artwork>
+ +-----+      +-----+           +-----+      +-----+
+ | CE1 +------+ PE1 |           | PE2 +------+ CE2 |
+ +-----+      +-----+           +-----+      +-----+]]></artwork>
           </figure></t>
       </section>
 
@@ -1038,7 +1042,7 @@ Legend:
 
       <t>Security considerations specific to each of the technologies and
       protocols listed in the document are discussed in the specification
-      documents of each of these protocols.</t>
+      documents of each of these protocols. </t>
 
       <t>Security considerations specific to this document are listed
       below:<list style="symbols">
@@ -1046,8 +1050,10 @@ Legend:
           network.</t>
 
           <t>Leak sensitive information: special care should be considered
-          when translating between the various layers introduced in the
-          document.</t>
+          when translating between the various layers in <xref
+          target="compo"></xref> or when aggregating data retrieved from
+          various sources. The Network Operator must enforce means to protect
+          privacy-related information included in cutsomer-facing models. </t>
 
           <t>Some Service Models may include a traffic isolation clause,
           appropriate technology-specific actions must be enforced to avoid
@@ -1061,8 +1067,8 @@ Legend:
     </section>
 
     <section anchor="ack" title="Acknowledgements">
-      <t>Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, and Brian Carpenter
-      for the review.</t>
+      <t>Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
+      and Adrian Farrel for the review.</t>
     </section>
 
     <section title="Contributors">
@@ -1180,6 +1186,8 @@ Legend:
 
       <?rfc include='reference.RFC.8783'?>
 
+      <?rfc include='reference.RFC.6406'?>
+
       <?rfc include='reference.I-D.barguil-opsawg-l2sm-l2nm'?>
 
       <?rfc include='reference.I-D.ietf-opsawg-l3sm-l3nm'?>
@@ -1236,6 +1244,10 @@ Legend:
     </references>
 
     <section anchor="app" title="Layered YANG Modules Examples Overview">
+      <t>This appendix lists a set of data models that can be used for the
+      delivery of connectivity services. These models can be classified as
+      Service, Network, or Device Models. </t>
+
       <t>It is not the intent of this appendix to provide an inventory of
       tools and mechanisms used in specific network and service management
       domains; such inventory can be found in documents such as <xref
