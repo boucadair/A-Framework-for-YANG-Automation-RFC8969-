@@ -482,7 +482,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
      | |    Device             |                 Device Model          |
      | |+--------------------+ |                                       |
      | || Device Modeling    | |           Interface add, BGP Peer,    |
-     | |+--------------------+ |           Tunnel id, QoS/TE           |
+     | |+--------------------+ |           Tunnel ID, QoS/TE           |
      | +-----------------------+                                       |
      +-----------------------------------------------------------------+
 
@@ -925,11 +925,11 @@ Internet-Draft  Service and Network Management Automation      June 2020
        creation operation in Section 4.2.1) relying upon a L3SM Service
        model with each having one network access connectivity:
 
-       *  Site A: Network-Access A, Bandwidth = 20M, for class "foo",
-          guaranteed-bw-percent = 10, One-Way-Delay = 70 msec
+       *  Site A: Network-Access A, Bandwidth = 20 Mbps, for class
+          "foo", guaranteed-bw-percent = 10, One-Way-Delay = 70 ms.
 
-       *  Site B: Network-Access B, Bandwidth = 30M, for class "foo1",
-          guaranteed-bw-percent = 15, One-Way-Delay = 60 msec
+       *  Site B: Network-Access B, Bandwidth = 30 Mbps, for class
+          "foo1", guaranteed-bw-percent = 15, One-Way-Delay = 60 ms.
 
    2.  The Orchestrator extracts the service parameters from the L3SM
        model.  Then, it uses them as input to translate ("service
@@ -963,9 +963,9 @@ Internet-Draft  Service and Network Management Automation      June 2020
             |             +--------+-------+                  |
             | Orchestrator         |                          |
             +----------------------+--------------------------+
-                             L3NM  |
-                            Network|
-                             Model |
+                             L3NM  |       ^ UNI Topology Model
+                            Network|       |
+                             Model |       |
             +----------------------+--------------------------+
             |           +----------V-----------+              |
             |           | Service Decomposing  |              |
@@ -1019,7 +1019,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
             |             +--------+-------+                  |
             | Orchestrator         |                          |
             +----------------------+--------------------------+
-                             L3NM  |       ^
+                             L3NM  |       ^ UNI Topology Model
                             Network|       | L3NM Notifications
                              Model |       | L3NM Capabilities
             +----------------------+--------------------------+

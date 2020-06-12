@@ -450,7 +450,7 @@ Notifications (including feedback)
    | |    Device             |                 Device Model          |
    | |+--------------------+ |                                       |
    | || Device Modeling    | |           Interface add, BGP Peer,    |
-   | |+--------------------+ |           Tunnel id, QoS/TE           |
+   | |+--------------------+ |           Tunnel ID, QoS/TE           |
    | +-----------------------+                                       |
    +-----------------------------------------------------------------+]]></artwork>
         </figure>
@@ -824,12 +824,11 @@ Notifications (including feedback)
             creation operation in <xref target="intended"></xref>) relying
             upon a L3SM Service model with each having one network access
             connectivity:<list style="symbols">
-                <t>Site A: Network-Access A, Bandwidth = 20M, for class "foo",
-                guaranteed-bw-percent = 10, One-Way-Delay = 70 msec</t>
+                <t>Site A: Network-Access A, Bandwidth = 20 Mbps, for class
+                "foo", guaranteed-bw-percent = 10, One-Way-Delay = 70 ms.</t>
 
-                <t>Site B: Network-Access B, Bandwidth = 30M, for class
-                "foo1", guaranteed-bw-percent = 15, One-Way-Delay = 60
-                msec</t>
+                <t>Site B: Network-Access B, Bandwidth = 30 Mbps, for class
+                "foo1", guaranteed-bw-percent = 15, One-Way-Delay = 60 ms.</t>
               </list></t>
 
             <t>The Orchestrator extracts the service parameters from the L3SM
@@ -853,7 +852,7 @@ Notifications (including feedback)
         <t><figure anchor="l3"
             title="L3VPN Service Delivery Example (Current)">
             <artwork align="center"><![CDATA[                L3SM    |    
-              Service   |     
+              Service   |   
                Model    |     
  +----------------------+--------------------------+
  |             +--------V-------+                  |
@@ -861,9 +860,9 @@ Notifications (including feedback)
  |             +--------+-------+                  |
  | Orchestrator         |                          |
  +----------------------+--------------------------+
-                  L3NM  |       
-                 Network|         
-                  Model |         
+                  L3NM  |       ^ UNI Topology Model  
+                 Network|       |     
+                  Model |       |     
  +----------------------+--------------------------+
  |           +----------V-----------+              |
  |           | Service Decomposing  |              |
@@ -902,7 +901,7 @@ Notifications (including feedback)
  |             +--------+-------+                  |
  | Orchestrator         |                          |
  +----------------------+--------------------------+
-                  L3NM  |       ^   
+                  L3NM  |       ^ UNI Topology Model  
                  Network|       | L3NM Notifications    
                   Model |       | L3NM Capabilities     
  +----------------------+--------------------------+
