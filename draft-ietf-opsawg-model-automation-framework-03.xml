@@ -325,8 +325,10 @@
         can be used to characterise the network service(s) to be ensured
         between service nodes (ingress/egress) such as the communication scope
         (pipe, hose, funnel, ...), the directionality (inbound/outbound), the
-        traffic performance guarantees (one-way delay (OWD), one-way loss,
-        ...), etc.</t>
+        traffic performance guarantees (One-Way Delay (OWD) <xref
+        target="RFC7679"></xref>, One-Way Loss <xref target="RFC7680"></xref>,
+        ...), link capacity <xref target="RFC5136"></xref><xref
+        target="I-D.ietf-ippm-capacity-metric-method"></xref>, etc.</t>
 
         <t><xref target="service_ex"></xref> depicts the example of a VoIP
         service that relies upon connectivity services offered by a Network
@@ -426,7 +428,7 @@ Notifications (including feedback)
    | |+---------------------+|               (Customer Oriented)     |
    | |                       |               Scope: "1:1" Pipe model |
    | |                       |                   Bidirectional       |
-   | |+---------------------+|             +-+ BW:100M,OWD   +-+     |
+   | |+---------------------+|             +-+  Capacity,OWD +-+     |
    | ||Service Orchestration||             | +---------------+ |     |
    | |+---------------------+|             +-+               +-+     |
    | +-----------------------+          1. Ingress        2. Egress  |
@@ -442,15 +444,15 @@ Notifications (including feedback)
    | ||network Orchestration|            src                    dst  |
    | |+---------------------+|                L3VPN over TE          |
    | |                       |        Instance Name/Access Interface |
-   | +-----------------------+    Protocol Type/BW/RD,RT/etc. mapping|
-   |                                           for hop               |
+   | +-----------------------+      Protocol Type/Capacity/RD/RT/... |
+   |                                        mapping for hop          |
    |                                                                 |
    |                                                                 |
    | +-----------------------+                                       |
    | |    Device             |                 Device Model          |
    | |+--------------------+ |                                       |
    | || Device Modeling    | |           Interface add, BGP Peer,    |
-   | |+--------------------+ |           Tunnel ID, QoS/TE           |
+   | |+--------------------+ |              Tunnel ID, QoS/TE, ...   |
    | +-----------------------+                                       |
    +-----------------------------------------------------------------+]]></artwork>
         </figure>
@@ -815,7 +817,7 @@ Notifications (including feedback)
       <t>The following subsections provides some data models integration
       examples.</t>
 
-      <section title="L3VPN Service Delivery">
+      <section title="L2VPN/L3VPN Service Delivery">
         <t>In reference to <xref target="l3"></xref>, the following steps are
         performed to deliver the L3VPN service within the network management
         automation architecture defined in this document: <list
@@ -823,12 +825,14 @@ Notifications (including feedback)
             <t>The Customer requests to create two sites (as per service
             creation operation in <xref target="intended"></xref>) relying
             upon a L3SM Service model with each having one network access
-            connectivity:<list style="symbols">
-                <t>Site A: Network-Access A, Bandwidth = 20 Mbps, for class
-                "foo", guaranteed-bw-percent = 10, One-Way-Delay = 70 ms.</t>
+            connectivity, for example:<list style="symbols">
+                <t>Site A: Network-Access A, Link Capacity = 20 Mbps, for
+                class "foo", guaranteed-capacity-percent = 10,
+                average-One-Way-Delay = 70 ms.</t>
 
-                <t>Site B: Network-Access B, Bandwidth = 30 Mbps, for class
-                "foo1", guaranteed-bw-percent = 15, One-Way-Delay = 60 ms.</t>
+                <t>Site B: Network-Access B, Link Capacity = 30 Mbps, for
+                class "foo1", guaranteed-capacity-percent = 15,
+                average-One-Way-Delay = 60 ms.</t>
               </list></t>
 
             <t>The Orchestrator extracts the service parameters from the L3SM
@@ -983,44 +987,51 @@ Notifications (including feedback)
 
       <section title="Event-based Telemetry in the Device Self Management">
         <t>In reference to <xref target="event"></xref>, the following steps
-        are performed to monitor state changes of managed objects or resource
-        in the device and provide device self management within the network
-        management automation architecture defined in this document: <list
-            style="numbers">
+        are performed to monitor state changes of managed objects or resources
+        in a network device and provide device self-management within the
+        network management automation architecture defined in this document:
+        <list style="numbers">
             <t>To control which state a network device should be in or is
             allowed to be in at any given time, a set of conditions and
             actions are defined and correlated with network events (e.g.,
             allow the NETCONF server to send updates only when the value
-            exceeds a certain threshold for the first time but not again until
-            the threshold is cleared), which constitute an event-driven policy
-            or network control logic in the controller.</t>
+            exceeds a certain threshold for the first time, but not again
+            until the threshold is cleared), which constitute ECA policy or an
+            event-driven policy control logic that can be executed on the
+            device. </t>
 
-            <t>The controller pushes ECA policy to the network device and
-            delegate network control logic to the network device.</t>
+            <t>To provide rapid autonomic response that can exhibit
+            self-management properties, the controller pushes the ECA policy
+            to the network device and delegates network control logic to the
+            network device. </t>
 
-            <t>The network device generates ECA script from ECA model and
-            execute ECA script or network control logic based on Event. Event
-            based notification or telemetry can be triggered if a certain
-            condition is satisfied (model-driven telemetry operation in
-            Section 4.2.3).</t>
+            <t>The network device uses the ECA model to subscribe to the event
+            source, e.g., an event stream or datastore state data conveyed to
+            the server via YANG Push subscription, monitors state parameters,
+            and takes simple and instant actions when associated event
+            condition on state parameters is met. ECA notifications can be
+            generated as the result of actions based on event stream
+            subscription or datastore subscription (model-driven telemetry
+            operation discussed in Section 4.2.3). </t>
           </list><figure anchor="event" title="Event-based Telemetry">
-            <artwork align="center"><![CDATA[      +----------------+
-      |                |
-      |   Controller   |
-      +-------+--------+
-              |
-              |
-          ECA |
-         Model|             ^
-              |             |Notification
-              |             |
- +------------V-------------+-------+
- |Device                    |  Reconfiguration
- | +-------+ +---------+ +--+---+   |
- | | Event +-> Event   +->Event |   |
- | | Source| |Condition| |Action|   |
- | +-------+ +---------+ +------+   |
- +--------Update------trigger-------+]]></artwork>
+            <artwork align="center"><![CDATA[     +----------------+
+     |                <----+
+     |   Controller   |    |
+     +-------+--------+    |
+             |             |
+             |             |
+         ECA |             | ECA
+       Model |             | Notification
+             |             |
+             |             |
++------------V-------------+-------+
+|Device                    |       |
+| +-------+ +---------+ +--+---+   |
+| | Event +-> Event   +->Event |   |
+| | Source| |Condition| |Action|   |
+| +-------+ +---------+ +------+   |
++----------------------------------+
+]]></artwork>
           </figure></t>
       </section>
     </section>
@@ -1122,6 +1133,10 @@ Notifications (including feedback)
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
 
+      <?rfc include='reference.RFC.5136'?>
+
+      <?rfc include='reference.RFC.7680'?>
+
       <?rfc include="reference.RFC.8299"?>
 
       <?rfc include="reference.RFC.8309"?>
@@ -1187,6 +1202,10 @@ Notifications (including feedback)
       <?rfc include='reference.RFC.8783'?>
 
       <?rfc include='reference.RFC.6406'?>
+
+      <?rfc include='reference.RFC.7679'?>
+
+      <?rfc include='reference.I-D.ietf-ippm-capacity-metric-method'?>
 
       <?rfc include='reference.I-D.barguil-opsawg-l2sm-l2nm'?>
 
