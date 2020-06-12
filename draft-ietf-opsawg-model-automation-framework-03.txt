@@ -127,8 +127,8 @@ Internet-Draft  Service and Network Management Automation      June 2020
      A.2.  Network Models: Samples . . . . . . . . . . . . . . . . .  32
      A.3.  Device Models: Samples  . . . . . . . . . . . . . . . . .  35
        A.3.1.  Model Composition . . . . . . . . . . . . . . . . . .  36
-       A.3.2.  Device Models: Samples  . . . . . . . . . . . . . . .  36
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  39
+       A.3.2.  Device Models: Samples  . . . . . . . . . . . . . . .  37
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  40
 
 1.  Introduction
 
@@ -1762,30 +1762,30 @@ A.2.  Network Models: Samples
    Figure 9 depicts a set of additional Network Models such as topology
    and tunnel models:
 
-                 Topology      |         Tunnel                |
-               YANG modules    |      YANG modules             |
-          ---------------------+-------------------------------|
-          +------------+       |                               |
-          |Network Topo|       | +------+  +-----------+       |
-          |   Model    |       | |Other |  | TE Tunnel |       |
-          +----+-------+       | |Tunnel|  +----+------+       |
-               |   +--------+  | +------+       |              |
-               |---+Svc Topo|  |     +----------+---------+    |
-               |   +--------+  |     |          |         |    |
-               |   +--------+  |+----+---+ +----+---+ +---+---+|
-               |---+L2 Topo |  ||MPLS-TE | |RSVP-TE | |SR TE  ||
-               |   +--------+  || Tunnel | | Tunnel | |Tunnel ||
-               |   +--------+  |+--------+ +--------+ +-------+|
-               |---+TE Topo |  |                               |
-               |   +--------+  |                               |
-               |   +--------+  |                               |
-               +---+L3 Topo |  |                               |
-                   +--------+  |                               |
-          Legend:
-            Topo: Topology
-             Svc: Service
 
-              Figure 9: Sample Resource Facing Network Models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1793,6 +1793,33 @@ Wu, et al.              Expires December 14, 2020              [Page 32]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
+
+     +-------------------------------+-------------------------------+
+     |      Topology YANG modules    |     Tunnel YANG modules       |
+     +-------------------------------+-------------------------------+
+     |      +------------+           |                               |
+     |      |Network Topo|           | +------+  +-----------+       |
+     |      |   Model    |           | |Other |  | TE Tunnel |       |
+     |      +----+-------+           | |Tunnel|  +----+------+       |
+     |           |   +--------+      | +------+       |              |
+     |           |---+Svc Topo|      |     +----------+---------+    |
+     |           |   +--------+      |     |          |         |    |
+     |           |   +--------+      |+----+---+ +----+---+ +---+---+|
+     |           |---+L2 Topo |      ||MPLS-TE | |RSVP-TE | |SR TE  ||
+     |           |   +--------+      || Tunnel | | Tunnel | |Tunnel ||
+     |           |   +--------+      |+--------+ +--------+ +-------+|
+     |           |---+TE Topo |      |                               |
+     |           |   +--------+      |                               |
+     |           |   +--------+      |                               |
+     |           +---+L3 Topo |      |                               |
+     |               +--------+      |                               |
+     +-------------------------------+-------------------------------+
+
+     Legend:
+       Topo: Topology
+        Svc: Service
+
+              Figure 9: Sample Resource Facing Network Models
 
    Examples of topology YANG modules are listed below:
 
@@ -1814,6 +1841,14 @@ Internet-Draft  Service and Network Management Automation      June 2020
       [RFC8346] defines a data model for representing and manipulating
       Layer 3 topologies.  This model is extended from the network
       topology model defined in [RFC8345] with L3 topologies specifics.
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 33]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
 
    o  L2 Topology Models
 
@@ -1840,16 +1875,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
    o  MPLS TE Model:
 
-
-
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 33]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
       [I-D.ietf-teas-yang-te] augments the TE generic and MPLS-TE
       model(s) and defines a YANG module for MPLS TE configurations,
       state, RPC and notifications.
@@ -1873,6 +1898,14 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
       [RFC8532] defines a base YANG module for the management of OAM
       protocols that use Connectionless Communications.  [RFC8533]
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 34]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
       defines a retrieval method YANG module for connectionless OAM
       protocols.  [RFC8531] defines a base YANG module for connection
       oriented OAM protocols.  These three models are intended to
@@ -1898,14 +1931,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
       network elements and services.  This document describes the SUPA
       basic framework, its elements, and interfaces.
 
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 34]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
 A.3.  Device Models: Samples
 
    Network Element models (Figure 10) are used to describe how a service
@@ -1913,6 +1938,29 @@ A.3.  Device Models: Samples
    (enabled in one or multiple devices, or hosted in cloud
    infrastructures) that are involved in the service delivery.
    Figure 10 uses IETF-defined models as an example.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 35]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
 
                                         +----------------------+
                                       +-|     Device Model     |
@@ -1955,13 +2003,6 @@ A.3.  Device Models: Samples
 
                 Figure 10: Network Element Modules Overview
 
-
-
-Wu, et al.              Expires December 14, 2020              [Page 35]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
 A.3.1.  Model Composition
 
    o  Device Model
@@ -1969,6 +2010,14 @@ A.3.1.  Model Composition
       [I-D.ietf-rtgwg-device-model] presents an approach for organizing
       YANG modules in a comprehensive logical structure that may be used
       to configure and operate network devices.  The structure is itself
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 36]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
       represented as an example YANG module, with all of the related
       component models logically organized in a way that is
       operationally intuitive, but this model is not expected to be
@@ -2010,14 +2059,6 @@ A.3.2.  Device Models: Samples
 
    BGP:       [I-D.ietf-idr-bgp-model] defines a YANG module for
               configuring and managing BGP, including protocol, policy,
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 36]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
               and operational aspects based on data center, carrier, and
               content provider operational requirements.
 
@@ -2025,6 +2066,14 @@ Internet-Draft  Service and Network Management Automation      June 2020
               which serves as a base framework for configuring and
               managing an MPLS switching subsystem.  It is expected that
               other MPLS technology YANG modules (e.g., MPLS LSP Static,
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 37]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
               LDP or RSVP-TE models) will augment the MPLS base YANG
               module.
 
@@ -2066,20 +2115,21 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
               [I-D.ietf-pim-igmp-mld-snooping-yang] defines a YANG
               module that can be used to configure and manage Internet
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 37]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
               Group Management Protocol (IGMP) and Multicast Listener
               Discovery (MLD) Snooping devices.
 
    EVPN:      [I-D.ietf-bess-evpn-yang] defines a YANG module for
               Ethernet VPN services.  The model is agnostic of the
               underlay.  It applies to MPLS as well as to VxLAN
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 38]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
               encapsulation.  The module is also agnostic to the
               services, including E-LAN, E-LINE, and E-TREE services.
 
@@ -2121,21 +2171,21 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
    PM:
 
-
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 38]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
               [I-D.ietf-ippm-twamp-yang] defines a data model for client
               and server implementations of the Two-Way Active
               Measurement Protocol (TWAMP).
 
               [I-D.ietf-ippm-stamp-yang] defines the data model for
               implementations of Session-Sender and Session-Reflector
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 39]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
               for Simple Two-way Active Measurement Protocol (STAMP)
               mode using YANG.
 
@@ -2176,60 +2226,10 @@ Authors' Addresses
    Email: xiechf@chinatelecom.cn
 
 
-
-
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 39]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
    Liang Geng
    China Mobile
 
    Email: gengliang@chinamobile.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
