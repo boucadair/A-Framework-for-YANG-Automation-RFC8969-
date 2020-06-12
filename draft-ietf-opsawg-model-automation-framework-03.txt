@@ -122,11 +122,11 @@ Internet-Draft  Service and Network Management Automation      June 2020
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  23
      10.2.  Informative References . . . . . . . . . . . . . . . . .  24
-   Appendix A.  Layered YANG Modules Examples Overview . . . . . . .  31
-     A.1.  Service Models: Definition and Samples  . . . . . . . . .  31
+   Appendix A.  Layered YANG Modules Examples Overview . . . . . . .  32
+     A.1.  Service Models: Definition and Samples  . . . . . . . . .  32
      A.2.  Network Models: Samples . . . . . . . . . . . . . . . . .  32
      A.3.  Device Models: Samples  . . . . . . . . . . . . . . . . .  35
-       A.3.1.  Model Composition . . . . . . . . . . . . . . . . . .  36
+       A.3.1.  Model Composition . . . . . . . . . . . . . . . . . .  37
        A.3.2.  Device Models: Samples  . . . . . . . . . . . . . . .  37
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  40
 
@@ -458,10 +458,10 @@ Internet-Draft  Service and Network Management Automation      June 2020
      | |+---------------------+|               (Customer Oriented)     |
      | |                       |               Scope: "1:1" Pipe model |
      | |                       |                   Bidirectional       |
-     | |+---------------------+|             +-+  Capacity,OWD +-+     |
-     | ||Service Orchestration||             | +---------------+ |     |
-     | |+---------------------+|             +-+               +-+     |
-     | +-----------------------+          1. Ingress        2. Egress  |
+     | |+---------------------+|              +-+  Capacity,OWD  +-+   |
+     | ||Service Orchestration||              | +----------------+ |   |
+     | |+---------------------+|              +-+                +-+   |
+     | +-----------------------+           1. Ingress        2. Egress |
      |                                                                 |
      |                                                                 |
      |                                                                 |
@@ -471,7 +471,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
      | || Network Modeling    ||           | |    |  |    |   |   | |  |
      | |+---------------------+|           | o----o--o----o---o---o |  |
      | |+---------------------+|           +-+    +--+    +---+   +-+  |
-     | ||network Orchestration|            src                    dst  |
+     | ||Network Orchestration||           src                    dst  |
      | |+---------------------+|                L3VPN over TE          |
      | |                       |        Instance Name/Access Interface |
      | +-----------------------+      Protocol Type/Capacity/RD/RT/... |
@@ -1151,13 +1151,13 @@ Internet-Draft  Service and Network Management Automation      June 2020
                         Model |             | Notification
                               |             |
                               |             |
-                 +------------V-------------+-------+
-                 |Device                    |       |
-                 | +-------+ +---------+ +--+---+   |
-                 | | Event +-> Event   +->Event |   |
-                 | | Source| |Condition| |Action|   |
-                 | +-------+ +---------+ +------+   |
-                 +----------------------------------+
+                 +------------V-------------+-----+
+                 |Device                    |     |
+                 | +-------+ +---------+ +--+---+ |
+                 | | Event +-> Event   +->Event | |
+                 | | Source| |Condition| |Action| |
+                 | +-------+ +---------+ +------+ |
+                 +--------------------------------+
 
                       Figure 8: Event-based Telemetry
 
@@ -1323,17 +1323,17 @@ Internet-Draft  Service and Network Management Automation      June 2020
               for BGP/MPLS L3 VPNs", draft-ietf-bess-l3vpn-yang-04 (work
               in progress), October 2018.
 
+   [I-D.ietf-bess-mvpn-yang]
+              Liu, Y., Guo, F., Litkowski, S., Liu, X., Kebler, R., and
+              M. Sivakumar, "Yang Data Model for Multicast in MPLS/BGP
+              IP VPNs", draft-ietf-bess-mvpn-yang-02 (work in progress),
+              December 2019.
+
    [I-D.ietf-bfd-yang]
               Rahman, R., Zheng, L., Jethanandani, M., Pallagatti, S.,
               and G. Mirsky, "YANG Data Model for Bidirectional
               Forwarding Detection (BFD)", draft-ietf-bfd-yang-17 (work
               in progress), August 2018.
-
-   [I-D.ietf-i2rs-yang-l2-network-topology]
-              Dong, J., Wei, X., WU, Q., Boucadair, M., and A. Liu, "A
-              YANG Data Model for Layer-2 Network Topologies", draft-
-              ietf-i2rs-yang-l2-network-topology-13 (work in progress),
-              March 2020.
 
 
 
@@ -1345,6 +1345,12 @@ Wu, et al.              Expires December 14, 2020              [Page 24]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
+
+   [I-D.ietf-i2rs-yang-l2-network-topology]
+              Dong, J., Wei, X., WU, Q., Boucadair, M., and A. Liu, "A
+              YANG Data Model for Layer-2 Network Topologies", draft-
+              ietf-i2rs-yang-l2-network-topology-13 (work in progress),
+              March 2020.
 
    [I-D.ietf-idr-bgp-model]
               Jethanandani, M., Patel, K., Hares, S., and J. Haas, "BGP
@@ -1389,18 +1395,17 @@ Internet-Draft  Service and Network Management Automation      June 2020
               Multicast (PIM)", draft-ietf-pim-yang-17 (work in
               progress), May 2018.
 
-   [I-D.ietf-rtgwg-device-model]
-              Lindem, A., Berger, L., Bogdanovic, D., and C. Hopps,
-              "Network Device YANG Logical Organization", draft-ietf-
-              rtgwg-device-model-02 (work in progress), March 2017.
-
-
 
 
 Wu, et al.              Expires December 14, 2020              [Page 25]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
+
+   [I-D.ietf-rtgwg-device-model]
+              Lindem, A., Berger, L., Bogdanovic, D., and C. Hopps,
+              "Network Device YANG Logical Organization", draft-ietf-
+              rtgwg-device-model-02 (work in progress), March 2017.
 
    [I-D.ietf-rtgwg-policy-model]
               Qu, Y., Tantsura, J., Lindem, A., and X. Liu, "A YANG Data
@@ -1441,11 +1446,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
               draft-ietf-teas-yang-path-computation-08 (work in
               progress), December 2019.
 
-   [I-D.ietf-teas-yang-rsvp-te]
-              Beeram, V., Saad, T., Gandhi, R., Liu, X., Bryskin, I.,
-              and H. Shah, "A YANG Data Model for RSVP-TE Protocol",
-              draft-ietf-teas-yang-rsvp-te-08 (work in progress), March
-              2020.
 
 
 
@@ -1457,6 +1457,12 @@ Wu, et al.              Expires December 14, 2020              [Page 26]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
+
+   [I-D.ietf-teas-yang-rsvp-te]
+              Beeram, V., Saad, T., Gandhi, R., Liu, X., Bryskin, I.,
+              and H. Shah, "A YANG Data Model for RSVP-TE Protocol",
+              draft-ietf-teas-yang-rsvp-te-08 (work in progress), March
+              2020.
 
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V., and I. Bryskin,
@@ -1497,6 +1503,17 @@ Internet-Draft  Service and Network Management Automation      June 2020
               DOI 10.17487/RFC4664, September 2006,
               <https://www.rfc-editor.org/info/rfc4664>.
 
+
+
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 27]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
    [RFC4761]  Kompella, K., Ed. and Y. Rekhter, Ed., "Virtual Private
               LAN Service (VPLS) Using BGP for Auto-Discovery and
               Signaling", RFC 4761, DOI 10.17487/RFC4761, January 2007,
@@ -1506,13 +1523,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
               LAN Service (VPLS) Using Label Distribution Protocol (LDP)
               Signaling", RFC 4762, DOI 10.17487/RFC4762, January 2007,
               <https://www.rfc-editor.org/info/rfc4762>.
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 27]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
 
    [RFC5136]  Chimento, P. and J. Ishac, "Defining Network Capacity",
               RFC 5136, DOI 10.17487/RFC5136, February 2008,
@@ -1548,16 +1558,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
               DOI 10.17487/RFC7297, July 2014,
               <https://www.rfc-editor.org/info/rfc7297>.
 
-   [RFC7455]  Senevirathne, T., Finn, N., Salam, S., Kumar, D., Eastlake
-              3rd, D., Aldrin, S., and Y. Li, "Transparent
-              Interconnection of Lots of Links (TRILL): Fault
-              Management", RFC 7455, DOI 10.17487/RFC7455, March 2015,
-              <https://www.rfc-editor.org/info/rfc7455>.
-
-   [RFC7679]  Almes, G., Kalidindi, S., Zekauskas, M., and A. Morton,
-              Ed., "A One-Way Delay Metric for IP Performance Metrics
-              (IPPM)", STD 81, RFC 7679, DOI 10.17487/RFC7679, January
-              2016, <https://www.rfc-editor.org/info/rfc7679>.
 
 
 
@@ -1569,6 +1569,17 @@ Wu, et al.              Expires December 14, 2020              [Page 28]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
+
+   [RFC7455]  Senevirathne, T., Finn, N., Salam, S., Kumar, D., Eastlake
+              3rd, D., Aldrin, S., and Y. Li, "Transparent
+              Interconnection of Lots of Links (TRILL): Fault
+              Management", RFC 7455, DOI 10.17487/RFC7455, March 2015,
+              <https://www.rfc-editor.org/info/rfc7455>.
+
+   [RFC7679]  Almes, G., Kalidindi, S., Zekauskas, M., and A. Morton,
+              Ed., "A One-Way Delay Metric for IP Performance Metrics
+              (IPPM)", STD 81, RFC 7679, DOI 10.17487/RFC7679, January
+              2016, <https://www.rfc-editor.org/info/rfc7679>.
 
    [RFC7680]  Almes, G., Kalidindi, S., Zekauskas, M., and A. Morton,
               Ed., "A One-Way Loss Metric for IP Performance Metrics
@@ -1608,6 +1619,13 @@ Internet-Draft  Service and Network Management Automation      June 2020
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
               2018, <https://www.rfc-editor.org/info/rfc8345>.
 
+
+
+Wu, et al.              Expires December 14, 2020              [Page 29]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
    [RFC8346]  Clemm, A., Medved, J., Varga, R., Liu, X.,
               Ananthakrishnan, H., and N. Bahadur, "A YANG Data Model
               for Layer 3 Topologies", RFC 8346, DOI 10.17487/RFC8346,
@@ -1617,14 +1635,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
               Routing Management (NMDA Version)", RFC 8349,
               DOI 10.17487/RFC8349, March 2018,
               <https://www.rfc-editor.org/info/rfc8349>.
-
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 29]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
 
    [RFC8466]  Wen, B., Fioccola, G., Ed., Xie, C., and L. Jalil, "A YANG
               Data Model for Layer 2 Virtual Private Network (L2VPN)
@@ -1661,6 +1671,17 @@ Internet-Draft  Service and Network Management Automation      June 2020
               DOI 10.17487/RFC8530, March 2019,
               <https://www.rfc-editor.org/info/rfc8530>.
 
+
+
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 30]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
    [RFC8531]  Kumar, D., Wu, Q., and Z. Wang, "Generic YANG Data Model
               for Connection-Oriented Operations, Administration, and
               Maintenance (OAM) Protocols", RFC 8531,
@@ -1674,14 +1695,6 @@ Internet-Draft  Service and Network Management Automation      June 2020
               RFC 8532, DOI 10.17487/RFC8532, April 2019,
               <https://www.rfc-editor.org/info/rfc8532>.
 
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 30]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
    [RFC8533]  Kumar, D., Wang, M., Wu, Q., Ed., Rahman, R., and S.
               Raghavan, "A YANG Data Model for Retrieval Methods for the
               Management of Operations, Administration, and Maintenance
@@ -1692,6 +1705,12 @@ Internet-Draft  Service and Network Management Automation      June 2020
    [RFC8632]  Vallin, S. and M. Bjorklund, "A YANG Data Model for Alarm
               Management", RFC 8632, DOI 10.17487/RFC8632, September
               2019, <https://www.rfc-editor.org/info/rfc8632>.
+
+   [RFC8652]  Liu, X., Guo, F., Sivakumar, M., McAllister, P., and A.
+              Peter, "A YANG Data Model for the Internet Group
+              Management Protocol (IGMP) and Multicast Listener
+              Discovery (MLD)", RFC 8652, DOI 10.17487/RFC8652, November
+              2019, <https://www.rfc-editor.org/info/rfc8652>.
 
    [RFC8675]  Boucadair, M., Farrer, I., and R. Asati, "A YANG Data
               Model for Tunnel Interface Types", RFC 8675,
@@ -1707,6 +1726,17 @@ Internet-Draft  Service and Network Management Automation      June 2020
               Denial-of-Service Open Threat Signaling (DOTS) Data
               Channel Specification", RFC 8783, DOI 10.17487/RFC8783,
               May 2020, <https://www.rfc-editor.org/info/rfc8783>.
+
+
+
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 31]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
 
 Appendix A.  Layered YANG Modules Examples Overview
 
@@ -1729,15 +1759,6 @@ A.1.  Service Models: Definition and Samples
    unicast IP addresses, "Destination Nets" is a group of IP unicast
    and/or multicast addresses, and "Guarantees" reflects the guarantees
    (expressed in terms of QoS, performance, and availability, for
-
-
-
-
-Wu, et al.              Expires December 14, 2020              [Page 31]
-
-Internet-Draft  Service and Network Management Automation      June 2020
-
-
    example) to properly forward traffic to the said "Destination"
    [RFC7297].
 
@@ -1768,27 +1789,6 @@ A.2.  Network Models: Samples
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Wu, et al.              Expires December 14, 2020              [Page 32]
 
 Internet-Draft  Service and Network Management Automation      June 2020
@@ -1805,7 +1805,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
      |           +---+Svc Topo|      |     +----------+---------+    |
      |           |   +--------+      |     |          |         |    |
      |           |   +--------+      |+----+---+ +----+---+ +---+---+|
-     |           +---+L2 Topo |      ||MPLS-TE | |RSVP-TE | |SR TE  ||
+     |           +---+L2 Topo |      ||MPLS-TE | |RSVP-TE | | SR-TE ||
      |           |   +--------+      || Tunnel | | Tunnel | |Tunnel ||
      |           |   +--------+      |+--------+ +--------+ +-------+|
      |           +---+TE Topo |      |                               |
@@ -1836,7 +1836,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
       augmented and used by other technology-specific TE topology
       models.
 
-   o  L3 Topology Models
+   o  Layer 3 Topology Models:
 
       [RFC8346] defines a data model for representing and manipulating
       Layer 3 topologies.  This model is extended from the network
@@ -1850,7 +1850,7 @@ Wu, et al.              Expires December 14, 2020              [Page 33]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
-   o  L2 Topology Models
+   o  Layer 2 Topology Models:
 
       [I-D.ietf-i2rs-yang-l2-network-topology] defines a data model for
       representing and manipulating L2 topologies.  This model is
@@ -1867,16 +1867,15 @@ Internet-Draft  Service and Network Management Automation      June 2020
       [I-D.ietf-teas-yang-te] defines a YANG module for the
       configuration and management of TE interfaces, tunnels, and LSPs.
 
-   o  SR TE Tunnel Model:
+   o  Segment Routing (SR) Traffic Engineering (TE) Tunnel Model:
 
       [I-D.ietf-teas-yang-te] augments the TE generic and MPLS-TE
-      model(s) and defines a YANG module for Segment Routing (SR) TE
-      specific data.
+      model(s) and defines a YANG module for SR-TE specific data.
 
-   o  MPLS TE Model:
+   o  MPLS-TE Model:
 
       [I-D.ietf-teas-yang-te] augments the TE generic and MPLS-TE
-      model(s) and defines a YANG module for MPLS TE configurations,
+      model(s) and defines a YANG module for MPLS-TE configurations,
       state, RPC and notifications.
 
    o  RSVP-TE MPLS Model:
@@ -1898,6 +1897,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
 
       [RFC8532] defines a base YANG module for the management of OAM
       protocols that use Connectionless Communications.  [RFC8533]
+      defines a retrieval method YANG module for connectionless OAM
 
 
 
@@ -1906,7 +1906,6 @@ Wu, et al.              Expires December 14, 2020              [Page 34]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
-      defines a retrieval method YANG module for connectionless OAM
       protocols.  [RFC8531] defines a base YANG module for connection
       oriented OAM protocols.  These three models are intended to
       provide consistent reporting, configuration, and representation
@@ -1957,59 +1956,60 @@ A.3.  Device Models: Samples
 
 
 
+
 Wu, et al.              Expires December 14, 2020              [Page 35]
 
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
-                                        +----------------------+
-                                      +-|     Device Model     |
-                                      | +----------------------+
-                                      | +----------------------+
-                   +---------------+  | |   Logical Network    |
-                   |               |  +-|     Element Model    |
-                   | Architecture  |  | +----------------------+
-                   |               |  | +----------------------+
-                   +-------+-------+  +-|Network Instance Model|
-                           |          | +----------------------+
-                           |          | +----------------------+
-                           |          +-|   Routing Type Model |
-                           |            +----------------------+
-   +-------+----------+----+--------+------------+-----------+-------+
-   |       |          |             |            |           |       |
- +-+-+ +---+---+ +----+----+      +-+-+    +-----+---+   +---+-+     |
- |ACL| |Routing| |Transport|      |OAM|    |Multicast|   |  PM |  Others
- +---+ |-------+ +---------+      +---+    +---------+   +-----+
-       | +-------+ | +----------+  | +-------+ | +-----+  | +-----+
-       +-|Core   | +-|MPLS Basic|  +-|BFD    | +-|IGMP |  +-|TWAMP|
-       | |Routing| | +----------+  | +-------+ | |/MLD |  | +-----+
-       | +-------+ +-|MPLS LDP  |  +-|LSP Ping | +-----+  +-|OWAMP|
-       +-|BGP    | | +----------+  | +-------+ +-|PIM  |  | +-----+
-       | +-------+ +-|MPLS Static  +-|MPLS-TP| | +-----+  +-|LMAP |
-       +-|ISIS   |   +----------+    +-------+ +-|MVPN |    +-----+
-       | +-------+                               +-----+
-       +-|OSPF   |
-       | +-------+
-       +-|RIP    |
-       | +-------+
-       +-|VRRP   |
-       | +-------+
-       +-|SR/SRv6|
-       | +-------+
-       +-|ISIS-SR|
-       | +-------+
-       +-|OSPF-SR|
-         +-------+
+                                          +----------------------+
+                                        +-+     Device Model     |
+                                        | +----------------------+
+                                        | +----------------------+
+                     +---------------+  | |   Logical Network    |
+                     |               |  +-+     Element Model    |
+                     | Architecture  |  | +----------------------+
+                     |               |  | +----------------------+
+                     +-------+-------+  +-+Network Instance Model|
+                             |          | +----------------------+
+                             |          | +----------------------+
+                             |          +-+   Routing Type Model |
+                             |            +----------------------+
+     +-------+----------+----+-----+-----------+-----------+------+
+     |       |          |          |           |           |      |
+   +-+-+ +---+---+ +----+----+   +-+-+    +----+----+   +--+--+   |
+   |ACL| |Routing| |Transport|   |OAM|    |Multicast|   |  PM | Others
+   +---+ +-+-----+ +---+-----+   +-+-+    +-----+---+   +--+--+
+           | +-------+ | +------+  | +--------+ | +-----+  | +-----+
+           +-+Core   | +-+ MPLS |  +-+  BFD   | +-+IGMP |  +-+TWAMP|
+           | |Routing| | | Base |  | +--------+ | |/MLD |  | +-----+
+           | +-------+ | +------+  | +--------+ | +-----+  | +-----+
+           | +-------+ | +------+  +-+LSP Ping| | +-----+  +-+OWAMP|
+           +-+  BGP  | +-+ MPLS |  | +--------+ +-+ PIM |  | +-----+
+           | +-------+ | | LDP  |  | +--------+ | +-----+  | +-----+
+           | +-------+ | +------+  +-+MPLS-TP | | +-----+  +-+LMAP |
+           +-+  ISIS | | +------+    +--------+ +-+ MVPN|    +-----+
+           | +-------+ +-+ MPLS |                 +-----+
+           | +-------+   |Static|
+           +-+  OSPF |   +------+
+           | +-------+
+           | +-------+
+           +-+  RIP  |
+           | +-------+
+           | +-------+
+           +-+  VRRP |
+           | +-------+
+           | +-------+
+           +-+SR/SRv6|
+           | +-------+
+           | +-------+
+           +-+ISIS-SR|
+           | +-------+
+           | +-------+
+           +-+OSPF-SR|
+             +-------+
 
                 Figure 10: Network Element Modules Overview
-
-A.3.1.  Model Composition
-
-   o  Device Model
-
-      [I-D.ietf-rtgwg-device-model] presents an approach for organizing
-      YANG modules in a comprehensive logical structure that may be used
-      to configure and operate network devices.  The structure is itself
 
 
 
@@ -2018,6 +2018,13 @@ Wu, et al.              Expires December 14, 2020              [Page 36]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
+A.3.1.  Model Composition
+
+   o  Device Model
+
+      [I-D.ietf-rtgwg-device-model] presents an approach for organizing
+      YANG modules in a comprehensive logical structure that may be used
+      to configure and operate network devices.  The structure is itself
       represented as an example YANG module, with all of the related
       component models logically organized in a way that is
       operationally intuitive, but this model is not expected to be
@@ -2036,8 +2043,8 @@ Internet-Draft  Service and Network Management Automation      June 2020
       [RFC8529] defines a network instance module.  This module can be
       used to manage the virtual resource partitioning that may be
       present on a network device.  Examples of common industry terms
-      for virtual resource partitioning are Virtual Routing and
-      Forwarding (VRF) instances and Virtual Switch Instances (VSIs).
+      for virtual resource partitioning are VRF instances and Virtual
+      Switch Instances (VSIs).
 
 A.3.1.1.  Schema Mount
 
@@ -2059,13 +2066,6 @@ A.3.2.  Device Models: Samples
 
    BGP:       [I-D.ietf-idr-bgp-model] defines a YANG module for
               configuring and managing BGP, including protocol, policy,
-              and operational aspects based on data center, carrier, and
-              content provider operational requirements.
-
-   MPLS:      [I-D.ietf-mpls-base-yang] defines a base model for MPLS
-              which serves as a base framework for configuring and
-              managing an MPLS switching subsystem.  It is expected that
-              other MPLS technology YANG modules (e.g., MPLS LSP Static,
 
 
 
@@ -2074,7 +2074,14 @@ Wu, et al.              Expires December 14, 2020              [Page 37]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
-              LDP or RSVP-TE models) will augment the MPLS base YANG
+              and operational aspects based on data center, carrier, and
+              content provider operational requirements.
+
+   MPLS:      [I-D.ietf-mpls-base-yang] defines a base model for MPLS
+              which serves as a base framework for configuring and
+              managing an MPLS switching subsystem.  It is expected that
+              other MPLS technology YANG modules (e.g., MPLS LSP Static,
+              LDP, or RSVP-TE models) will augment the MPLS base YANG
               module.
 
    QoS:       [I-D.ietf-rtgwg-qos-model] describes a YANG module of
@@ -2089,15 +2096,18 @@ Internet-Draft  Service and Network Management Automation      June 2020
    NAT:       For the sake of network automation and the need for
               programming Network Address Translation (NAT) function in
               particular, a data model for configuring and managing the
-              NAT is essential.  [RFC8512] defines a YANG module for the
-              NAT function covering a variety of NAT flavors such as
-              Network Address Translation from IPv4 to IPv4 (NAT44),
-              Network Address and Protocol Translation from IPv6 Clients
-              to IPv4 Servers (NAT64), customer-side translator (CLAT),
-              Stateless IP/ICMP Translation (SIIT), Explicit Address
-              Mappings (EAM) for SIIT, IPv6-to-IPv6 Network Prefix
-              Translation (NPTv6), and Destination NAT.  [RFC8513]
-              specifies a DS-Lite YANG module.
+              NAT is essential.
+
+              [RFC8512] defines a YANG module for the NAT function
+              covering a variety of NAT flavors such as Network Address
+              Translation from IPv4 to IPv4 (NAT44), Network Address and
+              Protocol Translation from IPv6 Clients to IPv4 Servers
+              (NAT64), customer-side translator (CLAT), Stateless IP/
+              ICMP Translation (SIIT), Explicit Address Mappings (EAM)
+              for SIIT, IPv6-to-IPv6 Network Prefix Translation (NPTv6),
+              and Destination NAT.
+
+              [RFC8513] specifies a DS-Lite YANG module.
 
    Stateless Address Sharing:  [RFC8676] specifies a YANG module for A+P
               address sharing, including Lightweight 4over6, Mapping of
@@ -2109,19 +2119,9 @@ Internet-Draft  Service and Network Management Automation      June 2020
               to configure and manage Protocol Independent Multicast
               (PIM) devices.
 
-              RFC8652 defines a YANG module that can be used to
+              [RFC8652] defines a YANG module that can be used to
               configure and manage Internet Group Management Protocol
               (IGMP) and Multicast Listener Discovery (MLD) devices.
-
-              [I-D.ietf-pim-igmp-mld-snooping-yang] defines a YANG
-              module that can be used to configure and manage Internet
-              Group Management Protocol (IGMP) and Multicast Listener
-              Discovery (MLD) Snooping devices.
-
-   EVPN:      [I-D.ietf-bess-evpn-yang] defines a YANG module for
-              Ethernet VPN services.  The model is agnostic of the
-              underlay.  It applies to MPLS as well as to VxLAN
-
 
 
 
@@ -2130,6 +2130,18 @@ Wu, et al.              Expires December 14, 2020              [Page 38]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
+              [I-D.ietf-pim-igmp-mld-snooping-yang] defines a YANG
+              module that can be used to configure and manage Internet
+              Group Management Protocol (IGMP) and Multicast Listener
+              Discovery (MLD) Snooping devices.
+
+              [I-D.ietf-bess-mvpn-yang] defines a YANG data model to
+              configure and manage Multicast in MPLS/BGP IP VPNs
+              (MVPNs).
+
+   EVPN:      [I-D.ietf-bess-evpn-yang] defines a YANG module for
+              Ethernet VPN services.  The model is agnostic of the
+              underlay.  It applies to MPLS as well as to VxLAN
               encapsulation.  The module is also agnostic to the
               services, including E-LAN, E-LINE, and E-TREE services.
 
@@ -2158,26 +2170,14 @@ Internet-Draft  Service and Network Management Automation      June 2020
               defines a YANG module that can be used to configure and
               manage BFD.
 
-   SR/SRv6:   [I-D.ietf-spring-sr-yang] a YANG module for segment
-              routing configuration and operation.
+   SR/SRv6:   [I-D.ietf-spring-sr-yang] a YANG module for SR
+              configuration and operation.
 
 
    Core Routing:  [RFC8349] defines the core routing data model, which
               is intended as a basis for future data model development
               covering more-sophisticated routing systems.  It is
               expected that other Routing technology YANG modules (e.g.,
-              VRRP, RIP, ISIS, OSPF models) will augment the Core
-              Routing base YANG module.
-
-   PM:
-
-              [I-D.ietf-ippm-twamp-yang] defines a data model for client
-              and server implementations of the Two-Way Active
-              Measurement Protocol (TWAMP).
-
-              [I-D.ietf-ippm-stamp-yang] defines the data model for
-              implementations of Session-Sender and Session-Reflector
-
 
 
 
@@ -2186,6 +2186,15 @@ Wu, et al.              Expires December 14, 2020              [Page 39]
 Internet-Draft  Service and Network Management Automation      June 2020
 
 
+              VRRP, RIP, ISIS, OSPF models) will augment the Core
+              Routing base YANG module.
+
+   PM:        [I-D.ietf-ippm-twamp-yang] defines a data model for client
+              and server implementations of the Two-Way Active
+              Measurement Protocol (TWAMP).
+
+              [I-D.ietf-ippm-stamp-yang] defines the data model for
+              implementations of Session-Sender and Session-Reflector
               for Simple Two-way Active Measurement Protocol (STAMP)
               mode using YANG.
 
@@ -2226,6 +2235,13 @@ Authors' Addresses
    Email: xiechf@chinatelecom.cn
 
 
+
+
+Wu, et al.              Expires December 14, 2020              [Page 40]
+
+Internet-Draft  Service and Network Management Automation      June 2020
+
+
    Liang Geng
    China Mobile
 
@@ -2237,4 +2253,44 @@ Authors' Addresses
 
 
 
-Wu, et al.              Expires December 14, 2020              [Page 40]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wu, et al.              Expires December 14, 2020              [Page 41]

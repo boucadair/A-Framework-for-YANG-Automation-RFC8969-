@@ -428,10 +428,10 @@ Notifications (including feedback)
    | |+---------------------+|               (Customer Oriented)     |
    | |                       |               Scope: "1:1" Pipe model |
    | |                       |                   Bidirectional       |
-   | |+---------------------+|             +-+  Capacity,OWD +-+     |
-   | ||Service Orchestration||             | +---------------+ |     |
-   | |+---------------------+|             +-+               +-+     |
-   | +-----------------------+          1. Ingress        2. Egress  |
+   | |+---------------------+|              +-+  Capacity,OWD  +-+   |
+   | ||Service Orchestration||              | +----------------+ |   |
+   | |+---------------------+|              +-+                +-+   |
+   | +-----------------------+           1. Ingress        2. Egress |
    |                                                                 |
    |                                                                 |
    |                                                                 |
@@ -441,7 +441,7 @@ Notifications (including feedback)
    | || Network Modeling    ||           | |    |  |    |   |   | |  |
    | |+---------------------+|           | o----o--o----o---o---o |  |
    | |+---------------------+|           +-+    +--+    +---+   +-+  |
-   | ||network Orchestration|            src                    dst  |
+   | ||Network Orchestration||           src                    dst  |
    | |+---------------------+|                L3VPN over TE          |
    | |                       |        Instance Name/Access Interface |
    | +-----------------------+      Protocol Type/Capacity/RD/RT/... |
@@ -1024,13 +1024,13 @@ Notifications (including feedback)
        Model |             | Notification
              |             |
              |             |
-+------------V-------------+-------+
-|Device                    |       |
-| +-------+ +---------+ +--+---+   |
-| | Event +-> Event   +->Event |   |
-| | Source| |Condition| |Action|   |
-| +-------+ +---------+ +------+   |
-+----------------------------------+
++------------V-------------+-----+
+|Device                    |     |
+| +-------+ +---------+ +--+---+ |
+| | Event +-> Event   +->Event | |
+| | Source| |Condition| |Action| |
+| +-------+ +---------+ +------+ |
++--------------------------------+
 ]]></artwork>
           </figure></t>
       </section>
@@ -1205,6 +1205,8 @@ Notifications (including feedback)
 
       <?rfc include='reference.RFC.7679'?>
 
+      <?rfc include='reference.RFC.8652'?>
+
       <?rfc include='reference.I-D.ietf-ippm-capacity-metric-method'?>
 
       <?rfc include='reference.I-D.barguil-opsawg-l2sm-l2nm'?>
@@ -1260,6 +1262,8 @@ Notifications (including feedback)
       <?rfc include='reference.I-D.ietf-ippm-stamp-yang'?>
 
       <?rfc include='reference.I-D.ietf-i2rs-yang-l2-network-topology'?>
+
+      <?rfc include='reference.I-D.ietf-bess-mvpn-yang'?>
     </references>
 
     <section anchor="app" title="Layered YANG Modules Examples Overview">
@@ -1322,7 +1326,7 @@ Notifications (including feedback)
 |           +---+Svc Topo|      |     +----------+---------+    |  
 |           |   +--------+      |     |          |         |    |
 |           |   +--------+      |+----+---+ +----+---+ +---+---+| 
-|           +---+L2 Topo |      ||MPLS-TE | |RSVP-TE | |SR TE  ||  
+|           +---+L2 Topo |      ||MPLS-TE | |RSVP-TE | | SR-TE ||  
 |           |   +--------+      || Tunnel | | Tunnel | |Tunnel ||  
 |           |   +--------+      |+--------+ +--------+ +-------+| 
 |           +---+TE Topo |      |                               |   
@@ -1356,13 +1360,13 @@ Legend:
             building blocks that can be augmented and used by other
             technology-specific TE topology models.</t>
 
-            <t>L3 Topology Models<vspace blankLines="1" /><xref
+            <t>Layer 3 Topology Models:<vspace blankLines="1" /><xref
             target="RFC8346"></xref> defines a data model for representing and
             manipulating Layer 3 topologies. This model is extended from the
             network topology model defined in <xref target="RFC8345"></xref>
             with L3 topologies specifics.</t>
 
-            <t>L2 Topology Models<vspace blankLines="1" /><xref
+            <t>Layer 2 Topology Models:<vspace blankLines="1" /><xref
             target="I-D.ietf-i2rs-yang-l2-network-topology"></xref> defines a
             data model for representing and manipulating L2 topologies. This
             model is extended from the network topology model defined in <xref
@@ -1379,14 +1383,15 @@ Legend:
             the configuration and management of TE interfaces, tunnels, and
             LSPs.</t>
 
-            <t>SR TE Tunnel Model:<vspace blankLines="1" /><xref
+            <t>Segment Routing (SR) Traffic Engineering (TE) Tunnel
+            Model:<vspace blankLines="1" /><xref
             target="I-D.ietf-teas-yang-te"></xref> augments the TE generic and
-            MPLS-TE model(s) and defines a YANG module for Segment Routing
-            (SR) TE specific data.</t>
+            MPLS-TE model(s) and defines a YANG module for SR-TE specific
+            data.</t>
 
-            <t>MPLS TE Model:<vspace blankLines="1" /><xref
+            <t>MPLS-TE Model:<vspace blankLines="1" /><xref
             target="I-D.ietf-teas-yang-te"></xref> augments the TE generic and
-            MPLS-TE model(s) and defines a YANG module for MPLS TE
+            MPLS-TE model(s) and defines a YANG module for MPLS-TE
             configurations, state, RPC and notifications.</t>
 
             <t>RSVP-TE MPLS Model:<vspace blankLines="1" /><xref
@@ -1442,45 +1447,52 @@ Legend:
         <xref target="device"></xref> uses IETF-defined models as an
         example.<figure anchor="device"
             title="Network Element Modules Overview">
-            <artwork><![CDATA[
-                                       +----------------------+
-                                     +-|     Device Model     |
+            <artwork><![CDATA[                                       +----------------------+
+                                     +-+     Device Model     |
                                      | +----------------------+
                                      | +----------------------+
                   +---------------+  | |   Logical Network    |
-                  |               |  +-|     Element Model    |
+                  |               |  +-+     Element Model    |
                   | Architecture  |  | +----------------------+
                   |               |  | +----------------------+
-                  +-------+-------+  +-|Network Instance Model|
+                  +-------+-------+  +-+Network Instance Model|
                           |          | +----------------------+
                           |          | +----------------------+
-                          |          +-|   Routing Type Model |
+                          |          +-+   Routing Type Model |
                           |            +----------------------+
-  +-------+----------+----+--------+------------+-----------+-------+
-  |       |          |             |            |           |       |
-+-+-+ +---+---+ +----+----+      +-+-+    +-----+---+   +---+-+     |
-|ACL| |Routing| |Transport|      |OAM|    |Multicast|   |  PM |  Others
-+---+ |-------+ +---------+      +---+    +---------+   +-----+
-      | +-------+ | +----------+  | +-------+ | +-----+  | +-----+
-      +-|Core   | +-|MPLS Basic|  +-|BFD    | +-|IGMP |  +-|TWAMP|
-      | |Routing| | +----------+  | +-------+ | |/MLD |  | +-----+
-      | +-------+ +-|MPLS LDP  |  +-|LSP Ping | +-----+  +-|OWAMP|
-      +-|BGP    | | +----------+  | +-------+ +-|PIM  |  | +-----+
-      | +-------+ +-|MPLS Static  +-|MPLS-TP| | +-----+  +-|LMAP |
-      +-|ISIS   |   +----------+    +-------+ +-|MVPN |    +-----+
-      | +-------+                               +-----+
-      +-|OSPF   |
-      | +-------+
-      +-|RIP    |                                           
-      | +-------+
-      +-|VRRP   |
-      | +-------+
-      +-|SR/SRv6|
-      | +-------+
-      +-|ISIS-SR|   
-      | +-------+
-      +-|OSPF-SR|
-        +-------+]]></artwork>
+  +-------+----------+----+-----+-----------+-----------+------+
+  |       |          |          |           |           |      |
++-+-+ +---+---+ +----+----+   +-+-+    +----+----+   +--+--+   |
+|ACL| |Routing| |Transport|   |OAM|    |Multicast|   |  PM | Others
++---+ +-+-----+ +---+-----+   +-+-+    +-----+---+   +--+--+
+        | +-------+ | +------+  | +--------+ | +-----+  | +-----+
+        +-+Core   | +-+ MPLS |  +-+  BFD   | +-+IGMP |  +-+TWAMP|
+        | |Routing| | | Base |  | +--------+ | |/MLD |  | +-----+
+        | +-------+ | +------+  | +--------+ | +-----+  | +-----+
+        | +-------+ | +------+  +-+LSP Ping| | +-----+  +-+OWAMP|
+        +-+  BGP  | +-+ MPLS |  | +--------+ +-+ PIM |  | +-----+
+        | +-------+ | | LDP  |  | +--------+ | +-----+  | +-----+
+        | +-------+ | +------+  +-+MPLS-TP | | +-----+  +-+LMAP |
+        +-+  ISIS | | +------+    +--------+ +-+ MVPN|    +-----+
+        | +-------+ +-+ MPLS |                 +-----+
+        | +-------+   |Static|                     
+        +-+  OSPF |   +------+
+        | +-------+
+        | +-------+
+        +-+  RIP  |                                           
+        | +-------+  
+        | +-------+
+        +-+  VRRP |
+        | +-------+
+        | +-------+
+        +-+SR/SRv6|
+        | +-------+
+        | +-------+
+        +-+ISIS-SR|   
+        | +-------+
+        | +-------+
+        +-+OSPF-SR|
+          +-------+]]></artwork>
           </figure></t>
 
         <section title="Model Composition">
@@ -1505,9 +1517,8 @@ Legend:
               target="RFC8529"></xref> defines a network instance module. This
               module can be used to manage the virtual resource partitioning
               that may be present on a network device. Examples of common
-              industry terms for virtual resource partitioning are Virtual
-              Routing and Forwarding (VRF) instances and Virtual Switch
-              Instances (VSIs).</t>
+              industry terms for virtual resource partitioning are VRF
+              instances and Virtual Switch Instances (VSIs).</t>
             </list></t>
 
           <section title="Schema Mount">
@@ -1539,7 +1550,7 @@ Legend:
               target="I-D.ietf-mpls-base-yang"></xref> defines a base model
               for MPLS which serves as a base framework for configuring and
               managing an MPLS switching subsystem. It is expected that other
-              MPLS technology YANG modules (e.g., MPLS LSP Static, LDP or
+              MPLS technology YANG modules (e.g., MPLS LSP Static, LDP, or
               RSVP-TE models) will augment the MPLS base YANG module.</t>
 
               <t hangText="QoS:"><xref
@@ -1556,15 +1567,16 @@ Legend:
               <t hangText="NAT:">For the sake of network automation and the
               need for programming Network Address Translation (NAT) function
               in particular, a data model for configuring and managing the NAT
-              is essential. <xref target="RFC8512"></xref> defines a YANG
-              module for the NAT function covering a variety of NAT flavors
-              such as Network Address Translation from IPv4 to IPv4 (NAT44),
-              Network Address and Protocol Translation from IPv6 Clients to
-              IPv4 Servers (NAT64), customer-side translator (CLAT), Stateless
-              IP/ICMP Translation (SIIT), Explicit Address Mappings (EAM) for
-              SIIT, IPv6-to-IPv6 Network Prefix Translation (NPTv6), and
-              Destination NAT. <xref target="RFC8513"></xref> specifies a
-              DS-Lite YANG module.</t>
+              is essential.<vspace blankLines="1" /><xref
+              target="RFC8512"></xref> defines a YANG module for the NAT
+              function covering a variety of NAT flavors such as Network
+              Address Translation from IPv4 to IPv4 (NAT44), Network Address
+              and Protocol Translation from IPv6 Clients to IPv4 Servers
+              (NAT64), customer-side translator (CLAT), Stateless IP/ICMP
+              Translation (SIIT), Explicit Address Mappings (EAM) for SIIT,
+              IPv6-to-IPv6 Network Prefix Translation (NPTv6), and Destination
+              NAT. <vspace blankLines="1" /><xref target="RFC8513"></xref>
+              specifies a DS-Lite YANG module.</t>
 
               <t hangText="Stateless Address Sharing:"><xref
               target="RFC8676"></xref> specifies a YANG module for A+P address
@@ -1575,14 +1587,18 @@ Legend:
               <t hangText="Multicast:"><xref
               target="I-D.ietf-pim-yang"></xref> defines a YANG module that
               can be used to configure and manage Protocol Independent
-              Multicast (PIM) devices.<vspace blankLines="1" /> RFC8652
-              defines a YANG module that can be used to configure and manage
-              Internet Group Management Protocol (IGMP) and Multicast Listener
-              Discovery (MLD) devices.<vspace blankLines="1" /><xref
+              Multicast (PIM) devices.<vspace blankLines="1" /><xref
+              target="RFC8652"></xref> defines a YANG module that can be used
+              to configure and manage Internet Group Management Protocol
+              (IGMP) and Multicast Listener Discovery (MLD) devices.<vspace
+              blankLines="1" /><xref
               target="I-D.ietf-pim-igmp-mld-snooping-yang"></xref> defines a
               YANG module that can be used to configure and manage Internet
               Group Management Protocol (IGMP) and Multicast Listener
-              Discovery (MLD) Snooping devices.</t>
+              Discovery (MLD) Snooping devices.<vspace blankLines="1" /><xref
+              target="I-D.ietf-bess-mvpn-yang"></xref> defines a YANG data
+              model to configure and manage Multicast in MPLS/BGP IP VPNs
+              (MVPNs).</t>
 
               <t hangText="EVPN:"><xref
               target="I-D.ietf-bess-evpn-yang"></xref> defines a YANG module
@@ -1621,9 +1637,8 @@ Legend:
               that can be used to configure and manage BFD.</t>
 
               <t hangText="SR/SRv6:"><xref
-              target="I-D.ietf-spring-sr-yang"></xref> a YANG module for
-              segment routing configuration and operation. <vspace
-              blankLines="1" /></t>
+              target="I-D.ietf-spring-sr-yang"></xref> a YANG module for SR
+              configuration and operation. <vspace blankLines="1" /></t>
 
               <t hangText="Core Routing:"><xref target="RFC8349"></xref>
               defines the core routing data model, which is intended as a
@@ -1632,7 +1647,7 @@ Legend:
               Routing technology YANG modules (e.g., VRRP, RIP, ISIS, OSPF
               models) will augment the Core Routing base YANG module.</t>
 
-              <t hangText="PM:"><vspace blankLines="1" /><xref
+              <t hangText="PM:"><xref
               target="I-D.ietf-ippm-twamp-yang"></xref> defines a data model
               for client and server implementations of the Two-Way Active
               Measurement Protocol (TWAMP).<vspace blankLines="1" /><xref
