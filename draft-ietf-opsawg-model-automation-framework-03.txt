@@ -474,7 +474,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
      | ||network Orchestration|            src                    dst  |
      | |+---------------------+|                L3VPN over TE          |
      | |                       |        Instance Name/Access Interface |
-     | +-----------------------+       Proto Type/BW/RD,RT/etc. mapping|
+     | +-----------------------+    Protocol Type/BW/RD,RT/etc. mapping|
      |                                           for hop               |
      |                                                                 |
      |                                                                 |
@@ -647,7 +647,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
      Device level   |                  +------------+
                     V                               |
    Service       Intent                             |
-   Fullfillment  Config  -----> Config  -----> Performance ---> Fault
+   Fulfillment   Config  -----> Config  -----> Performance ---> Fault
                  Provision      Validate       Monitoring     Diagnostic
 
             Figure 4: Service and Network Lifecycle Management
@@ -699,7 +699,7 @@ Internet-Draft  Service and Network Management Automation      June 2020
    delivered.  This service request can be issued using a Service Model.
 
    Upon receiving a service request, and assuming that appropriate
-   authentication and authoirzation checks have been made, the service
+   authentication and authorization checks have been made, the service
    orchestrator/management system should verify whether the service
    requirements in the service request can be met (i.e., whether there
    is sufficient resources that can be allocated with the requested
@@ -925,11 +925,11 @@ Internet-Draft  Service and Network Management Automation      June 2020
        creation operation in Section 4.2.1) relying upon a L3SM Service
        model with each having one network access connectivity:
 
-       *  Site A: Network-Access A, Bandwidth=20M, for class "foo",
-          guaranteed-bw-percent = 10, One-Way-Delay=70 msec
+       *  Site A: Network-Access A, Bandwidth = 20M, for class "foo",
+          guaranteed-bw-percent = 10, One-Way-Delay = 70 msec
 
-       *  Site B: Network-Access B, Bandwidth=30M, for class "foo1",
-          guaranteed-bw-percent = 15, One-Way-Delay=60 msec
+       *  Site B: Network-Access B, Bandwidth = 30M, for class "foo1",
+          guaranteed-bw-percent = 15, One-Way-Delay = 60 msec
 
    2.  The Orchestrator extracts the service parameters from the L3SM
        model.  Then, it uses them as input to translate ("service

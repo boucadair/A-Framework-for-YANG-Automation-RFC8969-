@@ -442,7 +442,7 @@ Notifications (including feedback)
    | ||network Orchestration|            src                    dst  |
    | |+---------------------+|                L3VPN over TE          |
    | |                       |        Instance Name/Access Interface |
-   | +-----------------------+       Proto Type/BW/RD,RT/etc. mapping|
+   | +-----------------------+    Protocol Type/BW/RD,RT/etc. mapping|
    |                                           for hop               |
    |                                                                 |
    |                                                                 |
@@ -585,7 +585,7 @@ Notifications (including feedback)
      Device level   |                  +------------+
                     V                               |
    Service       Intent                             |
-   Fullfillment  Config  -----> Config  -----> Performance ---> Fault
+   Fulfillment   Config  -----> Config  -----> Performance ---> Fault
                  Provision      Validate       Monitoring     Diagnostic
 ]]></artwork>
       </figure>
@@ -627,7 +627,7 @@ Notifications (including feedback)
           Model.</t>
 
           <t>Upon receiving a service request, and assuming that appropriate
-          authentication and authoirzation checks have been made, the service
+          authentication and authorization checks have been made, the service
           orchestrator/management system should verify whether the service
           requirements in the service request can be met (i.e., whether there
           is sufficient resources that can be allocated with the requested
@@ -824,11 +824,12 @@ Notifications (including feedback)
             creation operation in <xref target="intended"></xref>) relying
             upon a L3SM Service model with each having one network access
             connectivity:<list style="symbols">
-                <t>Site A: Network-Access A, Bandwidth=20M, for class "foo",
-                guaranteed-bw-percent = 10, One-Way-Delay=70 msec</t>
+                <t>Site A: Network-Access A, Bandwidth = 20M, for class "foo",
+                guaranteed-bw-percent = 10, One-Way-Delay = 70 msec</t>
 
-                <t>Site B: Network-Access B, Bandwidth=30M, for class "foo1",
-                guaranteed-bw-percent = 15, One-Way-Delay=60 msec</t>
+                <t>Site B: Network-Access B, Bandwidth = 30M, for class
+                "foo1", guaranteed-bw-percent = 15, One-Way-Delay = 60
+                msec</t>
               </list></t>
 
             <t>The Orchestrator extracts the service parameters from the L3SM
