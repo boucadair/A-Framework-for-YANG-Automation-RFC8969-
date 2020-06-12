@@ -1802,13 +1802,13 @@ Internet-Draft  Service and Network Management Automation      June 2020
      |      |   Model    |           | |Other |  | TE Tunnel |       |
      |      +----+-------+           | |Tunnel|  +----+------+       |
      |           |   +--------+      | +------+       |              |
-     |           |---+Svc Topo|      |     +----------+---------+    |
+     |           +---+Svc Topo|      |     +----------+---------+    |
      |           |   +--------+      |     |          |         |    |
      |           |   +--------+      |+----+---+ +----+---+ +---+---+|
-     |           |---+L2 Topo |      ||MPLS-TE | |RSVP-TE | |SR TE  ||
+     |           +---+L2 Topo |      ||MPLS-TE | |RSVP-TE | |SR TE  ||
      |           |   +--------+      || Tunnel | | Tunnel | |Tunnel ||
      |           |   +--------+      |+--------+ +--------+ +-------+|
-     |           |---+TE Topo |      |                               |
+     |           +---+TE Topo |      |                               |
      |           |   +--------+      |                               |
      |           |   +--------+      |                               |
      |           +---+L3 Topo |      |                               |
