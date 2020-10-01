@@ -4,7 +4,7 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 ]>
-<rfc category="info" docName="draft-ietf-opsawg-model-automation-framework-06"
+<rfc category="info" docName="draft-ietf-opsawg-model-automation-framework-07"
      ipr="trust200902">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
@@ -203,6 +203,15 @@
       provide a service is something that is not currently documented either
       within the IETF or other Standards Development Organizations (SDOs).</t>
 
+      <t>Many of the YANG modules listed in this document are used to exchange
+      data between a NETCONF/RESTOCNF clients and servers <xref
+      target="RFC6241"></xref><xref target="RFC8040"></xref>. Nevertheless,
+      YANG is transport independent data modeling language. It can thus be
+      used independently of NETCONF/RESTOCNF. For example, YANG can be used to
+      define abstract data structures <xref target="RFC8791"></xref> that can
+      be manipulated by other protocols (e.g., <xref
+      target="I-D.ietf-dots-rfc8782-bis"></xref>).</t>
+
       <t>This document describes an architectural framework for service and
       network management automation (<xref target="concept"></xref>) that
       takes advantage of YANG modeling technologies and investigates how
@@ -212,7 +221,12 @@
 
       <t>This framework is drawn from a network operator perspective
       irrespective of the origin of a data module; it can also accommodate
-      modules that are developed outside the IETF.</t>
+      modules that are developed outside the IETF. The document covers service
+      models that are used by an operator to expose its services and capture
+      service requirements from the customers. Nevertheless, the document does
+      not elaborate on the communication protocol(s) that makes use of these
+      service models in order to request and deliver a service. Such
+      considerations are out of the scope. </t>
 
       <t>The document identifies a list of use cases to exemplify the proposed
       approach (<xref target="examples"></xref>), but it does not claim nor
@@ -435,7 +449,7 @@ Notifications (including feedback)
         <t><xref target="layering"></xref> illustrates the overall layering
         model. The reader may refer to Section 4 of <xref
         target="RFC8309"></xref> for an overview of "Orchestrator" and
-        "Controller" elements.</t>
+        "Controller" elements. </t>
 
         <figure align="center" anchor="layering"
                 title="Layering and Representation">
@@ -526,6 +540,11 @@ Notifications (including feedback)
             the current network performance information described in the
             telemetry modules.</t>
           </list></t>
+
+        <t>Note that it is out of the scope of this document to elaborate on
+        the communication protocols that are used to implement the interface
+        between the service ordering (customer) and service order handling
+        (provider).</t>
       </section>
 
       <section anchor="ful" title="Service Fullfillment Automation">
@@ -1173,6 +1192,10 @@ Notifications (including feedback)
 
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
+
+      <?rfc include='reference.I-D.ietf-dots-rfc8782-bis'?>
+
+      <?rfc include='reference.RFC.8791'?>
 
       <?rfc include='reference.RFC.5136'?>
 
