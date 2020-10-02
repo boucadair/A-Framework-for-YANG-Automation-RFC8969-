@@ -204,7 +204,7 @@
       within the IETF or other Standards Development Organizations (SDOs).</t>
 
       <t>Many of the YANG modules listed in this document are used to exchange
-      data between a NETCONF/RESTOCNF clients and servers <xref
+      data between a NETCONF/RESTCONF clients and servers <xref
       target="RFC6241"></xref><xref target="RFC8040"></xref>. Nevertheless,
       YANG is transport independent data modeling language. It can thus be
       used independently of NETCONF/RESTOCNF. For example, YANG can be used to
@@ -226,7 +226,7 @@
       service requirements from the customers. Nevertheless, the document does
       not elaborate on the communication protocol(s) that makes use of these
       service models in order to request and deliver a service. Such
-      considerations are out of the scope. </t>
+      considerations are out of the scope.</t>
 
       <t>The document identifies a list of use cases to exemplify the proposed
       approach (<xref target="examples"></xref>), but it does not claim nor
@@ -449,7 +449,7 @@ Notifications (including feedback)
         <t><xref target="layering"></xref> illustrates the overall layering
         model. The reader may refer to Section 4 of <xref
         target="RFC8309"></xref> for an overview of "Orchestrator" and
-        "Controller" elements. </t>
+        "Controller" elements.</t>
 
         <figure align="center" anchor="layering"
                 title="Layering and Representation">
