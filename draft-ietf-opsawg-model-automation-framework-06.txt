@@ -117,13 +117,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
      5.3.  Event-based Telemetry in the Device Self Management . . .  21
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  22
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  23
-   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  23
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  24
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  24
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  24
      10.2.  Informative References . . . . . . . . . . . . . . . . .  25
    Appendix A.  Layered YANG Modules Examples Overview . . . . . . .  33
-     A.1.  Service Models: Definition and Samples  . . . . . . . . .  33
+     A.1.  Service Models: Definition and Samples  . . . . . . . . .  34
      A.2.  Schema Mount  . . . . . . . . . . . . . . . . . . . . . .  34
      A.3.  Network Models: Samples . . . . . . . . . . . . . . . . .  34
      A.4.  Device Models: Samples  . . . . . . . . . . . . . . . . .  37
@@ -1266,19 +1266,19 @@ Internet-Draft  Service and Network Management Automation   October 2020
    Misbehaving peer providers will thus be identified and appropriate
    countermeasures will be applied.
 
+   Network providers should monitor and audit their networks to detect
+   misbehaving nodes and abnormal behaviors.  OAM discussed in
+   Section 4.1.4 can be used for that purpose.
+
+   Also, upper layers should proceed with checks to assess that the
+   provided service complies with the expected service and that the data
+   reported by an underlaying layer is matching the perceived service by
+   the above layer.  Typically, such checks are the responsibility of
+   the service diagnosis (Section 4.1.4).
+
 7.  IANA Considerations
 
    There are no IANA requests or assignments included in this document.
-
-8.  Acknowledgements
-
-   Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
-   Adrian Farrel, and Christian Huitema for the review.
-
-   Many thanks to Robert Wilton for the detailed AD review.
-
-9.  Contributors
-
 
 
 
@@ -1289,6 +1289,15 @@ Wu, et al.                Expires April 8, 2021                [Page 23]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+8.  Acknowledgements
+
+   Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
+   Adrian Farrel, and Christian Huitema for the review.
+
+   Many thanks to Robert Wilton for the detailed AD review.
+
+9.  Contributors
 
       Christian Jacquenet
       Orange
@@ -1327,6 +1336,16 @@ Internet-Draft  Service and Network Management Automation   October 2020
               (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
               <https://www.rfc-editor.org/info/rfc6241>.
 
+
+
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 24]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
               Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
               <https://www.rfc-editor.org/info/rfc6242>.
@@ -1338,13 +1357,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 24]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
               Access Control Model", STD 91, RFC 8341,
@@ -1379,6 +1391,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
               for BGP/MPLS L3 VPNs", draft-ietf-bess-l3vpn-yang-04 (work
               in progress), October 2018.
 
+
+
+
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 25]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-bess-mvpn-yang]
               Liu, Y., Guo, F., Litkowski, S., Liu, X., Kebler, R., and
               M. Sivakumar, "Yang Data Model for Multicast in MPLS/BGP
@@ -1390,17 +1413,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               and G. Mirsky, "YANG Data Model for Bidirectional
               Forwarding Detection (BFD)", draft-ietf-bfd-yang-17 (work
               in progress), August 2018.
-
-
-
-
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 25]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [I-D.ietf-dots-rfc8782-bis]
               Boucadair, M., Shallow, J., and T. Reddy.K, "Distributed
@@ -1436,6 +1448,16 @@ Internet-Draft  Service and Network Management Automation   October 2020
               (TWAMP) Data Model", draft-ietf-ippm-twamp-yang-13 (work
               in progress), July 2018.
 
+
+
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 26]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-mpls-base-yang]
               Saad, T., Raza, K., Gandhi, R., Liu, X., and V. Beeram, "A
               YANG Data Model for MPLS Base", draft-ietf-mpls-base-
@@ -1450,13 +1472,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               barguil, s., Dios, O., Boucadair, M., Munoz, L., Jalil,
               L., and J. Ma, "A Layer 2 VPN Network YANG Model", draft-
               ietf-opsawg-l2nm-00 (work in progress), July 2020.
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 26]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [I-D.ietf-opsawg-l3sm-l3nm]
               barguil, s., Dios, O., Boucadair, M., Munoz, L., and A.
@@ -1490,6 +1505,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Tantsura, "YANG Data Model for Segment Routing", draft-
               ietf-spring-sr-yang-22 (work in progress), August 2020.
 
+
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 27]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-teas-actn-pm-telemetry-autonomics]
               Lee, Y., Dhody, D., Karunanithi, S., Vilata, R., King, D.,
               and D. Ceccarelli, "YANG models for VN/TE Performance
@@ -1501,18 +1525,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Lee, Y., Dhody, D., Ceccarelli, D., Bryskin, I., and B.
               Yoon, "A YANG Data Model for VN Operation", draft-ietf-
               teas-actn-vn-yang-09 (work in progress), July 2020.
-
-
-
-
-
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 27]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [I-D.ietf-teas-yang-path-computation]
               Busi, I., Belotti, S., Lopez, V., Sharma, A., and Y. Shi,
@@ -1550,6 +1562,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Monitoring", draft-www-bess-yang-vpn-service-pm-06 (work
               in progress), April 2020.
 
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 28]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.wwx-netmod-event-yang]
               Bierman, A., WU, Q., Bryskin, I., Birkholz, H., Liu, X.,
               and B. Claise, "A YANG Data model for ECA Policy
@@ -1559,16 +1579,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/info/rfc4364>.
-
-
-
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 28]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
               2 Virtual Private Networks (L2VPNs)", RFC 4664,
@@ -1608,6 +1618,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Environment", RFC 7149, DOI 10.17487/RFC7149, March 2014,
               <https://www.rfc-editor.org/info/rfc7149>.
 
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 29]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC7224]  Bjorklund, M., "IANA Interface Type YANG Module",
               RFC 7224, DOI 10.17487/RFC7224, May 2014,
               <https://www.rfc-editor.org/info/rfc7224>.
@@ -1617,14 +1635,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               and Maintenance (OAM) Tools", RFC 7276,
               DOI 10.17487/RFC7276, June 2014,
               <https://www.rfc-editor.org/info/rfc7276>.
-
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 29]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC7297]  Boucadair, M., Jacquenet, C., and N. Wang, "IP
               Connectivity Provisioning Profile (CPP)", RFC 7297,
@@ -1664,6 +1674,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Classification", RFC 8199, DOI 10.17487/RFC8199, July
               2017, <https://www.rfc-editor.org/info/rfc8199>.
 
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 30]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
               "YANG Data Model for L3VPN Service Delivery", RFC 8299,
               DOI 10.17487/RFC8299, January 2018,
@@ -1672,15 +1690,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC8309]  Wu, Q., Liu, W., and A. Farrel, "Service Models
               Explained", RFC 8309, DOI 10.17487/RFC8309, January 2018,
               <https://www.rfc-editor.org/info/rfc8309>.
-
-
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 30]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8343]  Bjorklund, M., "A YANG Data Model for Interface
               Management", RFC 8343, DOI 10.17487/RFC8343, March 2018,
@@ -1722,6 +1731,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
               DOI 10.17487/RFC8513, January 2019,
               <https://www.rfc-editor.org/info/rfc8513>.
 
+
+
+Wu, et al.                Expires April 8, 2021                [Page 31]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC8519]  Jethanandani, M., Agarwal, S., Huang, L., and D. Blair,
               "YANG Data Model for Network Access Control Lists (ACLs)",
               RFC 8519, DOI 10.17487/RFC8519, March 2019,
@@ -1730,13 +1746,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC8528]  Bjorklund, M. and L. Lhotka, "YANG Schema Mount",
               RFC 8528, DOI 10.17487/RFC8528, March 2019,
               <https://www.rfc-editor.org/info/rfc8528>.
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 31]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8529]  Berger, L., Hopps, C., Lindem, A., Bogdanovic, D., and X.
               Liu, "YANG Data Model for Network Instances", RFC 8529,
@@ -1778,21 +1787,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Discovery (MLD)", RFC 8652, DOI 10.17487/RFC8652, November
               2019, <https://www.rfc-editor.org/info/rfc8652>.
 
-   [RFC8675]  Boucadair, M., Farrer, I., and R. Asati, "A YANG Data
-              Model for Tunnel Interface Types", RFC 8675,
-              DOI 10.17487/RFC8675, November 2019,
-              <https://www.rfc-editor.org/info/rfc8675>.
-
-
-
-
-
 
 
 Wu, et al.                Expires April 8, 2021                [Page 32]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   [RFC8675]  Boucadair, M., Farrer, I., and R. Asati, "A YANG Data
+              Model for Tunnel Interface Types", RFC 8675,
+              DOI 10.17487/RFC8675, November 2019,
+              <https://www.rfc-editor.org/info/rfc8675>.
 
    [RFC8676]  Farrer, I., Ed. and M. Boucadair, Ed., "YANG Modules for
               IPv4-in-IPv6 Address plus Port (A+P) Softwires", RFC 8676,
@@ -1833,6 +1838,18 @@ Appendix A.  Layered YANG Modules Examples Overview
    associate tags with YANG modules in order to help classifying the
    modules.
 
+
+
+
+
+
+
+
+Wu, et al.                Expires April 8, 2021                [Page 33]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
 A.1.  Service Models: Definition and Samples
 
    As described in [RFC8309], the service is "some form of connectivity
@@ -1842,14 +1859,6 @@ A.1.  Service Models: Definition and Samples
    transfer capability characterized by a (Source Nets, Destination
    Nets, Guarantees, Scope) tuple where "Source Nets" is a group of
    unicast IP addresses, "Destination Nets" is a group of IP unicast
-
-
-
-Wu, et al.                Expires April 8, 2021                [Page 33]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
-
    and/or multicast addresses, and "Guarantees" reflects the guarantees
    (expressed in terms of QoS, performance, and availability, for
    example) to properly forward traffic to the said "Destination"
@@ -1886,15 +1895,6 @@ A.3.  Network Models: Samples
 
    Figure 9 depicts a set of additional Network Models such as topology
    and tunnel models:
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1135,6 +1135,16 @@ Notifications (including feedback)
       time to repair), the escalation procedure, and penalties are usually
       documented in contractual agreements. Misbehaving peer providers will
       thus be identified and appropriate countermeasures will be applied. </t>
+
+      <t>Network providers should monitor and audit their networks to detect
+      misbehaving nodes and abnormal behaviors. OAM discussed in <xref
+      target="diag"></xref> can be used for that purpose. </t>
+
+      <t>Also, upper layers should proceed with checks to assess that the
+      provided service complies with the expected service and that the data
+      reported by an underlaying layer is matching the perceived service by
+      the above layer. Typically, such checks are the responsibility of the
+      service diagnosis (<xref target="diag"></xref>). </t>
     </section>
 
     <section title="IANA Considerations">
