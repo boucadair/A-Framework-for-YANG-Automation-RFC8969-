@@ -5,14 +5,14 @@
 OPSAWG                                                        Q. Wu, Ed.
 Internet-Draft                                                    Huawei
 Intended status: Informational                         M. Boucadair, Ed.
-Expires: April 5, 2021                                            Orange
+Expires: April 8, 2021                                            Orange
                                                                 D. Lopez
                                                           Telefonica I+D
                                                                   C. Xie
                                                            China Telecom
                                                                  L. Geng
                                                             China Mobile
-                                                         October 2, 2020
+                                                         October 5, 2020
 
 
   A Framework for Automating Service and Network Management with YANG
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 1]
+Wu, et al.                Expires April 8, 2021                 [Page 1]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -61,7 +61,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 5, 2021.
+   This Internet-Draft will expire on April 8, 2021.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 2]
+Wu, et al.                Expires April 8, 2021                 [Page 2]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -165,7 +165,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 3]
+Wu, et al.                Expires April 8, 2021                 [Page 3]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -221,7 +221,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 4]
+Wu, et al.                Expires April 8, 2021                 [Page 4]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -237,6 +237,8 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    The document identifies a list of use cases to exemplify the proposed
    approach (Section 5), but it does not claim nor aim to be exhaustive.
+   Appendix A lists some examples to illustrate the layered YANG modules
+   view.
 
 2.  Terminology and Acronyms
 
@@ -270,17 +272,19 @@ Internet-Draft  Service and Network Management Automation   October 2020
       resources to meet the service requirements defined in a Service
       Model.
 
-   Device Model:  Refers to the Network Element YANG data model
-      described in [RFC8199] or the Device Configuration Model discussed
-      in [RFC8309].
 
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 5]
+
+Wu, et al.                Expires April 8, 2021                 [Page 5]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   Device Model:  Refers to the Network Element YANG data model
+      described in [RFC8199] or the Device Configuration Model discussed
+      in [RFC8309].
 
       Device Models are also used to refer to model a function embedded
       in a device (e.g., Network Address Translation (NAT) [RFC8512],
@@ -326,17 +330,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
    for better reusability of lower-layer modules by higher-level modules
    while limiting duplication of features across layers.
 
-   Data models can be classified into Service, Network, and Device
-   Models.  Different Service Models may rely on the same set of Network
-   and/or Device Models.
 
 
 
-
-Wu, et al.                Expires April 5, 2021                 [Page 6]
+Wu, et al.                Expires April 8, 2021                 [Page 6]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   Data models can be classified into Service, Network, and Device
+   Models.  Different Service Models may rely on the same set of Network
+   and/or Device Models.
 
    Service Models traditionally follow a top-down approach and are
    mostly customer-facing YANG modules providing a common model
@@ -351,8 +355,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    o  the directionality (inbound/outbound),
    o  the traffic performance guarantees (One-Way Delay (OWD) [RFC7679],
       One-Way Loss [RFC7680], ...),
-   o  link capacity [RFC5136][I-D.ietf-ippm-capacity-metric-method],
-   o  etc.
+   o  link capacity [RFC5136][I-D.ietf-ippm-capacity-metric-method].
 
    Figure 1 depicts the example of a VoIP service that relies upon
    connectivity services offered by a network operator.  In this
@@ -386,10 +389,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-
-
-Wu, et al.                Expires April 5, 2021                 [Page 7]
+Wu, et al.                Expires April 8, 2021                 [Page 7]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -445,7 +445,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 8]
+Wu, et al.                Expires April 8, 2021                 [Page 8]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -501,7 +501,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                 [Page 9]
+Wu, et al.                Expires April 8, 2021                 [Page 9]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -557,7 +557,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 10]
+Wu, et al.                Expires April 8, 2021                [Page 10]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -613,7 +613,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 11]
+Wu, et al.                Expires April 8, 2021                [Page 11]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -669,7 +669,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 12]
+Wu, et al.                Expires April 8, 2021                [Page 12]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -725,7 +725,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 13]
+Wu, et al.                Expires April 8, 2021                [Page 13]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -781,7 +781,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 14]
+Wu, et al.                Expires April 8, 2021                [Page 14]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -837,7 +837,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 15]
+Wu, et al.                Expires April 8, 2021                [Page 15]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -893,7 +893,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 16]
+Wu, et al.                Expires April 8, 2021                [Page 16]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -949,7 +949,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 17]
+Wu, et al.                Expires April 8, 2021                [Page 17]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 18]
+Wu, et al.                Expires April 8, 2021                [Page 18]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 19]
+Wu, et al.                Expires April 8, 2021                [Page 19]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 20]
+Wu, et al.                Expires April 8, 2021                [Page 20]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 21]
+Wu, et al.                Expires April 8, 2021                [Page 21]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 22]
+Wu, et al.                Expires April 8, 2021                [Page 22]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1257,6 +1257,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
       appropriate technology-specific actions must be enforced to avoid
       that traffic is accessible to non-authorized parties.
 
+   A provider may rely upon services offered by other providers.
+   Appropriate mechanisms should be enabled by the provider to monitor
+   and detect a service disruption from these providers.  The
+   characterization of a service disruption (including, mean time
+   between failures, mean time to repair), the escalation procedure, and
+   penalties are usually documented in contractual agreements.
+   Misbehaving peer providers will thus be identified and appropriate
+   countermeasures will be applied.
+
 7.  IANA Considerations
 
    There are no IANA requests or assignments included in this document.
@@ -1264,7 +1273,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 8.  Acknowledgements
 
    Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
-   and Adrian Farrel for the review.
+   Adrian Farrel, and Christian Huitema for the review.
 
    Many thanks to Robert Wilton for the detailed AD review.
 
@@ -1276,16 +1285,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-
-
-
-
-
-
-
-
-Wu, et al.                Expires April 5, 2021                [Page 23]
+Wu, et al.                Expires April 8, 2021                [Page 23]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 24]
+Wu, et al.                Expires April 8, 2021                [Page 24]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 25]
+Wu, et al.                Expires April 8, 2021                [Page 25]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 26]
+Wu, et al.                Expires April 8, 2021                [Page 26]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1461,7 +1461,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [I-D.ietf-opsawg-l3sm-l3nm]
               barguil, s., Dios, O., Boucadair, M., Munoz, L., and A.
               Aguado, "A Layer 3 VPN Network YANG Model", draft-ietf-
-              opsawg-l3sm-l3nm-03 (work in progress), April 2020.
+              opsawg-l3sm-l3nm-04 (work in progress), October 2020.
 
    [I-D.ietf-pim-igmp-mld-snooping-yang]
               Zhao, H., Liu, X., Liu, Y., Sivakumar, M., and A. Peter,
@@ -1509,7 +1509,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 27]
+Wu, et al.                Expires April 8, 2021                [Page 27]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 28]
+Wu, et al.                Expires April 8, 2021                [Page 28]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 29]
+Wu, et al.                Expires April 8, 2021                [Page 29]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 30]
+Wu, et al.                Expires April 8, 2021                [Page 30]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 31]
+Wu, et al.                Expires April 8, 2021                [Page 31]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 32]
+Wu, et al.                Expires April 8, 2021                [Page 32]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1845,7 +1845,7 @@ A.1.  Service Models: Definition and Samples
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 33]
+Wu, et al.                Expires April 8, 2021                [Page 33]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1901,7 +1901,7 @@ A.3.  Network Models: Samples
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 34]
+Wu, et al.                Expires April 8, 2021                [Page 34]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 35]
+Wu, et al.                Expires April 8, 2021                [Page 35]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2013,7 +2013,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 36]
+Wu, et al.                Expires April 8, 2021                [Page 36]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2069,7 +2069,7 @@ A.4.  Device Models: Samples
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 37]
+Wu, et al.                Expires April 8, 2021                [Page 37]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 38]
+Wu, et al.                Expires April 8, 2021                [Page 38]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2181,7 +2181,7 @@ A.4.4.  Some Device Model Examples
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 39]
+Wu, et al.                Expires April 8, 2021                [Page 39]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2237,7 +2237,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 40]
+Wu, et al.                Expires April 8, 2021                [Page 40]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2293,7 +2293,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 41]
+Wu, et al.                Expires April 8, 2021                [Page 41]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2349,7 +2349,7 @@ Authors' Addresses
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 42]
+Wu, et al.                Expires April 8, 2021                [Page 42]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2405,4 +2405,4 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.                Expires April 5, 2021                [Page 43]
+Wu, et al.                Expires April 8, 2021                [Page 43]

@@ -230,7 +230,8 @@
 
       <t>The document identifies a list of use cases to exemplify the proposed
       approach (<xref target="examples"></xref>), but it does not claim nor
-      aim to be exhaustive.</t>
+      aim to be exhaustive. <xref target="app"></xref> lists some examples to
+      illustrate the layered YANG modules view.</t>
     </section>
 
     <section title="Terminology and Acronyms">
@@ -360,9 +361,7 @@
             target="RFC7680"></xref>, ...),</t>
 
             <t>link capacity <xref target="RFC5136"></xref><xref
-            target="I-D.ietf-ippm-capacity-metric-method"></xref>,</t>
-
-            <t>etc.<?rfc subcompact="no" ?></t>
+            target="I-D.ietf-ippm-capacity-metric-method"></xref>.<?rfc subcompact="no" ?></t>
           </list></t>
 
         <t><xref target="service_ex"></xref> depicts the example of a VoIP
@@ -1128,6 +1127,14 @@ Notifications (including feedback)
           appropriate technology-specific actions must be enforced to avoid
           that traffic is accessible to non-authorized parties.</t>
         </list></t>
+
+      <t>A provider may rely upon services offered by other providers.
+      Appropriate mechanisms should be enabled by the provider to monitor and
+      detect a service disruption from these providers. The characterization
+      of a service disruption (including, mean time between failures, mean
+      time to repair), the escalation procedure, and penalties are usually
+      documented in contractual agreements. Misbehaving peer providers will
+      thus be identified and appropriate countermeasures will be applied. </t>
     </section>
 
     <section title="IANA Considerations">
@@ -1137,7 +1144,7 @@ Notifications (including feedback)
 
     <section anchor="ack" title="Acknowledgements">
       <t>Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
-      and Adrian Farrel for the review.</t>
+      Adrian Farrel, and Christian Huitema for the review.</t>
 
       <t>Many thanks to Robert Wilton for the detailed AD review.</t>
     </section>
