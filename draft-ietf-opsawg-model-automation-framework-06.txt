@@ -958,16 +958,16 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    Multi-layer/Multi-domain Service Mapping allows to map an end-to-end
    abstract view of the service segmented at different layers or
-   different administrative domains into domain-specific views.
+   different administrative domains into domain-specific view.
 
    One example is to map service parameters in L3VPN service model into
    configuration parameters such as Route Distinguisher (RD), Route
-   Target (RT), and VRF in the L3VPN network model.
+   Target (RT), and VRF in L3VPN network model.
 
-   Another example is to map service parameters in L3SM into Traffic
-   Engineered (TE) tunnel parameters (e.g., Tunnel ID) in TE model and
-   Virtual Network (VN) parameters (e.g., Access Point (AP) list, VN
-   members) in the YANG data model for VN operation
+   Another example is to map service parameters in L3VPN service model
+   into Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE
+   model and Virtual Network (VN) parameters (e.g., Access Point (AP)
+   list, VN members) in the YANG data model for VN operation
    [I-D.ietf-teas-actn-vn-yang].
 
 4.4.  Service Decomposing
