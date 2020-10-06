@@ -57,7 +57,7 @@
       </address>
     </author>
 
-    <author fullname="Diego R. Lopez " initials="D" surname="Lopez">
+    <author fullname="Diego R. Lopez " initials="D." surname="Lopez">
       <organization>Telefonica I+D</organization>
 
       <address>
@@ -77,7 +77,7 @@
       </address>
     </author>
 
-    <author fullname="Chongfeng Xie" initials="C" surname="Xie">
+    <author fullname="Chongfeng Xie" initials="C." surname="Xie">
       <organization>China Telecom</organization>
 
       <address>
@@ -303,6 +303,10 @@
 
             <t hangText="L3VPN">Layer 3 Virtual Private Network</t>
 
+            <t hangText="L3SM">L3VPN Service Model</t>
+
+            <t hangText="L3NM">L3VPN Network Model</t>
+
             <t hangText="NAT">Network Address Translation</t>
 
             <t hangText="OAM">Operations, Administration, and Maintenance</t>
@@ -448,10 +452,12 @@ Notifications (including feedback)
         <t><xref target="layering"></xref> illustrates the overall layering
         model. The reader may refer to Section 4 of <xref
         target="RFC8309"></xref> for an overview of "Orchestrator" and
-        "Controller" elements.</t>
+        "Controller" elements. All these elements (i.e., Orchestrator(s),
+        Controller(s), device(s)) are under the responsibility of the same
+        operator.</t>
 
         <figure align="center" anchor="layering"
-                title="Layering and Representation">
+                title="Layering and Representation Within a Network Operator">
           <artwork align="center"><![CDATA[   +-----------------------------------------------------------------+
    | +-----------------------+                                       |
    | |    Orchestrator       |               Hierarchy Abstraction   |
@@ -490,6 +496,12 @@ Notifications (including feedback)
         </figure>
 
         <t></t>
+
+        <t>A composite service offered by a network operator may rely on
+        services that are offered by other operators. In such case, the
+        network operator acts as a "Customer" to request services from other
+        networks. The operators providing these services will then follow the
+        layering depicted in <xref target="layering"></xref>.</t>
 
         <t>The layering model depicted in <xref target="layering"></xref> does
         not make any assumption about the location of the various entities
@@ -845,16 +857,16 @@ Notifications (including feedback)
       <section anchor="inter" title="Multi-Layer/Multi-Domain Service Mapping">
         <t>Multi-layer/Multi-domain Service Mapping allows to map an
         end-to-end abstract view of the service segmented at different layers
-        or different administrative domains into domain-specific view.</t>
+        or different administrative domains into domain-specific views.</t>
 
         <t>One example is to map service parameters in L3VPN service model
         into configuration parameters such as Route Distinguisher (RD), Route
-        Target (RT), and VRF in L3VPN network model.</t>
+        Target (RT), and VRF in the L3VPN network model.</t>
 
-        <t>Another example is to map service parameters in L3VPN service model
-        into Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE
-        model and Virtual Network (VN) parameters (e.g., Access Point (AP)
-        list, VN members) in the YANG data model for VN operation <xref
+        <t>Another example is to map service parameters in L3SM into Traffic
+        Engineered (TE) tunnel parameters (e.g., Tunnel ID) in TE model and
+        Virtual Network (VN) parameters (e.g., Access Point (AP) list, VN
+        members) in the YANG data model for VN operation <xref
         target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
       </section>
 
@@ -880,8 +892,8 @@ Notifications (including feedback)
             style="numbers">
             <t>The Customer requests to create two sites (as per service
             creation operation in <xref target="intended"></xref>) relying
-            upon a L3SM Service model with each having one network access
-            connectivity, for example:<list style="symbols">
+            upon L3SM with each site having one network access connectivity,
+            for example:<list style="symbols">
                 <t>Site A: Network-Access A, Link Capacity = 20 Mbps, for
                 class "foo", guaranteed-capacity-percent = 10,
                 average-One-Way-Delay = 70 ms.</t>
@@ -891,18 +903,18 @@ Notifications (including feedback)
                 average-One-Way-Delay = 60 ms.</t>
               </list></t>
 
-            <t>The Orchestrator extracts the service parameters from the L3SM
-            model. Then, it uses them as input to translate ("service mapping
+            <t>The Orchestrator extracts the service parameters from the L3SM.
+            Then, it uses them as input to translate ("service mapping
             operation" in <xref target="dec"></xref>) them into an
             orchestrated configuration of network elements (e.g., RD, RT, VRF)
-            that are part of the L3VPN Network YANG Model specified in <xref
+            that are part of the L3VPN Network Model (L3NM) specified in <xref
             target="I-D.ietf-opsawg-l3sm-l3nm"></xref>.</t>
 
             <t>The Controller takes orchestrated configuration parameters in
-            the L3NM network model and translates them into orchestrated
-            ("service decomposing operation" in ) configuration of network
-            elements that are part of, e.g., BGP, QoS, Network Instance model,
-            IP management, and interface models.</t>
+            the L3NM and translates them into orchestrated ("service
+            decomposing operation" in ) configuration of network elements that
+            are part of, e.g., BGP, QoS, Network Instance model, IP
+            management, and interface models.</t>
           </list></t>
 
         <t><xref target="I-D.ogondio-opsawg-uni-topology"></xref> can be used
@@ -1128,23 +1140,28 @@ Notifications (including feedback)
           that traffic is accessible to non-authorized parties.</t>
         </list></t>
 
-      <t>A provider may rely upon services offered by other providers.
-      Appropriate mechanisms should be enabled by the provider to monitor and
-      detect a service disruption from these providers. The characterization
-      of a service disruption (including, mean time between failures, mean
-      time to repair), the escalation procedure, and penalties are usually
-      documented in contractual agreements. Misbehaving peer providers will
-      thus be identified and appropriate countermeasures will be applied. </t>
+      <t>A provider may rely on services offered by other providers to build
+      composite services. Appropriate mechanisms should be enabled by the
+      provider to monitor and detect a service disruption from these
+      providers. The characterization of a service disruption (including, mean
+      time between failures, mean time to repair), the escalation procedure,
+      and penalties are usually documented in contractual agreements (e.g.,
+      Section 2.1 of <xref target="RFC4176"></xref>). Misbehaving peer
+      providers will thus be identified and appropriate countermeasures will
+      be applied.</t>
 
-      <t>Network providers should monitor and audit their networks to detect
-      misbehaving nodes and abnormal behaviors. OAM discussed in <xref
-      target="diag"></xref> can be used for that purpose. </t>
+      <t>To detect misalignment between layers that might be induced by
+      misbehaving nodes, upper layers should continuously monitor the
+      perceived service (<xref target="optim"></xref>) and should proceed with
+      checks to assess that the provided service complies with the expected
+      service and that the data reported by an underlaying layer is matching
+      the perceived service by the above layer. Typically, such checks are the
+      responsibility of the service diagnosis (<xref
+      target="diag"></xref>).</t>
 
-      <t>Also, upper layers should proceed with checks to assess that the
-      provided service complies with the expected service and that the data
-      reported by an underlaying layer is matching the perceived service by
-      the above layer. Typically, such checks are the responsibility of the
-      service diagnosis (<xref target="diag"></xref>). </t>
+      <t>Network operators should monitor and audit their networks to detect
+      misbehaving nodes and abnormal behaviors. For example, OAM discussed in
+      <xref target="diag"></xref> can be used for that purpose.</t>
     </section>
 
     <section title="IANA Considerations">
@@ -1209,6 +1226,8 @@ Notifications (including feedback)
 
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
+
+      <?rfc include='reference.RFC.4176'?>
 
       <?rfc include='reference.I-D.ietf-dots-rfc8782-bis'?>
 
