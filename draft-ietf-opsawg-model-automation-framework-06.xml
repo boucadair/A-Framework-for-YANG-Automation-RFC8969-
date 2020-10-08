@@ -196,10 +196,10 @@
       technology and customer requirements at the top or abstracting common
       constructs from various network technologies at the bottom. At the time
       of writing this document (2020), there are many YANG data models
-      including configuration and service models that have been specified or
+      including configuration and Service Models that have been specified or
       are being specified by the IETF. They cover many of the networking
       protocols and techniques. However, how these models work together to
-      configure a device, manage a set of devices involved in a service, or
+      configure a function, manage a set of devices involved in a service, or
       provide a service is something that is not currently documented either
       within the IETF or other Standards Development Organizations (SDOs).</t>
 
@@ -221,12 +221,12 @@
 
       <t>This framework is drawn from a network operator perspective
       irrespective of the origin of a data module; it can also accommodate
-      modules that are developed outside the IETF. The document covers service
-      models that are used by an operator to expose its services and capture
-      service requirements from the customers. Nevertheless, the document does
-      not elaborate on the communication protocol(s) that makes use of these
-      service models in order to request and deliver a service. Such
-      considerations are out of the scope.</t>
+      modules that are developed outside the IETF. The document covers Service
+      Models that are used by an operator to expose its services and capture
+      service requirements from the customers (including other operators).
+      Nevertheless, the document does not elaborate on the communication
+      protocol(s) that makes use of these Service Models in order to request
+      and deliver a service. Such considerations are out of the scope.</t>
 
       <t>The document identifies a list of use cases to exemplify the proposed
       approach (<xref target="examples"></xref>), but it does not claim nor
@@ -265,6 +265,11 @@
             by a network operator to allocate resources (e.g., tunnel
             resource, topology resource) for the service or schedule resources
             to meet the service requirements defined in a Service Model.</t>
+
+            <t hangText="Network Domain:">Refers to a network partitioning
+            that is usually followed by network operators to delimit parts of
+            their network. "access network" and "core network" are examples of
+            network domains. </t>
 
             <t hangText="Device Model:">Refers to the Network Element YANG
             data model described in <xref target="RFC8199"></xref> or the
@@ -352,20 +357,24 @@
         for higher level network services (e.g., Layer 3 Virtual Private
         Network (L3VPN)). Such modules can be mapped to network
         technology-specific modules at lower layers (e.g., tunnel, routing,
-        Quality of Service (QoS), security). For example, the service level
-        can be used to characterise the network service(s) to be ensured
-        between service nodes (ingress/egress) such as: <?rfc subcompact="yes" ?><list
+        Quality of Service (QoS), security). For example, Service Models can
+        be used to characterise the network service(s) to be ensured between
+        service nodes (ingress/egress) such as: <?rfc subcompact="yes" ?><list
             style="symbols">
             <t>the communication scope (pipe, hose, funnel, ...),</t>
 
             <t>the directionality (inbound/outbound),</t>
 
-            <t>the traffic performance guarantees (One-Way Delay (OWD) <xref
-            target="RFC7679"></xref>, One-Way Loss <xref
-            target="RFC7680"></xref>, ...),</t>
+            <t>the traffic performance guarantees expressed using metrics such
+            as One-Way Delay (OWD) <xref target="RFC7679"></xref> or One-Way
+            Loss <xref target="RFC7680"></xref>; a summary of performance
+            metrics maintained by IANA can be found in <xref
+            target="IPPM"></xref>,</t>
 
-            <t>link capacity <xref target="RFC5136"></xref><xref
-            target="I-D.ietf-ippm-capacity-metric-method"></xref>.<?rfc subcompact="no" ?></t>
+            <t>link capacity <xref target="RFC5136"></xref> <xref
+            target="I-D.ietf-ippm-capacity-metric-method"></xref>,</t>
+
+            <t>etc.<?rfc subcompact="no" ?></t>
           </list></t>
 
         <t><xref target="service_ex"></xref> depicts the example of a VoIP
@@ -377,7 +386,7 @@
         Border Elements (SBEs) and Data Border Elements (DBEs) <xref
         target="RFC5486"></xref><xref target="RFC6406"></xref>. For other VoIP
         destinations, sessions are forwarded over the Internet. These
-        connectivity services can be captured in a YANG Service Module that
+        connectivity services can be captured in a YANG Service Model that
         reflects the service attributes that are shown in <xref
         target="service_ex2"></xref>. This example follows the IP Connectivity
         Provisioning Profile template defined in <xref
@@ -459,12 +468,13 @@ Notifications (including feedback)
         <figure align="center" anchor="layering"
                 title="Layering and Representation Within a Network Operator">
           <artwork align="center"><![CDATA[   +-----------------------------------------------------------------+
-   | +-----------------------+                                       |
-   | |    Orchestrator       |               Hierarchy Abstraction   |
+   |                                         Hierarchy Abstraction   |
+   |                                                                 |
+   | +-----------------------+                    Service Model      |
+   | |    Orchestrator       |                 (Customer Oriented)   |
+   | |+---------------------+|               Scope: "1:1" Pipe model |
+   | ||  Service Modeling   ||                                       |
    | |+---------------------+|                                       |
-   | ||  Service Modeling   ||                 Service Model         |
-   | |+---------------------+|               (Customer Oriented)     |
-   | |                       |               Scope: "1:1" Pipe model |
    | |                       |                   Bidirectional       |
    | |+---------------------+|              +-+  Capacity,OWD  +-+   |
    | ||Service Orchestration||              | +----------------+ |   |
@@ -472,22 +482,20 @@ Notifications (including feedback)
    | +-----------------------+           1. Ingress        2. Egress |
    |                                                                 |
    |                                                                 |
-   |                                                                 |
    | +-----------------------+                Network Model          |
    | |   Controller          |             (Operator Oriented)       |
    | |+---------------------+|           +-+    +--+    +---+   +-+  |
    | || Network Modeling    ||           | |    |  |    |   |   | |  |
    | |+---------------------+|           | o----o--o----o---o---o |  |
-   | |+---------------------+|           +-+    +--+    +---+   +-+  |
-   | ||Network Orchestration||           src                    dst  |
-   | |+---------------------+|                L3VPN over TE          |
-   | |                       |        Instance Name/Access Interface |
+   | |                       |           +-+    +--+    +---+   +-+  |
+   | |+---------------------+|           src                    dst  |
+   | ||Network Orchestration||                L3VPN over TE          |
+   | |+---------------------+|        Instance Name/Access Interface |
    | +-----------------------+      Protocol Type/Capacity/RD/RT/... |
-   |                                        mapping for hop          |
    |                                                                 |
    |                                                                 |
-   | +-----------------------+                                       |
-   | |    Device             |                 Device Model          |
+   | +-----------------------+                 Device Model          |
+   | |    Device X           |                                       |
    | |+--------------------+ |                                       |
    | || Device Modeling    | |           Interface add, BGP Peer,    |
    | |+--------------------+ |              Tunnel ID, QoS/TE, ...   |
@@ -498,10 +506,16 @@ Notifications (including feedback)
         <t></t>
 
         <t>A composite service offered by a network operator may rely on
-        services that are offered by other operators. In such case, the
-        network operator acts as a "Customer" to request services from other
-        networks. The operators providing these services will then follow the
-        layering depicted in <xref target="layering"></xref>.</t>
+        services from other operators. In such case, the network operator acts
+        as a customer to request services from other networks. The operators
+        providing these services will then follow the layering depicted in
+        <xref target="layering"></xref>. The mapping between a composite
+        service and a third-party service is maintained at the orchestration
+        level. From a data plane perspective, appropriate traffic steering
+        policies (e.g., Service Function Chaining <xref
+        target="RFC7665"></xref>) are managed by the network controllers to
+        guide how/when a third party service is invoked for flows bound to a
+        composite service.</t>
 
         <t>The layering model depicted in <xref target="layering"></xref> does
         not make any assumption about the location of the various entities
@@ -511,10 +525,10 @@ Notifications (including feedback)
         controlled via YANG modules.</t>
 
         <t>In order to ease the mapping between layers and data reuse, this
-        document focuses on service models that are modelled using YANG.
+        document focuses on Service Models that are modelled using YANG.
         Nevertheless, fully compliant with Section 3 of <xref
         target="RFC8309"></xref>, <xref target="layering"></xref> does not
-        preclude service models to be modelled using other data modelling
+        preclude Service Models to be modelled using other data modelling
         languages than YANG.</t>
       </section>
 
@@ -600,17 +614,16 @@ Notifications (including feedback)
         <t>In addition, these technology-specific Device or Network Models can
         be further integrated with each other using the schema mount mechanism
         <xref target="RFC8528"></xref> to provision each involved network
-        function/device or each involved administrative domain to support
-        newly added module or features. A collection of Device Models
-        integrated together can be loaded and validated during
-        implementation.</t>
+        function/device or each involved network domain to support newly added
+        module or features. A collection of Device Models integrated together
+        can be loaded and validated during implementation.</t>
 
         <t>High-level policies can be defined at Service or Network Models
         (e.g., "Autonomous System Number (ASN) Exclude" in the example
         depicted in <xref target="service_ex2"></xref>). Device Models will be
         tweaked accordingly to provide policy-based management. Policies can
         also be used for telemetry automation, e.g., policies that contain
-        conditions can trigger the generation and pushing of new telemetry
+        conditions to trigger the generation and pushing of new telemetry
         data.</t>
 
         <t>Performance measurement telemetry can be used to provide service
@@ -667,7 +680,7 @@ Notifications (including feedback)
 
         <t>The end-to-end service lifecycle management is
         technology-independent service management and spans across multiple
-        administrative domain or multiple layers while technology specific
+        network domains and/or multiple layers while technology specific
         service lifecycle management is technology domain specific or layer
         specific service lifecycle management.</t>
 
@@ -693,19 +706,19 @@ Notifications (including feedback)
           operator has available to deliver the service, so the customer does
           not make requests specific to the underlying technology but is
           limited to making requests specific to the service that is to be
-          delivered. This service request can be issued using a Service
+          delivered. This service request can be filled using a Service
           Model.</t>
 
           <t>Upon receiving a service request, and assuming that appropriate
-          authentication and authorization checks have been made, the service
-          orchestrator/management system should verify whether the service
-          requirements in the service request can be met (i.e., whether there
-          is sufficient resources that can be allocated with the requested
-          guarantees).</t>
+          authentication and authorization checks have been made with success,
+          the service orchestrator/management system should verify whether the
+          service requirements in the service request can be met (i.e.,
+          whether there is sufficient resources that can be allocated with the
+          requested guarantees).</t>
 
           <t>If the request is accepted, the service orchestrator/management
           system maps such service request to its view. This view can be
-          described as a technology specific network model or a set of
+          described as a technology specific Network Model or a set of
           technology specific Device Models and this mapping may include a
           choice of which networks and technologies to use depending on which
           service features have been requested.</t>
@@ -857,27 +870,26 @@ Notifications (including feedback)
       <section anchor="inter" title="Multi-Layer/Multi-Domain Service Mapping">
         <t>Multi-layer/Multi-domain Service Mapping allows to map an
         end-to-end abstract view of the service segmented at different layers
-        or different administrative domains into domain-specific view.</t>
+        and/or different network domains into domain-specific views.</t>
 
-        <t>One example is to map service parameters in L3VPN service model
-        into configuration parameters such as Route Distinguisher (RD), Route
-        Target (RT), and VRF in L3VPN network model.</t>
+        <t>One example is to map service parameters in the L3SM into
+        configuration parameters such as Route Distinguisher (RD), Route
+        Target (RT), and VRF in the L3VPN Network Model (L3NM).</t>
 
-        <t>Another example is to map service parameters in L3VPN service model
-        into Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE
-        model and Virtual Network (VN) parameters (e.g., Access Point (AP)
-        list, VN members) in the YANG data model for VN operation <xref
+        <t>Another example is to map service parameters in the L3SM into
+        Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE model
+        and Virtual Network (VN) parameters (e.g., Access Point (AP) list, VN
+        members) in the YANG data model for VN operation <xref
         target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
       </section>
 
       <section anchor="dec" title="Service Decomposing">
-        <t>Service Decomposing allows to decompose service model at the
-        service level or network model at the network level into a set of
-        device/function models at the device level. These Device Models may be
-        tied to specific device types or classified into a collection of
-        related YANG modules based on service types and features offered, and
-        load at the implementation time before configuration is loaded and
-        validated.</t>
+        <t>Service Decomposing allows to decompose Service Models at the
+        service level or Network Models at the network level into a set of
+        Device Models at the device level. These Device Models may be tied to
+        specific device types or classified into a collection of related YANG
+        modules based on service types and features offered, and load at the
+        implementation time before configuration is loaded and validated.</t>
       </section>
     </section>
 
@@ -907,7 +919,7 @@ Notifications (including feedback)
             Then, it uses them as input to translate ("service mapping
             operation" in <xref target="dec"></xref>) them into an
             orchestrated configuration of network elements (e.g., RD, RT, VRF)
-            that are part of the L3VPN Network Model (L3NM) specified in <xref
+            that are part of the L3NM specified in <xref
             target="I-D.ietf-opsawg-l3sm-l3nm"></xref>.</t>
 
             <t>The Controller takes orchestrated configuration parameters in
@@ -1154,7 +1166,7 @@ Notifications (including feedback)
       misbehaving nodes, upper layers should continuously monitor the
       perceived service (<xref target="optim"></xref>) and should proceed with
       checks to assess that the provided service complies with the expected
-      service and that the data reported by an underlaying layer is matching
+      service and that the data reported by an underlying layer is matching
       the perceived service by the above layer. Typically, such checks are the
       responsibility of the service diagnosis (<xref
       target="diag"></xref>).</t>
@@ -1171,7 +1183,7 @@ Notifications (including feedback)
 
     <section anchor="ack" title="Acknowledgements">
       <t>Thanks to Joe Clark, Greg Mirsky, Shunsuke Homma, Brian Carpenter,
-      Adrian Farrel, and Christian Huitema for the review.</t>
+      Adrian Farrel, Christian Huitema, and Tommy Pauly for the review.</t>
 
       <t>Many thanks to Robert Wilton for the detailed AD review.</t>
     </section>
@@ -1226,6 +1238,8 @@ Notifications (including feedback)
 
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
+
+      <?rfc include='reference.RFC.7665'?>
 
       <?rfc include='reference.RFC.4176'?>
 
@@ -1372,6 +1386,19 @@ Notifications (including feedback)
       <?rfc include='reference.RFC.7317'?>
 
       <?rfc include='reference.RFC.8343'?>
+
+      <reference anchor="IPPM"
+                 target="https://www.iana.org/assignments/performance-metrics/performance-metrics.xhtml">
+        <front>
+          <title>Performance Metrics</title>
+
+          <author>
+            <organization>IANA</organization>
+          </author>
+
+          <date day="19" month="March" year="2020" />
+        </front>
+      </reference>
     </references>
 
     <section anchor="app" title="Layered YANG Modules Examples Overview">
@@ -1419,7 +1446,7 @@ Notifications (including feedback)
             model applicable to any mode of VN operation.</t>
           </list></t>
 
-        <t>L2SM and L3SM are customer service models as per <xref
+        <t>L2SM and L3SM are customer Service Models as per <xref
         target="RFC8309"></xref>.</t>
       </section>
 
