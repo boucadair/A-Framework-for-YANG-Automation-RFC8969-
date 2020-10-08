@@ -827,7 +827,8 @@ Notifications (including feedback)
           not appear in &lt;operational&gt; datastore.</t>
         </section>
 
-        <section title="Performance Monitoring/Model-driven Telemetry">
+        <section anchor="tele"
+                 title="Performance Monitoring/Model-driven Telemetry">
           <t>When configuration is in effect in the device,
           &lt;operational&gt; datastore holds the complete operational state
           of the device including learned, system, default configuration, and
@@ -1017,24 +1018,25 @@ Notifications (including feedback)
         <t>In reference to <xref target="lc"></xref>, the following steps are
         performed to deliver the VN service within the network management
         automation architecture defined in this document:<list style="numbers">
-            <t>Customer requests (service exposure operation in <xref
-            target="expo"></xref>) to create 'VN' based on Access point,
-            association between VN and Access point, VN member defined in the
-            VN YANG module.</t>
+            <t>A customer makes a request (service exposure operation in <xref
+            target="expo"></xref>) to create a VN. The association between the
+            VN, APs, and VN members is defined in the VN YANG module <xref
+            target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
 
-            <t>The orchestrator creates the single abstract node topology
-            based on the information captured in an VN YANG module.</t>
+            <t>The Orchestrator creates the single abstract node topology
+            based on the information captured in the request.</t>
 
-            <t>The Customer exchanges connectivity-matrix on abstract node and
-            explicit path using TE topology model with the orchestrator. This
-            information can be used to instantiate VN and setup tunnels
-            between source and destination endpoints (service creation
-            operation in <xref target="crea"></xref>).</t>
+            <t>The customer exchanges with the Orchestrator the connectivity
+            matrix on the abstract node and explicit paths using the TE
+            topology model <xref target="RFC8795"></xref>. This information
+            can be used to instantiate the VN and setup tunnels between source
+            and destination endpoints (service creation operation in <xref
+            target="crea"></xref>).</t>
 
             <t>The telemetry model which augments the VN model and
             corresponding TE tunnel model can be used to subscribe to
             performance measurement data and notify all the parameter changes
-            and network performance change related to VN topology or Tunnel
+            and network performance changes related to VN topology or Tunnel
             <xref target="I-D.ietf-teas-actn-pm-telemetry-autonomics"></xref>
             and provide service assurance (service optimization operation in
             <xref target="optim"></xref>).</t>
@@ -1042,7 +1044,7 @@ Notifications (including feedback)
 
         <t><figure anchor="lc" title="A VN Service Delivery Example">
             <artwork align="center"><![CDATA[                        |
-                 VN     |
+                VN      |
                 Service |
                 Model   |
  +----------------------|--------------------------+
@@ -1051,8 +1053,8 @@ Notifications (including feedback)
  |             | Service Mapping |                 |
  |             +-----------------+                 |
  +----------------------+--------------------^-----+
-                TE      |                Telemetry
-               Tunnel   |                  Model
+               TE       |         Telemetry  |
+               Tunnel   |         Model      |
                Model    |                    |
  +----------------------V--------------------+-----+
  | Controller                                      |
@@ -1067,10 +1069,10 @@ Notifications (including feedback)
 
       <section title="Event-based Telemetry in the Device Self Management">
         <t>In reference to <xref target="event"></xref>, the following steps
-        are performed to monitor state changes of managed objects or resources
-        in a network device and provide device self-management within the
-        network management automation architecture defined in this document:
-        <list style="numbers">
+        are performed to monitor state changes of managed resources in a
+        network device and provide device self-management within the network
+        management automation architecture defined in this document: <list
+            style="numbers">
             <t>To control which state a network device should be in or is
             allowed to be in at any given time, a set of conditions and
             actions are defined and correlated with network events (e.g.,
@@ -1093,7 +1095,7 @@ Notifications (including feedback)
             condition on state parameters is met. ECA notifications can be
             generated as the result of actions based on event stream
             subscription or datastore subscription (model-driven telemetry
-            operation discussed in Section 4.2.3).</t>
+            operation discussed in <xref target="tele"></xref>).</t>
           </list><figure anchor="event" title="Event-based Telemetry">
             <artwork align="center"><![CDATA[     +----------------+
      |                <----+
