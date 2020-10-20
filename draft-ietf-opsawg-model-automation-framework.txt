@@ -100,7 +100,7 @@ Table of Contents
      4.2.  Service Fullfillment Management Procedure . . . . . . . .  16
        4.2.1.  Intended Configuration Provision  . . . . . . . . . .  16
        4.2.2.  Configuration Validation  . . . . . . . . . . . . . .  17
-       4.2.3.  Performance Monitoring/Model-driven Telemetry . . . .  17
+       4.2.3.  Performance Monitoring  . . . . . . . . . . . . . . .  17
        4.2.4.  Fault Diagnostic  . . . . . . . . . . . . . . . . . .  17
      4.3.  Multi-Layer/Multi-Domain Service Mapping  . . . . . . . .  18
      4.4.  Service Decomposition . . . . . . . . . . . . . . . . . .  18
@@ -914,7 +914,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    <operational> datastore.  More details about <intended> and
    <operational> datastores can be found in Section 5.1 of [RFC8342].
 
-4.2.3.  Performance Monitoring/Model-driven Telemetry
+4.2.3.  Performance Monitoring
 
    When a configuration is in effect in a device, <operational>
    datastore holds the complete operational state of the device

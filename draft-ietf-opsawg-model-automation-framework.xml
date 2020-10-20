@@ -866,12 +866,11 @@ Notifications (including feedback)
           interface does not physically exist at this point, then
           configuration data appears in the &lt;intended&gt; status but does
           not appear in &lt;operational&gt; datastore. More details about
-          &lt;intended&gt; and &lt;operational&gt; darastores can be found in
+          &lt;intended&gt; and &lt;operational&gt; datastores can be found in
           Section 5.1 of <xref target="RFC8342"></xref>.</t>
         </section>
 
-        <section anchor="tele"
-                 title="Performance Monitoring/Model-driven Telemetry">
+        <section anchor="tele" title="Performance Monitoring">
           <t>When a configuration is in effect in a device,
           &lt;operational&gt; datastore holds the complete operational state
           of the device including learned, system, default configuration, and
