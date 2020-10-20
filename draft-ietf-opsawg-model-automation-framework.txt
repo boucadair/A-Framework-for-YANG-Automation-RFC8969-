@@ -912,7 +912,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    interface does not physically exist at this point, then configuration
    data appears in the <intended> status but does not appear in
    <operational> datastore.  More details about <intended> and
-   <operational> darastores can be found in Section 5.1 of [RFC8342].
+   <operational> datastores can be found in Section 5.1 of [RFC8342].
 
 4.2.3.  Performance Monitoring/Model-driven Telemetry
 
