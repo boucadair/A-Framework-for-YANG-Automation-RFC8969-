@@ -129,11 +129,11 @@
       adaptive and deterministic service creation, delivery, and
       maintenance.</t>
 
-      <t>This document describes an architecture for service and network
+      <t>This document describes a framework for service and network
       management automation that takes advantage of YANG modeling
-      technologies. This architecture is drawn from a network operator
+      technologies. This framework is drawn from a network operator
       perspective irrespective of the origin of a data model; it can thus
-      accommodate modules that are developed outside the IETF.</t>
+      accommodate YANG modules that are developed outside the IETF.</t>
     </abstract>
   </front>
 
@@ -215,9 +215,9 @@
 
       <t>This document describes an architectural framework for service and
       network management automation (<xref target="concept"></xref>) that
-      takes advantage of YANG modeling technologies and investigates how
-      different layer YANG data models interact with each other (e.g., service
-      mapping, model composing) in the context of service delivery and
+      takes advantage of YANG modeling technologies and investigates how YANG
+      data models at different layers interact with each other (e.g., service
+      mapping, model composition) in the context of service delivery and
       fulfillment (<xref target="compo"></xref>). Concretely, the following
       benefits can be provided: <list style="symbols">
           <t>Allow for vendor-agnostic interfaces to manage a service and the
@@ -239,7 +239,7 @@
         </list></t>
 
       <t>This framework is drawn from a network operator perspective
-      irrespective of the origin of a data model; it can also accommodate
+      irrespective of the origin of a data model; it can also accommodate YANG
       modules that are developed outside the IETF. The document covers Service
       Models that are used by an operator to expose its services and capture
       service requirements from the customers (including other operators).
@@ -482,7 +482,7 @@ Notifications (including feedback)
 
         <t>Device (and function) Models usually follow a bottom-up approach
         and are mostly technology-specific modules used to realize a service
-        (e.g., BGP, NAT).</t>
+        (e.g., BGP, ACL).</t>
 
         <t>Each level maintains a view of the supported YANG modules provided
         by low-levels (see for example, <xref target="app"></xref>).</t>
@@ -842,7 +842,7 @@ Notifications (including feedback)
 
               <t>Multicast support</t>
 
-              <t>Address sharing (e.g., NAT)</t>
+              <t>Address sharing</t>
 
               <t>Security</t>
             </list></t>
@@ -865,7 +865,9 @@ Notifications (including feedback)
           <t>For example, a customer creates an interface "eth-0/0/0" but the
           interface does not physically exist at this point, then
           configuration data appears in the &lt;intended&gt; status but does
-          not appear in &lt;operational&gt; datastore.</t>
+          not appear in &lt;operational&gt; datastore. More details about
+          &lt;intended&gt; and &lt;operational&gt; darastores can be found in
+          Section 5.1 of <xref target="RFC8342"></xref>.</t>
         </section>
 
         <section anchor="tele"
@@ -925,8 +927,8 @@ Notifications (including feedback)
         target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
       </section>
 
-      <section anchor="dec" title="Service Decomposing">
-        <t>Service Decomposing allows to decompose Service Models at the
+      <section anchor="dec" title="Service Decomposition">
+        <t>Service Decomposition allows to decompose Service Models at the
         service level or Network Models at the network level into a set of
         Device Models at the device level. These Device Models may be tied to
         specific device types or classified into a collection of related YANG
@@ -966,7 +968,7 @@ Notifications (including feedback)
 
             <t>The Controller takes the orchestrated configuration parameters
             in the L3NM and translates them into orchestrated (Service
-            Decomposing in <xref target="dec"></xref>) configuration of
+            Decomposition in <xref target="dec"></xref>) configuration of
             network elements that are part of, e.g., BGP, QoS, Network
             Instance, IP management, and interface models.</t>
           </list></t>
@@ -990,9 +992,9 @@ Notifications (including feedback)
                  Network|       |     
                   Model |       |     
  +----------------------+--------------------------+
- |           +----------V-----------+              |
- |           | Service Decomposing  |              |
- |           +---++--------------++-+              |
+ |           +----------V------------+             |
+ |           | Service Decomposition |             |
+ |           +---++--------------++--+             |
  |               ||              ||                |
  | Controller    ||              ||                |
  +---------------++--------------++----------------+
@@ -1031,9 +1033,9 @@ Notifications (including feedback)
                  Network|       | L3NM Notifications    
                   Model |       | L3NM Capabilities     
  +----------------------+--------------------------+
- |           +----------V-----------+              |
- |           | Service Decomposing  |              |
- |           +---++--------------++-+              |
+ |           +----------V------------+             |
+ |           | Service Decomposition |             |
+ |           +---++--------------++--+             |
  |               ||              ||                |
  | Controller    ||              ||                |
  +---------------++--------------++----------------+
@@ -1246,6 +1248,8 @@ Notifications (including feedback)
       Augizeau for the review.</t>
 
       <t>Many thanks to Robert Wilton for the detailed AD review.</t>
+
+      <t>Thanks to &Eacute;ric Vyncke for the IESG review.</t>
     </section>
 
     <section title="Contributors">
@@ -1298,6 +1302,8 @@ Notifications (including feedback)
 
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
+
+      <?rfc include='reference.RFC.8342'?>
 
       <?rfc include='reference.RFC.7665'?>
 
