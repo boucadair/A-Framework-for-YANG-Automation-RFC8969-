@@ -298,7 +298,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
       aspects of a network infrastructure), including devices and their
       subsystems, and relevant protocols operating at the link and
       network layers across multiple devices.  This model corresponds to
-      the Network Configuration Model discussed in [RFC8309].
+      the network configuration model discussed in [RFC8309].
 
       It can be used by a network operator to allocate resources (e.g.,
       tunnel resource, topology resource) for the service or schedule
@@ -311,10 +311,10 @@ Internet-Draft  Service and Network Management Automation   October 2020
       domains.
 
    Device Model:  Refers to the Network Element YANG data model
-      described in [RFC8199] or the Device Configuration Model discussed
+      described in [RFC8199] or the device configuration model discussed
       in [RFC8309].
 
-      Device Models are also used to refer to model a function embedded
+      Device models are also used to refer to model a function embedded
       in a device (e.g., Network Address Translation (NAT) [RFC8512],
       Access Control Lists (ACLs) [RFC8519]).
 
@@ -376,8 +376,8 @@ Internet-Draft  Service and Network Management Automation   October 2020
    while limiting duplication of features across layers.
 
    Data models in the context of network management can be classified
-   into Service, Network, and Device Models.  Different service models
-   may rely on the same set of Network and/or Device Models.
+   into service, network, and device models.  Different service models
+   may rely on the same set of network and/or device models.
 
    Service models traditionally follow a top-down approach and are
    mostly customer-facing YANG modules providing a common model
@@ -484,7 +484,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    link and network layers across multiple devices (e.g., network
    topology and traffic-engineering tunnel modules).
 
-   Device (and function) Models usually follow a bottom-up approach and
+   Device (and function) models usually follow a bottom-up approach and
    are mostly technology-specific modules used to realize a service
    (e.g., BGP, ACL).
 
@@ -620,8 +620,8 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 3.3.  Service Fullfillment Automation
 
-   To operate a service, the settings of the parameters in the Device
-   Models are derived from service models and/or network models and are
+   To operate a service, the settings of the parameters in the device
+   models are derived from service models and/or network models and are
    used to:
 
    o  Provision each involved network function/device with the proper
@@ -655,16 +655,16 @@ Internet-Draft  Service and Network Management Automation   October 2020
    parameters are grouped together to define technology-specific device
    level models or network level models.
 
-   In addition, these technology-specific Device or network models can
+   In addition, these technology-specific device or network models can
    be further integrated with each other using the schema mount
    mechanism [RFC8528] to provision each involved network function/
    device or each involved network domain to support newly added module
-   or features.  A collection of Device Models integrated together can
+   or features.  A collection of device models integrated together can
    be loaded and validated during implementation.
 
    High-level policies can be defined at service or network models
    (e.g., "Autonomous System Number (ASN) Exclude" in the example
-   depicted in Figure 2).  Device Models will be tweaked accordingly to
+   depicted in Figure 2).  Device models will be tweaked accordingly to
    provide policy-based management.  Policies can also be used for
 
 
@@ -770,7 +770,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    If the request is accepted, the service orchestrator/management
    system maps such service request to its view.  This view can be
    described as a technology specific network model or a set of
-   technology specific Device Models and this mapping may include a
+   technology specific device models and this mapping may include a
    choice of which networks and technologies to use depending on which
    service features have been requested.
 
@@ -977,7 +977,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    Service Decomposition allows to decompose service models at the
    service level or network models at the network level into a set of
-   Device Models at the device level.  These Device Models may be tied
+   device models at the device level.  These device models may be tied
    to specific device types or classified into a collection of related
    YANG modules based on service types and features offered, and load at
    the implementation time before configuration is loaded and validated.
@@ -1966,7 +1966,7 @@ Appendix A.  Layered YANG Modules Examples Overview
 
    This appendix lists a set of YANG data models that can be used for
    the delivery of connectivity services.  These models can be
-   classified as Service, Network, or Device Models.
+   classified as service, network, or device models.
 
    It is not the intent of this appendix to provide an inventory of
    tools and mechanisms used in specific network and service management
@@ -2287,7 +2287,7 @@ A.4.3.  Interface Management
 
 A.4.4.  Some Device Model Examples
 
-   The following provides an overview of some Device Models that can be
+   The following provides an overview of some device models that can be
    used within a network.  This list is not comprehensive.
 
 

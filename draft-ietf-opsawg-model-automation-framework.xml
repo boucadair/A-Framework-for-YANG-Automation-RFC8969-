@@ -279,7 +279,7 @@
             (or a subset of aspects of a network infrastructure), including
             devices and their subsystems, and relevant protocols operating at
             the link and network layers across multiple devices. This model
-            corresponds to the Network Configuration Model discussed in <xref
+            corresponds to the network configuration model discussed in <xref
             target="RFC8309"></xref>.<vspace blankLines="1" />It can be used
             by a network operator to allocate resources (e.g., tunnel
             resource, topology resource) for the service or schedule resources
@@ -292,8 +292,8 @@
 
             <t hangText="Device Model:">Refers to the Network Element YANG
             data model described in <xref target="RFC8199"></xref> or the
-            Device Configuration Model discussed in <xref
-            target="RFC8309"></xref>.<vspace blankLines="1" />Device Models
+            device configuration model discussed in <xref
+            target="RFC8309"></xref>.<vspace blankLines="1" />Device models
             are also used to refer to model a function embedded in a device
             (e.g., Network Address Translation (NAT) <xref
             target="RFC8512"></xref>, Access Control Lists (ACLs) <xref
@@ -378,8 +378,8 @@
         across layers.</t>
 
         <t>Data models in the context of network management can be classified
-        into Service, Network, and Device Models. Different service models may
-        rely on the same set of Network and/or Device Models.</t>
+        into service, network, and device models. Different service models may
+        rely on the same set of network and/or device models.</t>
 
         <t>Service models traditionally follow a top-down approach and are
         mostly customer-facing YANG modules providing a common model construct
@@ -480,7 +480,7 @@ Notifications (including feedback)
         link and network layers across multiple devices (e.g., network
         topology and traffic-engineering tunnel modules).</t>
 
-        <t>Device (and function) Models usually follow a bottom-up approach
+        <t>Device (and function) models usually follow a bottom-up approach
         and are mostly technology-specific modules used to realize a service
         (e.g., BGP, ACL).</t>
 
@@ -602,8 +602,8 @@ Notifications (including feedback)
       </section>
 
       <section anchor="ful" title="Service Fullfillment Automation">
-        <t>To operate a service, the settings of the parameters in the Device
-        Models are derived from service models and/or network models and are
+        <t>To operate a service, the settings of the parameters in the device
+        models are derived from service models and/or network models and are
         used to:</t>
 
         <t><list style="symbols">
@@ -640,16 +640,16 @@ Notifications (including feedback)
         parameters are grouped together to define technology-specific device
         level models or network level models.</t>
 
-        <t>In addition, these technology-specific Device or network models can
+        <t>In addition, these technology-specific device or network models can
         be further integrated with each other using the schema mount mechanism
         <xref target="RFC8528"></xref> to provision each involved network
         function/device or each involved network domain to support newly added
-        module or features. A collection of Device Models integrated together
+        module or features. A collection of device models integrated together
         can be loaded and validated during implementation.</t>
 
         <t>High-level policies can be defined at service or network models
         (e.g., "Autonomous System Number (ASN) Exclude" in the example
-        depicted in <xref target="service_ex2"></xref>). Device Models will be
+        depicted in <xref target="service_ex2"></xref>). Device models will be
         tweaked accordingly to provide policy-based management. Policies can
         also be used for telemetry automation, e.g., policies that contain
         conditions to trigger the generation and pushing of new telemetry
@@ -743,7 +743,7 @@ Notifications (including feedback)
           <t>If the request is accepted, the service orchestrator/management
           system maps such service request to its view. This view can be
           described as a technology specific network model or a set of
-          technology specific Device Models and this mapping may include a
+          technology specific device models and this mapping may include a
           choice of which networks and technologies to use depending on which
           service features have been requested.</t>
 
@@ -929,7 +929,7 @@ Notifications (including feedback)
       <section anchor="dec" title="Service Decomposition">
         <t>Service Decomposition allows to decompose service models at the
         service level or network models at the network level into a set of
-        Device Models at the device level. These Device Models may be tied to
+        device models at the device level. These device models may be tied to
         specific device types or classified into a collection of related YANG
         modules based on service types and features offered, and load at the
         implementation time before configuration is loaded and validated.</t>
@@ -1471,7 +1471,7 @@ Notifications (including feedback)
     <section anchor="app" title="Layered YANG Modules Examples Overview">
       <t>This appendix lists a set of YANG data models that can be used for
       the delivery of connectivity services. These models can be classified as
-      Service, Network, or Device Models.</t>
+      service, network, or device models.</t>
 
       <t>It is not the intent of this appendix to provide an inventory of
       tools and mechanisms used in specific network and service management
@@ -1757,7 +1757,7 @@ Notifications (including feedback)
         </section>
 
         <section title="Some Device Model Examples">
-          <t>The following provides an overview of some Device Models that can
+          <t>The following provides an overview of some device models that can
           be used within a network. This list is not comprehensive.<list
               hangIndent="11" style="hanging">
               <t hangText="L2VPN:"><xref
