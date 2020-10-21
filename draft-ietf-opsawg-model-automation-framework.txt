@@ -86,26 +86,26 @@ Table of Contents
      2.2.  Acronyms  . . . . . . . . . . . . . . . . . . . . . . . .   7
    3.  Architectural Concepts and Goals  . . . . . . . . . . . . . .   7
      3.1.  Data Models: Layering and Representation  . . . . . . . .   7
-     3.2.  Automation of Service Delivery Procedures . . . . . . . .  11
-     3.3.  Service Fullfillment Automation . . . . . . . . . . . . .  12
-     3.4.  YANG Modules Integration  . . . . . . . . . . . . . . . .  12
-   4.  Functional Blocks and Interactions  . . . . . . . . . . . . .  13
-     4.1.  Service Lifecycle Management Procedure  . . . . . . . . .  13
-       4.1.1.  Service Exposure  . . . . . . . . . . . . . . . . . .  14
-       4.1.2.  Service Creation/Modification . . . . . . . . . . . .  14
-       4.1.3.  Service Assurance . . . . . . . . . . . . . . . . . .  15
-       4.1.4.  Service Optimization  . . . . . . . . . . . . . . . .  15
-       4.1.5.  Service Diagnosis . . . . . . . . . . . . . . . . . .  15
-       4.1.6.  Service Decommission  . . . . . . . . . . . . . . . .  16
-     4.2.  Service Fullfillment Management Procedure . . . . . . . .  16
-       4.2.1.  Intended Configuration Provision  . . . . . . . . . .  16
-       4.2.2.  Configuration Validation  . . . . . . . . . . . . . .  17
-       4.2.3.  Performance Monitoring  . . . . . . . . . . . . . . .  17
-       4.2.4.  Fault Diagnostic  . . . . . . . . . . . . . . . . . .  17
-     4.3.  Multi-Layer/Multi-Domain Service Mapping  . . . . . . . .  18
-     4.4.  Service Decomposition . . . . . . . . . . . . . . . . . .  18
-   5.  YANG Data Model Integration Examples  . . . . . . . . . . . .  18
-     5.1.  L2VPN/L3VPN Service Delivery  . . . . . . . . . . . . . .  18
+     3.2.  Automation of Service Delivery Procedures . . . . . . . .  12
+     3.3.  Service Fulfillment Automation  . . . . . . . . . . . . .  13
+     3.4.  YANG Modules Integration  . . . . . . . . . . . . . . . .  13
+   4.  Functional Blocks and Interactions  . . . . . . . . . . . . .  14
+     4.1.  Service Lifecycle Management Procedure  . . . . . . . . .  14
+       4.1.1.  Service Exposure  . . . . . . . . . . . . . . . . . .  15
+       4.1.2.  Service Creation/Modification . . . . . . . . . . . .  15
+       4.1.3.  Service Assurance . . . . . . . . . . . . . . . . . .  16
+       4.1.4.  Service Optimization  . . . . . . . . . . . . . . . .  16
+       4.1.5.  Service Diagnosis . . . . . . . . . . . . . . . . . .  16
+       4.1.6.  Service Decommission  . . . . . . . . . . . . . . . .  17
+     4.2.  Service Fullfillment Management Procedure . . . . . . . .  17
+       4.2.1.  Intended Configuration Provision  . . . . . . . . . .  17
+       4.2.2.  Configuration Validation  . . . . . . . . . . . . . .  18
+       4.2.3.  Performance Monitoring  . . . . . . . . . . . . . . .  18
+       4.2.4.  Fault Diagnostic  . . . . . . . . . . . . . . . . . .  18
+     4.3.  Multi-Layer/Multi-Domain Service Mapping  . . . . . . . .  19
+     4.4.  Service Decomposition . . . . . . . . . . . . . . . . . .  19
+   5.  YANG Data Model Integration Examples  . . . . . . . . . . . .  19
+     5.1.  L2VPN/L3VPN Service Delivery  . . . . . . . . . . . . . .  19
 
 
 
@@ -114,28 +114,28 @@ Wu, et al.               Expires April 23, 2021                 [Page 2]
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
-     5.2.  VN Lifecycle Management . . . . . . . . . . . . . . . . .  21
-     5.3.  Event-based Telemetry in the Device Self Management . . .  22
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  23
-     6.1.  Service Level . . . . . . . . . . . . . . . . . . . . . .  24
-     6.2.  Network Level . . . . . . . . . . . . . . . . . . . . . .  24
-     6.3.  Device Level  . . . . . . . . . . . . . . . . . . . . . .  25
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  25
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  25
-   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  25
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  26
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  27
-   Appendix A.  Layered YANG Modules Examples Overview . . . . . . .  36
-     A.1.  Service Models: Definition and Samples  . . . . . . . . .  36
-     A.2.  Schema Mount  . . . . . . . . . . . . . . . . . . . . . .  37
-     A.3.  Network Models: Samples . . . . . . . . . . . . . . . . .  37
-     A.4.  Device Models: Samples  . . . . . . . . . . . . . . . . .  39
-       A.4.1.  Model Composition . . . . . . . . . . . . . . . . . .  41
-       A.4.2.  Device Management . . . . . . . . . . . . . . . . . .  41
-       A.4.3.  Interface Management  . . . . . . . . . . . . . . . .  41
-       A.4.4.  Some Device Model Examples  . . . . . . . . . . . . .  41
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  44
+     5.2.  VN Lifecycle Management . . . . . . . . . . . . . . . . .  22
+     5.3.  Event-based Telemetry in the Device Self Management . . .  23
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  24
+     6.1.  Service Level . . . . . . . . . . . . . . . . . . . . . .  25
+     6.2.  Network Level . . . . . . . . . . . . . . . . . . . . . .  25
+     6.3.  Device Level  . . . . . . . . . . . . . . . . . . . . . .  26
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  26
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  26
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  26
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  27
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  28
+   Appendix A.  Layered YANG Modules Examples Overview . . . . . . .  37
+     A.1.  Service Models: Definition and Samples  . . . . . . . . .  37
+     A.2.  Schema Mount  . . . . . . . . . . . . . . . . . . . . . .  38
+     A.3.  Network Models: Samples . . . . . . . . . . . . . . . . .  38
+     A.4.  Device Models: Samples  . . . . . . . . . . . . . . . . .  40
+       A.4.1.  Model Composition . . . . . . . . . . . . . . . . . .  42
+       A.4.2.  Device Management . . . . . . . . . . . . . . . . . .  42
+       A.4.3.  Interface Management  . . . . . . . . . . . . . . . .  42
+       A.4.4.  Some Device Model Examples  . . . . . . . . . . . . .  42
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  45
 
 1.  Introduction
 
@@ -245,7 +245,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
       architecture layers promoting thus a network-wise provisioning
       instead of device-specific configuration.
 
-   o  Dynamically fed a decision-making process (e.g., Controllers,
+   o  Dynamically feed a decision-making process (e.g., Controllers,
       Orchestrators) with notifications that will trigger appropriate
       actions allowing thus to continuously adjust a network (and thus
       involved resources) to comply the intended service to deliver.
@@ -418,6 +418,38 @@ Internet-Draft  Service and Network Management Automation   October 2020
    Figure 2.  This example follows the IP Connectivity Provisioning
    Profile template defined in [RFC7297].
 
+   In reference to Figure 2, "Full traffic performance guarantees class"
+   refers to a service class where all traffic performance metrics
+   included in the service model (OWD, loss, delay variation) are
+   guaranteed, while "Delay traffic performance guarantees class" refers
+   to a service class where only OWD is guaranteed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wu, et al.               Expires April 23, 2021                 [Page 8]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
                      ,--,--,--.              ,--,--,--.
                   ,-'    SP1   `-.        ,-'   SP2     `-.
                  ( Service Site   )      ( Service Site    )
@@ -437,31 +469,20 @@ Internet-Draft  Service and Network Management Automation   October 2020
           xxxx (2) Customer to SP connectivity
           oooo (3) SP to any destination connectivity
 
-          Figure 1: An Example of Service Connectivty Components
-
-
-
-
-
-
-
-Wu, et al.               Expires April 23, 2021                 [Page 8]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
+          Figure 1: An Example of Service Connectivity Components
 
    Connectivity: Scope and Guarantees
       (1) Inter-SP connectivity
          - Pipe scope from the local to the remote SBE/DBE
-         - Full guarantees class
+         - Full traffic performance guarantees class
       (2) Customer to SP connectivity
          - Hose/Funnel scope connecting the local SBE/DBE
            to the customer access points
-         - Full guarantees class
+         - Full traffic performance guarantees class
       (3) SP to any destination connectivity
          - Hose/Funnel scope from the local SBE/DBE to the
            Internet gateway
-         - Delay guarantees class
+         - Delay traffic performance guarantees class
    Flow Identification
       * Destination IP address (SBE, DBE)
       * DSCP marking
@@ -477,6 +498,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
       * Triggered by thresholds
 
           Figure 2: Sample Attributes Captured in a Service Model
+
+
+
+Wu, et al.               Expires April 23, 2021                 [Page 9]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
 
    Network models are mainly network resource-facing modules; they
    describe various aspects of a network infrastructure, including
@@ -501,7 +529,35 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                 [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wu, et al.               Expires April 23, 2021                [Page 10]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -557,7 +613,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 10]
+Wu, et al.               Expires April 23, 2021                [Page 11]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -613,12 +669,12 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 11]
+Wu, et al.               Expires April 23, 2021                [Page 12]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
-3.3.  Service Fullfillment Automation
+3.3.  Service Fulfillment Automation
 
    To operate a service, the settings of the parameters in the device
    models are derived from service models and/or network models and are
@@ -669,7 +725,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 12]
+Wu, et al.               Expires April 23, 2021                [Page 13]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -725,7 +781,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 13]
+Wu, et al.               Expires April 23, 2021                [Page 14]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -781,7 +837,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 14]
+Wu, et al.               Expires April 23, 2021                [Page 15]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -837,7 +893,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 15]
+Wu, et al.               Expires April 23, 2021                [Page 16]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -893,7 +949,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 16]
+Wu, et al.               Expires April 23, 2021                [Page 17]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -949,7 +1005,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 17]
+Wu, et al.               Expires April 23, 2021                [Page 18]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1005,7 +1061,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 18]
+Wu, et al.               Expires April 23, 2021                [Page 19]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1061,7 +1117,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 19]
+Wu, et al.               Expires April 23, 2021                [Page 20]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1117,7 +1173,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 20]
+Wu, et al.               Expires April 23, 2021                [Page 21]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1173,7 +1229,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 21]
+Wu, et al.               Expires April 23, 2021                [Page 22]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1229,7 +1285,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 22]
+Wu, et al.               Expires April 23, 2021                [Page 23]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1276,22 +1332,22 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 6.  Security Considerations
 
-   The YANG modules cited in this document define schema for data that
-   are designed to be accessed via network management protocols such as
-   NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF layer is
-   the secure transport layer, and the mandatory-to-implement secure
-   transport is Secure Shell (SSH) [RFC6242].  The lowest RESTCONF layer
+   Many of the YANG modules cited in this document define schema for
+   data that are designed to be accessed via network management
+   protocols such as NETCONF [RFC6241] or RESTCONF [RFC8040].  The
+   lowest NETCONF layer is the secure transport layer, and the
+   mandatory-to-implement secure transport is Secure Shell (SSH)
 
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 23]
+Wu, et al.               Expires April 23, 2021                [Page 24]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
-   is HTTPS, and the mandatory-to-implement secure transport is TLS
-   [RFC8446].
+   [RFC6242].  The lowest RESTCONF layer is HTTPS, and the mandatory-to-
+   implement secure transport is TLS [RFC8446].
 
    The NETCONF access control model [RFC8341] provides the means to
    restrict access for particular NETCONF or RESTCONF users to a
@@ -1341,7 +1397,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 24]
+Wu, et al.               Expires April 23, 2021                [Page 25]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1373,7 +1429,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    Many thanks to Robert Wilton for the detailed AD review.
 
-   Thanks to Eric Vyncke for the IESG review.
+   Thanks to Eric Vyncke and Roman Danyliw for the IESG review.
 
 9.  Contributors
 
@@ -1397,7 +1453,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 25]
+Wu, et al.               Expires April 23, 2021                [Page 26]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1453,7 +1509,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 26]
+Wu, et al.               Expires April 23, 2021                [Page 27]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1509,7 +1565,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 27]
+Wu, et al.               Expires April 23, 2021                [Page 28]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1565,7 +1621,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 28]
+Wu, et al.               Expires April 23, 2021                [Page 29]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1621,7 +1677,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 29]
+Wu, et al.               Expires April 23, 2021                [Page 30]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1677,7 +1733,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 30]
+Wu, et al.               Expires April 23, 2021                [Page 31]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1733,7 +1789,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 31]
+Wu, et al.               Expires April 23, 2021                [Page 32]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1789,7 +1845,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 32]
+Wu, et al.               Expires April 23, 2021                [Page 33]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1845,7 +1901,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 33]
+Wu, et al.               Expires April 23, 2021                [Page 34]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1901,7 +1957,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 34]
+Wu, et al.               Expires April 23, 2021                [Page 35]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1957,7 +2013,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 35]
+Wu, et al.               Expires April 23, 2021                [Page 36]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2013,7 +2069,7 @@ A.1.  Service Models: Definition and Samples
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 36]
+Wu, et al.               Expires April 23, 2021                [Page 37]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2069,7 +2125,7 @@ A.3.  Network Models: Samples
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 37]
+Wu, et al.               Expires April 23, 2021                [Page 38]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2125,7 +2181,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 38]
+Wu, et al.               Expires April 23, 2021                [Page 39]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2181,7 +2237,7 @@ A.4.  Device Models: Samples
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 39]
+Wu, et al.               Expires April 23, 2021                [Page 40]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2237,7 +2293,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 40]
+Wu, et al.               Expires April 23, 2021                [Page 41]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2293,7 +2349,7 @@ A.4.4.  Some Device Model Examples
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 41]
+Wu, et al.               Expires April 23, 2021                [Page 42]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2349,7 +2405,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 42]
+Wu, et al.               Expires April 23, 2021                [Page 43]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2405,7 +2461,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 43]
+Wu, et al.               Expires April 23, 2021                [Page 44]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2461,7 +2517,7 @@ Authors' Addresses
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 44]
+Wu, et al.               Expires April 23, 2021                [Page 45]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2517,4 +2573,4 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 23, 2021                [Page 45]
+Wu, et al.               Expires April 23, 2021                [Page 46]

@@ -232,7 +232,7 @@
           architecture layers promoting thus a network-wise provisioning
           instead of device-specific configuration.</t>
 
-          <t>Dynamically fed a decision-making process (e.g., Controllers,
+          <t>Dynamically feed a decision-making process (e.g., Controllers,
           Orchestrators) with notifications that will trigger appropriate
           actions allowing thus to continuously adjust a network (and thus
           involved resources) to comply the intended service to deliver.</t>
@@ -421,8 +421,15 @@
         Provisioning Profile template defined in <xref
         target="RFC7297"></xref>.</t>
 
+        <t>In reference to <xref target="service_ex2"></xref>, "Full traffic
+        performance guarantees class" refers to a service class where all
+        traffic performance metrics included in the service model (OWD, loss,
+        delay variation) are guaranteed, while "Delay traffic performance
+        guarantees class" refers to a service class where only OWD is
+        guaranteed.</t>
+
         <t><figure anchor="service_ex"
-            title="An Example of Service Connectivty Components">
+            title="An Example of Service Connectivity Components">
             <artwork align="center"><![CDATA[           ,--,--,--.              ,--,--,--.  
         ,-'    SP1   `-.        ,-'   SP2     `-.
        ( Service Site   )      ( Service Site    )
@@ -449,15 +456,15 @@ oooo (3) SP to any destination connectivity
             <artwork><![CDATA[Connectivity: Scope and Guarantees
    (1) Inter-SP connectivity
       - Pipe scope from the local to the remote SBE/DBE 
-      - Full guarantees class
+      - Full traffic performance guarantees class 
    (2) Customer to SP connectivity
       - Hose/Funnel scope connecting the local SBE/DBE  
         to the customer access points
-      - Full guarantees class
+      - Full traffic performance guarantees class
    (3) SP to any destination connectivity
       - Hose/Funnel scope from the local SBE/DBE to the 
         Internet gateway
-      - Delay guarantees class
+      - Delay traffic performance guarantees class
 Flow Identification
    * Destination IP address (SBE, DBE)
    * DSCP marking
@@ -601,7 +608,7 @@ Notifications (including feedback)
         (provider).</t>
       </section>
 
-      <section anchor="ful" title="Service Fullfillment Automation">
+      <section anchor="ful" title="Service Fulfillment Automation">
         <t>To operate a service, the settings of the parameters in the device
         models are derived from service models and/or network models and are
         used to:</t>
@@ -1164,9 +1171,9 @@ Notifications (including feedback)
     </section>
 
     <section title="Security Considerations">
-      <t>The YANG modules cited in this document define schema for data that
-      are designed to be accessed via network management protocols such as
-      NETCONF <xref target="RFC6241"></xref> or RESTCONF <xref
+      <t>Many of the YANG modules cited in this document define schema for
+      data that are designed to be accessed via network management protocols
+      such as NETCONF <xref target="RFC6241"></xref> or RESTCONF <xref
       target="RFC8040"></xref>. The lowest NETCONF layer is the secure
       transport layer, and the mandatory-to-implement secure transport is
       Secure Shell (SSH) <xref target="RFC6242"></xref>. The lowest RESTCONF
@@ -1248,7 +1255,8 @@ Notifications (including feedback)
 
       <t>Many thanks to Robert Wilton for the detailed AD review.</t>
 
-      <t>Thanks to &Eacute;ric Vyncke for the IESG review.</t>
+      <t>Thanks to &Eacute;ric Vyncke and Roman Danyliw for the IESG
+      review.</t>
     </section>
 
     <section title="Contributors">
