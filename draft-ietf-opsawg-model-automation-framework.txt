@@ -5,14 +5,14 @@
 OPSAWG                                                        Q. Wu, Ed.
 Internet-Draft                                                    Huawei
 Intended status: Informational                         M. Boucadair, Ed.
-Expires: April 24, 2021                                           Orange
+Expires: April 25, 2021                                           Orange
                                                                 D. Lopez
                                                           Telefonica I+D
                                                                   C. Xie
                                                            China Telecom
                                                                  L. Geng
                                                             China Mobile
-                                                        October 21, 2020
+                                                        October 22, 2020
 
 
   A Framework for Automating Service and Network Management with YANG
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Wu, et al.               Expires April 24, 2021                 [Page 1]
+Wu, et al.               Expires April 25, 2021                 [Page 1]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -61,7 +61,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 24, 2021.
+   This Internet-Draft will expire on April 25, 2021.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Wu, et al.               Expires April 24, 2021                 [Page 2]
+Wu, et al.               Expires April 25, 2021                 [Page 2]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -118,11 +118,11 @@ Internet-Draft  Service and Network Management Automation   October 2020
      5.3.  Event-based Telemetry in the Device Self Management . . .  23
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  24
      6.1.  Service Level . . . . . . . . . . . . . . . . . . . . . .  25
-     6.2.  Network Level . . . . . . . . . . . . . . . . . . . . . .  25
+     6.2.  Network Level . . . . . . . . . . . . . . . . . . . . . .  26
      6.3.  Device Level  . . . . . . . . . . . . . . . . . . . . . .  26
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  26
    8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  26
-   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  26
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  27
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  27
      10.2.  Informative References . . . . . . . . . . . . . . . . .  28
@@ -130,12 +130,12 @@ Internet-Draft  Service and Network Management Automation   October 2020
      A.1.  Service Models: Definition and Samples  . . . . . . . . .  37
      A.2.  Schema Mount  . . . . . . . . . . . . . . . . . . . . . .  38
      A.3.  Network Models: Samples . . . . . . . . . . . . . . . . .  38
-     A.4.  Device Models: Samples  . . . . . . . . . . . . . . . . .  40
-       A.4.1.  Model Composition . . . . . . . . . . . . . . . . . .  42
-       A.4.2.  Device Management . . . . . . . . . . . . . . . . . .  42
-       A.4.3.  Interface Management  . . . . . . . . . . . . . . . .  42
-       A.4.4.  Some Device Model Examples  . . . . . . . . . . . . .  42
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  45
+     A.4.  Device Models: Samples  . . . . . . . . . . . . . . . . .  41
+       A.4.1.  Model Composition . . . . . . . . . . . . . . . . . .  43
+       A.4.2.  Device Management . . . . . . . . . . . . . . . . . .  43
+       A.4.3.  Interface Management  . . . . . . . . . . . . . . . .  43
+       A.4.4.  Some Device Model Examples  . . . . . . . . . . . . .  43
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  46
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                 [Page 3]
+Wu, et al.               Expires April 25, 2021                 [Page 3]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -221,7 +221,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                 [Page 4]
+Wu, et al.               Expires April 25, 2021                 [Page 4]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -242,13 +242,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
       resources provided by multi-vendor devices are unified.
 
    o  Ease data inheritance and reusability among the various
-      architecture layers promoting thus a network-wise provisioning
+      architecture layers thus promoting a network-wise provisioning
       instead of device-specific configuration.
 
    o  Dynamically feed a decision-making process (e.g., Controllers,
       Orchestrators) with notifications that will trigger appropriate
-      actions allowing thus to continuously adjust a network (and thus
-      involved resources) to comply the intended service to deliver.
+      actions, allowing that decision-making process to continuously
+      adjust a network (and thus, the involved resources) to deliver the
+      service that conforms to the intended parameters (service
+      objectives).
 
    This framework is drawn from a network operator perspective
    irrespective of the origin of a data model; it can also accommodate
@@ -272,15 +274,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
    The following terms are defined in [RFC8309][RFC8199] and are not
    redefined here:
 
-   o  Network Operator
 
 
 
-
-Wu, et al.               Expires April 24, 2021                 [Page 5]
+Wu, et al.               Expires April 25, 2021                 [Page 5]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   o  Network Operator
 
    o  Customer
 
@@ -331,9 +333,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-
-Wu, et al.               Expires April 24, 2021                 [Page 6]
+Wu, et al.               Expires April 25, 2021                 [Page 6]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -344,6 +344,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    ACL     Access Control List
    AS      Autonomous System
+   AP      Access Point
    CE      Customer Edge
    DBE     Data Border Element
    E2E     End-to-End
@@ -356,6 +357,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    OAM     Operations, Administration, and Maintenance
    OWD     One-Way Delay
    PE      Provider Edge
+   PM      Performance Monitoring
    QoS     Quality of Service
    RD      Route Distinguisher
    RT      Route Target
@@ -384,16 +386,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
    construct for higher level network services (e.g., Layer 3 Virtual
    Private Network (L3VPN)).  Such modules can be mapped to network
    technology-specific modules at lower layers (e.g., tunnel, routing,
-   Quality of Service (QoS), security).  For example, service models can
 
 
 
-
-Wu, et al.               Expires April 24, 2021                 [Page 7]
+Wu, et al.               Expires April 25, 2021                 [Page 7]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
+   Quality of Service (QoS), security).  For example, service models can
    be used to characterise the network service(s) to be ensured between
    service nodes (ingress/egress) such as:
 
@@ -444,8 +445,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-Wu, et al.               Expires April 24, 2021                 [Page 8]
+Wu, et al.               Expires April 25, 2021                 [Page 8]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -501,7 +501,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                 [Page 9]
+Wu, et al.               Expires April 25, 2021                 [Page 9]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -517,7 +517,9 @@ Internet-Draft  Service and Network Management Automation   October 2020
    (e.g., BGP, ACL).
 
    Each level maintains a view of the supported YANG modules provided by
-   low-levels (see for example, Appendix A).
+   lower levels (see for example, Appendix A).  Mechanisms such as YANG
+   library [RFC8525] can be used to expose which YANG modules are
+   supported by nodes in lower levels.
 
    Figure 3 illustrates the overall layering model.  The reader may
    refer to Section 4 of [RFC8309] for an overview of "Orchestrator" and
@@ -555,9 +557,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-
-Wu, et al.               Expires April 24, 2021                [Page 10]
+Wu, et al.               Expires April 25, 2021                [Page 10]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -571,7 +571,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
      | ||  Service Modeling   ||                                       |
      | |+---------------------+|                                       |
      | |                       |                   Bidirectional       |
-     | |+---------------------+|              +-+  Capacity,OWD  +-+   |
+     | |+---------------------+|              +-+  Capacity, OWD +-+   |
      | ||Service Orchestration||              | +----------------+ |   |
      | |+---------------------+|              +-+                +-+   |
      | +-----------------------+            Ingress             Egress |
@@ -613,7 +613,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 11]
+Wu, et al.               Expires April 25, 2021                [Page 11]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -669,7 +669,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 12]
+Wu, et al.               Expires April 25, 2021                [Page 12]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -725,7 +725,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 13]
+Wu, et al.               Expires April 25, 2021                [Page 13]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -781,7 +781,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 14]
+Wu, et al.               Expires April 25, 2021                [Page 14]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -820,7 +820,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    authentication and authorization checks have been made with success,
    the service orchestrator/management system should verify whether the
    service requirements in the service request can be met (i.e., whether
-   there is sufficient resources that can be allocated with the
+   there are sufficient resources that can be allocated with the
    requested guarantees).
 
    If the request is accepted, the service orchestrator/management
@@ -832,19 +832,22 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    In addition, a customer may require to change the underlying network
    infrastructure to adapt to new customer's needs and service
-   requirements.  This service modification can be issued following the
-   same service model used by the service request.
+   requirements (e.g., service a new customer site, add a new access
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 15]
+
+Wu, et al.               Expires April 25, 2021                [Page 15]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
+   link, provide disjoint paths).  This service modification can be
+   issued following the same service model used by the service request.
+
 4.1.3.  Service Assurance
 
-   Performance measurement telemetry (Section 4.2) can be used to
+   The performance measurement telemetry (Section 4.2) can be used to
    provide service assurance at Service and/or Network levels.
    Performance measurement telemetry model can tie with service or
    network models to monitor network performance or Service Level
@@ -853,7 +856,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 4.1.4.  Service Optimization
 
    Service optimization is a technique that gets the configuration of
-   the network updated due to network changes, incidents mitigation, or
+   the network updated due to network changes, incident mitigation, or
    new service requirements.  One typical example is once a tunnel or a
    VPN is setup, Performance monitoring information or telemetry
    information per tunnel (or per VPN) can be collected and fed into the
@@ -888,16 +891,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
    pinpoint the problem and provide recommendations (or instructions)
    for the network recovery.
 
-   The service diagnosis information can be modelled as technology-
-   independent Remote Procedure Call (RPC) operations for OAM protocols
 
 
-
-Wu, et al.               Expires April 24, 2021                [Page 16]
+Wu, et al.               Expires April 25, 2021                [Page 16]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
+   The service diagnosis information can be modelled as technology-
+   independent Remote Procedure Call (RPC) operations for OAM protocols
    and technology-independent abstraction of key OAM constructs for OAM
    protocols [RFC8531][RFC8533].  These models can be used to provide
    consistent configuration, reporting, and presentation for the OAM
@@ -940,19 +942,20 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
    o  Address sharing
 
-   o  Security
+   o  Security (e.g., access control, authentication, encryption)
 
    These specific configuration models can be used to configure Provider
    Edge (PE) and Customer Edge (CE) devices within a site, e.g., a BGP
-   policy model can be used to establish VPN membership between sites
-   and VPN Service Topology.
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 17]
+Wu, et al.               Expires April 25, 2021                [Page 17]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   policy model can be used to establish VPN membership between sites
+   and VPN Service Topology.
 
    Note that in networks with legacy devices (that support proprietary
    modules or do not support YANG at all), an adaptation layer is likely
@@ -964,9 +967,9 @@ Internet-Draft  Service and Network Management Automation   October 2020
    Configuration validation is used to validate intended configuration
    and ensure the configuration take effect.
 
-   For example, a customer creates an interface "eth-0/0/0" but the
+   For example, if a customer creates an interface "eth-0/0/0" but the
    interface does not physically exist at this point, then configuration
-   data appears in the <intended> status but does not appear in
+   data appears in the <intended> status but does not appear in the
    <operational> datastore.  More details about <intended> and
    <operational> datastores can be found in Section 5.1 of [RFC8342].
 
@@ -998,18 +1001,19 @@ Internet-Draft  Service and Network Management Automation   October 2020
    technology-specific YANG data models which can use and extend the
    base model described in Section 4.1.5 to deal with these issues.
 
-   These RPC commands received in the technology-dependent node can be
-   used to trigger technology-specific OAM message exchanges for fault
-   verification and fault isolation.  For example, TRILL Multicast Tree
-   Verification (MTV) RPC command [I-D.ietf-trill-yang-oam] can be used
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 18]
+
+Wu, et al.               Expires April 25, 2021                [Page 18]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
+   These RPC commands received in the technology-dependent node can be
+   used to trigger technology-specific OAM message exchanges for fault
+   verification and fault isolation.  For example, TRILL Multicast Tree
+   Verification (MTV) RPC command [I-D.ietf-trill-yang-oam] can be used
    to trigger Multi-Destination Tree Verification Message defined in
    [RFC7455] to verify TRILL distribution tree integrity.
 
@@ -1024,7 +1028,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
    Target (RT), and VRF in the L3VPN Network Model (L3NM).
 
    Another example is to map service parameters in the L3SM into Traffic
-   Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE model and
+   Engineered (TE) tunnel parameters (e.g., Tunnel ID) in TE model and
    Virtual Network (VN) parameters (e.g., Access Point (AP) list, VN
    members) in the YANG data model for VN operation
    [I-D.ietf-teas-actn-vn-yang].
@@ -1053,18 +1057,18 @@ Internet-Draft  Service and Network Management Automation   October 2020
        Creation in Section 4.2.1) relying upon L3SM with each site
        having one network access connectivity, for example:
 
-       *  Site A: network-access A, link-capacity = 20 Mbps, class
-          "foo", guaranteed-capacity-percent = 10, average-one-way-delay
-          = 70 ms.
 
 
 
 
-
-Wu, et al.               Expires April 24, 2021                [Page 19]
+Wu, et al.               Expires April 25, 2021                [Page 19]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+       *  Site A: network-access A, link-capacity = 20 Mbps, class
+          "foo", guaranteed-capacity-percent = 10, average-one-way-delay
+          = 70 ms.
 
        *  Site B: network-access B, link-capacity = 30 Mbps, class
           "foo1", guaranteed-capacity-percent = 15, average-one-way-
@@ -1113,11 +1117,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 20]
+Wu, et al.               Expires April 25, 2021                [Page 20]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1154,13 +1154,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
             Figure 5: L3VPN Service Delivery Example (Current)
 
    L3NM inherits some of data elements from the L3SM.  Nevertheless, the
-   L3NM does not expose some information to the above layer such as the
-   capabilities of an underlying network (which can be used to drive
-   service order handling) or notifications (to notify subscribers about
-   specific events or degradations as per agreed SLAs).  Some of this
-   information can be provided using, e.g.,
-   [I-D.www-bess-yang-vpn-service-pm].  A target overall model is
-   depicted in Figure 6.
+   L3NM as currently designed in [I-D.ietf-opsawg-l3sm-l3nm] does not
+   expose some information to the above layer such as the capabilities
+   of an underlying network (which can be used to drive service order
+   handling) or notifications (to notify subscribers about specific
+   events or degradations as per agreed SLAs).  Some of this information
+   can be provided using, e.g., [I-D.www-bess-yang-vpn-service-pm].  A
+   target overall model is depicted in Figure 6.
 
 
 
@@ -1173,7 +1173,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 21]
+Wu, et al.               Expires April 25, 2021                [Page 21]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1229,23 +1229,24 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 22]
+Wu, et al.               Expires April 25, 2021                [Page 22]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
    3.  The customer exchanges with the Orchestrator the connectivity
-       matrix on the abstract node and explicit paths using the TE
-       topology model [RFC8795].  This information can be used to
+       matrix on the abstract node topology and explicit paths using the
+       TE topology model [RFC8795].  This information can be used to
        instantiate the VN and setup tunnels between source and
        destination endpoints (Service Creation in Section 4.1.2).
 
-   4.  The telemetry model which augments the VN model and corresponding
-       TE tunnel model can be used to subscribe to performance
-       measurement data and notify all the parameter changes and network
-       performance changes related to VN topology or Tunnel
-       [I-D.ietf-teas-actn-pm-telemetry-autonomics] and provide service
-       assurance (Service Optimization in Section 4.1.4).
+   4.  In order to provide service assurance (Service Optimization in
+       Section 4.1.4), the telemetry model which augments the VN model
+       and corresponding TE tunnel model can be used by the Orchestrator
+       to subscribe to performance measurement data.  The Controller
+       will then notify the Orchestrator with all the parameter changes
+       and network performance changes related to the VN topology and
+       the tunnels [I-D.ietf-teas-actn-pm-telemetry-autonomics].
 
                                    |
                            VN      |
@@ -1281,15 +1282,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
    1.  To control which state a network device should be in or is
        allowed to be in at any given time, a set of conditions and
        actions are defined and correlated with network events (e.g.,
-       allow the NETCONF server to send updates only when the value
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 23]
+Wu, et al.               Expires April 25, 2021                [Page 23]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
 
+       allow the NETCONF server to send updates only when the value
        exceeds a certain threshold for the first time, but not again
        until the threshold is cleared), which constitute an
        Event/Condition/Action (ECA) policy or an event-driven policy
@@ -1304,11 +1305,11 @@ Internet-Draft  Service and Network Management Automation   October 2020
    3.  The network device uses the ECA model to subscribe to the event
        source, e.g., an event stream or datastore state data conveyed to
        the server via YANG Push subscription [RFC8641], monitors state
-       parameters, and takes simple and instant actions when associated
-       event condition on state parameters is met.  ECA notifications
-       can be generated as the result of actions based on event stream
-       subscription or datastore subscription (model-driven telemetry
-       operation discussed in Section 4.2.3).
+       parameters, and takes simple and instant actions when an
+       associated event condition on state parameters is met.  ECA
+       notifications can be generated as the result of actions based on
+       event stream subscription or datastore subscription (model-driven
+       telemetry operation discussed in Section 4.2.3).
 
                       +----------------+
                       |                <----+
@@ -1340,8 +1341,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-
-Wu, et al.               Expires April 24, 2021                [Page 24]
+Wu, et al.               Expires April 25, 2021                [Page 24]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -1358,11 +1358,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
    protocols listed in the document are discussed in the specification
    documents of each of these protocols.
 
-   In order to prevent leaking sensitive information, special care
-   should be considered when translating between the various layers in
-   Section 4 or when aggregating data retrieved from various sources.
-   The network operator must enforce means to protect privacy-related
-   information included in customer-facing models.
+   In order to prevent leaking sensitive information and "confused
+   deputy" problem in general, special care should be considered when
+   translating between the various layers in Section 4 or when
+   aggregating data retrieved from various sources.  Typically,
+   authorization and authentication checks should be performed to ensure
+   that a data is available to an authorized entity.  The network
+   operator must enforce means to protect privacy-related information
+   included in customer-facing models.
 
    To detect misalignment between layers that might be induced by
    misbehaving nodes, upper layers should continuously monitor the
@@ -1371,6 +1374,11 @@ Internet-Draft  Service and Network Management Automation   October 2020
    and that the data reported by an underlying layer is matching the
    perceived service by the above layer.  Typically, such checks are the
    responsibility of the service diagnosis (Section 4.1.5).
+
+   When a YANG module includes security-related parameters, it is
+   recommended to include the relevant information as part of the
+   service assurance to track the correct functioning of the security
+   mechanisms.
 
    Additional considerations are discussed in the following subsections.
 
@@ -1382,9 +1390,22 @@ Internet-Draft  Service and Network Management Automation   October 2020
    providers.  The characterization of a service disruption (including,
    mean time between failures, mean time to repair), the escalation
    procedure, and penalties are usually documented in contractual
-   agreements (e.g., Section 2.1 of [RFC4176]).  Misbehaving peer
-   providers will thus be identified and appropriate countermeasures
-   will be applied.
+   agreements (e.g., as described in Section 2.1 of [RFC4176]).
+   Misbehaving peer providers will thus be identified and appropriate
+   countermeasures will be applied.
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 25]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
+   The communication protocols that make use of a service model between
+   a customer and an operator are out of scope.  Relevant security
+   considerations should be discussed in the specification documents of
+   these protocols.
 
 6.2.  Network Level
 
@@ -1394,14 +1415,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    o  A controller may create forwarding loops by mis-configuring the
       underlying network nodes.  It is recommended to proceed with tests
       to check the status of forwarding paths regularly or whenever
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 25]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
-
       changes are made to routing or forwarding processes.  Such checks
       may be triggered from the service level owing to the means
       discussed in Section 4.1.5.
@@ -1409,13 +1422,23 @@ Internet-Draft  Service and Network Management Automation   October 2020
    o  Some service models may include a traffic isolation clause,
       appropriate technology-specific actions must be enforced at the
       underlying network (and thus involved network devices) to avoid
-      that such traffic is accessible to non-authorized parties.
+      that such traffic is accessible to non-authorized parties.  In
+      particular, network models may indicate whether encryption is
+      enabled and if so, expose a list of supported encryption schemes
+      and parameters.  Refer for example to the encryption feature
+      defined in [I-D.ietf-opsawg-vpn-common] and its use in
+      [I-D.ietf-opsawg-l3sm-l3nm].
 
 6.3.  Device Level
 
    Network operators should monitor and audit their networks to detect
    misbehaving nodes and abnormal behaviors.  For example, OAM discussed
    in Section 4.1.5 can be used for that purpose.
+
+   Access to some data requires specific access privilege levels.
+   Devices must check that a required access privilege is provided
+   before granting access to specific data or performing specific
+   actions.
 
 7.  IANA Considerations
 
@@ -1427,36 +1450,20 @@ Internet-Draft  Service and Network Management Automation   October 2020
    Adrian Farrel, Christian Huitema, Tommy Pauly, Ines Robles, and
    Olivier Augizeau for the review.
 
-   Many thanks to Robert Wilton for the detailed AD review.
-
-   Thanks to Eric Vyncke, Roman Danyliw, and Erik Kline for the IESG
-   review.
-
-9.  Contributors
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 26]
+Wu, et al.               Expires April 25, 2021                [Page 26]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
+
+   Many thanks to Robert Wilton for the detailed AD review.
+
+   Thanks to Eric Vyncke, Roman Danyliw, Erik Kline, and Benjamin Kaduk
+   for the IESG review.
+
+9.  Contributors
 
       Christian Jacquenet
       Orange
@@ -1499,6 +1506,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
               <https://www.rfc-editor.org/info/rfc6242>.
 
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 27]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
               RFC 7950, DOI 10.17487/RFC7950, August 2016,
               <https://www.rfc-editor.org/info/rfc7950>.
@@ -1506,13 +1521,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 27]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
               Access Control Model", STD 91, RFC 8341,
@@ -1553,22 +1561,20 @@ Internet-Draft  Service and Network Management Automation   October 2020
               IP VPNs", draft-ietf-bess-mvpn-yang-04 (work in progress),
               June 2020.
 
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 28]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-bfd-yang]
               Rahman, R., Zheng, L., Jethanandani, M., Pallagatti, S.,
               and G. Mirsky, "YANG Data Model for Bidirectional
               Forwarding Detection (BFD)", draft-ietf-bfd-yang-17 (work
               in progress), August 2018.
-
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 28]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [I-D.ietf-dots-rfc8782-bis]
               Boucadair, M., Shallow, J., and T. Reddy.K, "Distributed
@@ -1609,6 +1615,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
               YANG Data Model for MPLS Base", draft-ietf-mpls-base-
               yang-15 (work in progress), August 2020.
 
+
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 29]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-netmod-module-tags]
               Hopps, C., Berger, L., and D. Bogdanovic, "YANG Module
               Tags", draft-ietf-netmod-module-tags-10 (work in
@@ -1619,17 +1636,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
               L., and J. Ma, "A Layer 2 VPN Network YANG Model", draft-
               ietf-opsawg-l2nm-00 (work in progress), July 2020.
 
-
-
-Wu, et al.               Expires April 24, 2021                [Page 29]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
-
    [I-D.ietf-opsawg-l3sm-l3nm]
               barguil, s., Dios, O., Boucadair, M., Munoz, L., and A.
               Aguado, "A Layer 3 VPN Network YANG Model", draft-ietf-
               opsawg-l3sm-l3nm-04 (work in progress), October 2020.
+
+   [I-D.ietf-opsawg-vpn-common]
+              barguil, s., Dios, O., Boucadair, M., and Q. WU, "A Layer
+              2/3 VPN Common YANG Model", draft-ietf-opsawg-vpn-
+              common-01 (work in progress), September 2020.
 
    [I-D.ietf-pim-igmp-mld-snooping-yang]
               Zhao, H., Liu, X., Liu, Y., Sivakumar, M., and A. Peter,
@@ -1658,6 +1673,15 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Tantsura, "YANG Data Model for Segment Routing", draft-
               ietf-spring-sr-yang-22 (work in progress), August 2020.
 
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 30]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.ietf-teas-actn-pm-telemetry-autonomics]
               Lee, Y., Dhody, D., Karunanithi, S., Vilata, R., King, D.,
               and D. Ceccarelli, "YANG models for VN/TE Performance
@@ -1669,18 +1693,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Lee, Y., Dhody, D., Ceccarelli, D., Bryskin, I., and B.
               Yoon, "A YANG Data Model for VN Operation", draft-ietf-
               teas-actn-vn-yang-09 (work in progress), July 2020.
-
-
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 30]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [I-D.ietf-teas-yang-path-computation]
               Busi, I., Belotti, S., Lopez, V., Sharma, A., and Y. Shi,
@@ -1718,6 +1730,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Monitoring", draft-www-bess-yang-vpn-service-pm-06 (work
               in progress), April 2020.
 
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 31]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [I-D.wwx-netmod-event-yang]
               Bierman, A., WU, Q., Bryskin, I., Birkholz, H., Liu, X.,
               and B. Claise, "A YANG Data model for ECA Policy
@@ -1727,16 +1747,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [IPPM]     IANA, "Performance Metrics", March 2020,
               <https://www.iana.org/assignments/performance-metrics/
               performance-metrics.xhtml>.
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 31]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC4176]  El Mghazli, Y., Ed., Nadeau, T., Boucadair, M., Chan, K.,
               and A. Gonguet, "Framework for Layer 3 Virtual Private
@@ -1776,6 +1786,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
               (BFD)", RFC 5880, DOI 10.17487/RFC5880, June 2010,
               <https://www.rfc-editor.org/info/rfc5880>.
 
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 32]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC6406]  Malas, D., Ed. and J. Livingood, Ed., "Session PEERing for
               Multimedia INTerconnect (SPEERMINT) Architecture",
               RFC 6406, DOI 10.17487/RFC6406, November 2011,
@@ -1785,14 +1803,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Networking: A Perspective from within a Service Provider
               Environment", RFC 7149, DOI 10.17487/RFC7149, March 2014,
               <https://www.rfc-editor.org/info/rfc7149>.
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 32]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC7224]  Bjorklund, M., "IANA Interface Type YANG Module",
               RFC 7224, DOI 10.17487/RFC7224, May 2014,
@@ -1829,6 +1839,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
               (IPPM)", STD 81, RFC 7679, DOI 10.17487/RFC7679, January
               2016, <https://www.rfc-editor.org/info/rfc7679>.
 
+
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 33]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC7680]  Almes, G., Kalidindi, S., Zekauskas, M., and A. Morton,
               Ed., "A One-Way Loss Metric for IP Performance Metrics
               (IPPM)", STD 82, RFC 7680, DOI 10.17487/RFC7680, January
@@ -1842,13 +1863,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
    [RFC8194]  Schoenwaelder, J. and V. Bajpai, "A YANG Data Model for
               LMAP Measurement Agents", RFC 8194, DOI 10.17487/RFC8194,
               August 2017, <https://www.rfc-editor.org/info/rfc8194>.
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 33]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8199]  Bogdanovic, D., Claise, B., and C. Moberg, "YANG Module
               Classification", RFC 8199, DOI 10.17487/RFC8199, July
@@ -1882,6 +1896,16 @@ Internet-Draft  Service and Network Management Automation   October 2020
               for Layer 3 Topologies", RFC 8346, DOI 10.17487/RFC8346,
               March 2018, <https://www.rfc-editor.org/info/rfc8346>.
 
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 34]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC8348]  Bierman, A., Bjorklund, M., Dong, J., and D. Romascanu, "A
               YANG Data Model for Hardware Management", RFC 8348,
               DOI 10.17487/RFC8348, March 2018,
@@ -1896,15 +1920,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Data Model for Layer 2 Virtual Private Network (L2VPN)
               Service Delivery", RFC 8466, DOI 10.17487/RFC8466, October
               2018, <https://www.rfc-editor.org/info/rfc8466>.
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 34]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8512]  Boucadair, M., Ed., Sivakumar, S., Jacquenet, C.,
               Vinapamula, S., and Q. Wu, "A YANG Module for Network
@@ -1922,6 +1937,11 @@ Internet-Draft  Service and Network Management Automation   October 2020
               RFC 8519, DOI 10.17487/RFC8519, March 2019,
               <https://www.rfc-editor.org/info/rfc8519>.
 
+   [RFC8525]  Bierman, A., Bjorklund, M., Schoenwaelder, J., Watsen, K.,
+              and R. Wilton, "YANG Library", RFC 8525,
+              DOI 10.17487/RFC8525, March 2019,
+              <https://www.rfc-editor.org/info/rfc8525>.
+
    [RFC8528]  Bjorklund, M. and L. Lhotka, "YANG Schema Mount",
               RFC 8528, DOI 10.17487/RFC8528, March 2019,
               <https://www.rfc-editor.org/info/rfc8528>.
@@ -1930,6 +1950,17 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Liu, "YANG Data Model for Network Instances", RFC 8529,
               DOI 10.17487/RFC8529, March 2019,
               <https://www.rfc-editor.org/info/rfc8529>.
+
+
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 35]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
 
    [RFC8530]  Berger, L., Hopps, C., Lindem, A., Bogdanovic, D., and X.
               Liu, "YANG Model for Logical Network Elements", RFC 8530,
@@ -1948,19 +1979,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Protocols That Use Connectionless Communications",
               RFC 8532, DOI 10.17487/RFC8532, April 2019,
               <https://www.rfc-editor.org/info/rfc8532>.
-
-
-
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 35]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
    [RFC8533]  Kumar, D., Wang, M., Wu, Q., Ed., Rahman, R., and S.
               Raghavan, "A YANG Data Model for Retrieval Methods for the
@@ -1993,6 +2011,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
               DOI 10.17487/RFC8676, November 2019,
               <https://www.rfc-editor.org/info/rfc8676>.
 
+
+
+Wu, et al.               Expires April 25, 2021                [Page 36]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed
               Denial-of-Service Open Threat Signaling (DOTS) Data
               Channel Specification", RFC 8783, DOI 10.17487/RFC8783,
@@ -2007,16 +2032,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
               Engineering (TE) Topologies", RFC 8795,
               DOI 10.17487/RFC8795, August 2020,
               <https://www.rfc-editor.org/info/rfc8795>.
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 36]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
 Appendix A.  Layered YANG Modules Examples Overview
 
@@ -2051,6 +2066,14 @@ A.1.  Service Models: Definition and Samples
    example) to properly forward traffic to the said "Destination"
    [RFC7297].
 
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 37]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
    For example:
 
    o  The L3SM [RFC8299] defines the L3VPN service ordered by a customer
@@ -2063,16 +2086,6 @@ A.1.  Service Models: Definition and Samples
       provides a YANG data model applicable to any mode of VN operation.
 
    L2SM and L3SM are customer service models as per [RFC8309].
-
-
-
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 37]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
 
 A.2.  Schema Mount
 
@@ -2092,6 +2105,30 @@ A.3.  Network Models: Samples
 
    Figure 9 depicts a set of additional network models such as topology
    and tunnel models:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 38]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
 
      +-------------------------------+-------------------------------+
      |      Topology YANG modules    |     Tunnel YANG modules       |
@@ -2122,17 +2159,9 @@ A.3.  Network Models: Samples
 
    Examples of topology YANG modules are listed below:
 
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 38]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
-
    o  Network Topologies Model: [RFC8345] defines a base model for
       network topology and inventories.  Network topology data include
-      link resource, node resource, and terminate-point resources.
+      link, node, and terminate-point resources.
 
    o  TE Topology Model: [RFC8795] defines a YANG data model for
       representing and manipulating TE topologies.
@@ -2149,6 +2178,13 @@ Internet-Draft  Service and Network Management Automation   October 2020
       manipulating Layer 3 topologies.  This model is extended from the
       network topology model defined in [RFC8345] with Layer 3
       topologies specifics.
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 39]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
 
    o  Layer 2 Topology Model:
 
@@ -2178,14 +2214,6 @@ Internet-Draft  Service and Network Management Automation   October 2020
       model(s) and defines a YANG module for MPLS-TE configurations,
       state, RPC and notifications.
 
-
-
-
-Wu, et al.               Expires April 24, 2021                [Page 39]
-
-Internet-Draft  Service and Network Management Automation   October 2020
-
-
    o  RSVP-TE MPLS Model:
 
       [I-D.ietf-teas-yang-rsvp-te] augments the RSVP-TE generic module
@@ -2206,6 +2234,14 @@ Internet-Draft  Service and Network Management Automation   October 2020
       [RFC8532] defines a base YANG module for the management of OAM
       protocols that use Connectionless Communications.  [RFC8533]
       defines a retrieval method YANG module for connectionless OAM
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 40]
+
+Internet-Draft  Service and Network Management Automation   October 2020
+
+
       protocols.  [RFC8531] defines a base YANG module for connection
       oriented OAM protocols.  These three models are intended to
       provide consistent reporting, configuration, and representation
@@ -2218,10 +2254,25 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 A.4.  Device Models: Samples
 
-   Network Element models (Figure 10) are used to describe how a service
-   can be implemented by activating and tweaking a set of functions
-   (enabled in one or multiple devices, or hosted in cloud
-   infrastructures) that are involved in the service delivery.
+   Network Element models (listed in Figure 10) are used to describe how
+   a service can be implemented by activating and tweaking a set of
+   functions (enabled in one or multiple devices, or hosted in cloud
+   infrastructures) that are involved in the service delivery.  For
+   example, the L3VPN service will involve many PEs and require
+   manipulating the following modules:
+
+   o  Routing management [RFC8349]
+
+   o  BGP [I-D.ietf-idr-bgp-model]
+
+   o  PIM [I-D.ietf-pim-yang]
+
+   o  NAT management [RFC8512]
+
+   o  QoS management [I-D.ietf-rtgwg-qos-model]
+
+   o  ACLs [RFC8519]
+
    Figure 10 uses IETF-defined data models as an example.
 
 
@@ -2237,7 +2288,12 @@ A.4.  Device Models: Samples
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 40]
+
+
+
+
+
+Wu, et al.               Expires April 25, 2021                [Page 41]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2293,7 +2349,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 41]
+Wu, et al.               Expires April 25, 2021                [Page 42]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2349,7 +2405,7 @@ A.4.4.  Some Device Model Examples
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 42]
+Wu, et al.               Expires April 25, 2021                [Page 43]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2405,7 +2461,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 43]
+Wu, et al.               Expires April 25, 2021                [Page 44]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2461,7 +2517,7 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 44]
+Wu, et al.               Expires April 25, 2021                [Page 45]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2517,7 +2573,7 @@ Authors' Addresses
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 45]
+Wu, et al.               Expires April 25, 2021                [Page 46]
 
 Internet-Draft  Service and Network Management Automation   October 2020
 
@@ -2573,4 +2629,4 @@ Internet-Draft  Service and Network Management Automation   October 2020
 
 
 
-Wu, et al.               Expires April 24, 2021                [Page 46]
+Wu, et al.               Expires April 25, 2021                [Page 47]

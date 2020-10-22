@@ -229,13 +229,15 @@
           resources provided by multi-vendor devices are unified.</t>
 
           <t>Ease data inheritance and reusability among the various
-          architecture layers promoting thus a network-wise provisioning
+          architecture layers thus promoting a network-wise provisioning
           instead of device-specific configuration.</t>
 
           <t>Dynamically feed a decision-making process (e.g., Controllers,
           Orchestrators) with notifications that will trigger appropriate
-          actions allowing thus to continuously adjust a network (and thus
-          involved resources) to comply the intended service to deliver.</t>
+          actions, allowing that decision-making process to continuously
+          adjust a network (and thus, the involved resources) to deliver the
+          service that conforms to the intended parameters (service
+          objectives). </t>
         </list></t>
 
       <t>This framework is drawn from a network operator perspective
@@ -321,6 +323,8 @@
 
             <t hangText="AS">Autonomous System</t>
 
+            <t hangText="AP">Access Point</t>
+
             <t hangText="CE">Customer Edge</t>
 
             <t hangText="DBE">Data Border Element</t>
@@ -344,6 +348,8 @@
             <t hangText="OWD">One-Way Delay</t>
 
             <t hangText="PE">Provider Edge</t>
+
+            <t hangText="PM">Performance Monitoring</t>
 
             <t hangText="QoS">Quality of Service</t>
 
@@ -492,7 +498,10 @@ Notifications (including feedback)
         (e.g., BGP, ACL).</t>
 
         <t>Each level maintains a view of the supported YANG modules provided
-        by low-levels (see for example, <xref target="app"></xref>).</t>
+        by lower levels (see for example, <xref target="app"></xref>).
+        Mechanisms such as YANG library <xref target="RFC8525"></xref> can be
+        used to expose which YANG modules are supported by nodes in lower
+        levels.</t>
 
         <t><xref target="layering"></xref> illustrates the overall layering
         model. The reader may refer to Section 4 of <xref
@@ -512,7 +521,7 @@ Notifications (including feedback)
    | ||  Service Modeling   ||                                       |
    | |+---------------------+|                                       |
    | |                       |                   Bidirectional       |
-   | |+---------------------+|              +-+  Capacity,OWD  +-+   |
+   | |+---------------------+|              +-+  Capacity, OWD +-+   |
    | ||Service Orchestration||              | +----------------+ |   |
    | |+---------------------+|              +-+                +-+   |
    | +-----------------------+            Ingress             Egress |
@@ -744,8 +753,8 @@ Notifications (including feedback)
           authentication and authorization checks have been made with success,
           the service orchestrator/management system should verify whether the
           service requirements in the service request can be met (i.e.,
-          whether there is sufficient resources that can be allocated with the
-          requested guarantees).</t>
+          whether there are sufficient resources that can be allocated with
+          the requested guarantees).</t>
 
           <t>If the request is accepted, the service orchestrator/management
           system maps such service request to its view. This view can be
@@ -756,21 +765,23 @@ Notifications (including feedback)
 
           <t>In addition, a customer may require to change the underlying
           network infrastructure to adapt to new customer's needs and service
-          requirements. This service modification can be issued following the
-          same service model used by the service request.</t>
+          requirements (e.g., service a new customer site, add a new access
+          link, provide disjoint paths). This service modification can be
+          issued following the same service model used by the service
+          request.</t>
         </section>
 
         <section title="Service Assurance">
-          <t>Performance measurement telemetry (<xref target="fulm"></xref>)
-          can be used to provide service assurance at Service and/or Network
-          levels. Performance measurement telemetry model can tie with service
-          or network models to monitor network performance or Service Level
-          Agreement.</t>
+          <t>The performance measurement telemetry (<xref
+          target="fulm"></xref>) can be used to provide service assurance at
+          Service and/or Network levels. Performance measurement telemetry
+          model can tie with service or network models to monitor network
+          performance or Service Level Agreement.</t>
         </section>
 
         <section anchor="optim" title="Service Optimization">
           <t>Service optimization is a technique that gets the configuration
-          of the network updated due to network changes, incidents mitigation,
+          of the network updated due to network changes, incident mitigation,
           or new service requirements. One typical example is once a tunnel or
           a VPN is setup, Performance monitoring information or telemetry
           information per tunnel (or per VPN) can be collected and fed into
@@ -851,7 +862,8 @@ Notifications (including feedback)
 
               <t>Address sharing</t>
 
-              <t>Security</t>
+              <t>Security (e.g., access control, authentication,
+              encryption)</t>
             </list></t>
 
           <t>These specific configuration models can be used to configure
@@ -869,10 +881,10 @@ Notifications (including feedback)
           <t>Configuration validation is used to validate intended
           configuration and ensure the configuration take effect.</t>
 
-          <t>For example, a customer creates an interface "eth-0/0/0" but the
-          interface does not physically exist at this point, then
+          <t>For example, if a customer creates an interface "eth-0/0/0" but
+          the interface does not physically exist at this point, then
           configuration data appears in the &lt;intended&gt; status but does
-          not appear in &lt;operational&gt; datastore. More details about
+          not appear in the &lt;operational&gt; datastore. More details about
           &lt;intended&gt; and &lt;operational&gt; datastores can be found in
           Section 5.1 of <xref target="RFC8342"></xref>.</t>
         </section>
@@ -927,9 +939,9 @@ Notifications (including feedback)
         Target (RT), and VRF in the L3VPN Network Model (L3NM).</t>
 
         <t>Another example is to map service parameters in the L3SM into
-        Traffic Engineered (TE) tunnel parameter (e.g., Tunnel ID) in TE model
-        and Virtual Network (VN) parameters (e.g., Access Point (AP) list, VN
-        members) in the YANG data model for VN operation <xref
+        Traffic Engineered (TE) tunnel parameters (e.g., Tunnel ID) in TE
+        model and Virtual Network (VN) parameters (e.g., Access Point (AP)
+        list, VN members) in the YANG data model for VN operation <xref
         target="I-D.ietf-teas-actn-vn-yang"></xref>.</t>
       </section>
 
@@ -1016,11 +1028,13 @@ Notifications (including feedback)
           </figure></t>
 
         <t>L3NM inherits some of data elements from the L3SM. Nevertheless,
-        the L3NM does not expose some information to the above layer such as
-        the capabilities of an underlying network (which can be used to drive
-        service order handling) or notifications (to notify subscribers about
-        specific events or degradations as per agreed SLAs). Some of this
-        information can be provided using, e.g., <xref
+        the L3NM as currently designed in <xref
+        target="I-D.ietf-opsawg-l3sm-l3nm"></xref> does not expose some
+        information to the above layer such as the capabilities of an
+        underlying network (which can be used to drive service order handling)
+        or notifications (to notify subscribers about specific events or
+        degradations as per agreed SLAs). Some of this information can be
+        provided using, e.g., <xref
         target="I-D.www-bess-yang-vpn-service-pm"></xref>. A target overall
         model is depicted in <xref target="l3-target"></xref>.</t>
 
@@ -1077,19 +1091,20 @@ Notifications (including feedback)
             based on the information captured in the request.</t>
 
             <t>The customer exchanges with the Orchestrator the connectivity
-            matrix on the abstract node and explicit paths using the TE
-            topology model <xref target="RFC8795"></xref>. This information
+            matrix on the abstract node topology and explicit paths using the
+            TE topology model <xref target="RFC8795"></xref>. This information
             can be used to instantiate the VN and setup tunnels between source
             and destination endpoints (Service Creation in <xref
             target="crea"></xref>).</t>
 
-            <t>The telemetry model which augments the VN model and
-            corresponding TE tunnel model can be used to subscribe to
-            performance measurement data and notify all the parameter changes
-            and network performance changes related to VN topology or Tunnel
-            <xref target="I-D.ietf-teas-actn-pm-telemetry-autonomics"></xref>
-            and provide service assurance (Service Optimization in <xref
-            target="optim"></xref>).</t>
+            <t>In order to provide service assurance (Service Optimization in
+            <xref target="optim"></xref>), the telemetry model which augments
+            the VN model and corresponding TE tunnel model can be used by the
+            Orchestrator to subscribe to performance measurement data. The
+            Controller will then notify the Orchestrator with all the
+            parameter changes and network performance changes related to the
+            VN topology and the tunnels <xref
+            target="I-D.ietf-teas-actn-pm-telemetry-autonomics"></xref>.</t>
           </list></t>
 
         <t><figure anchor="lc" title="A VN Service Delivery Example">
@@ -1142,7 +1157,7 @@ Notifications (including feedback)
             source, e.g., an event stream or datastore state data conveyed to
             the server via YANG Push subscription <xref
             target="RFC8641"></xref>, monitors state parameters, and takes
-            simple and instant actions when associated event condition on
+            simple and instant actions when an associated event condition on
             state parameters is met. ECA notifications can be generated as the
             result of actions based on event stream subscription or datastore
             subscription (model-driven telemetry operation discussed in <xref
@@ -1189,11 +1204,14 @@ Notifications (including feedback)
       protocols listed in the document are discussed in the specification
       documents of each of these protocols.</t>
 
-      <t>In order to prevent leaking sensitive information, special care
-      should be considered when translating between the various layers in
-      <xref target="compo"></xref> or when aggregating data retrieved from
-      various sources. The network operator must enforce means to protect
-      privacy-related information included in customer-facing models.</t>
+      <t>In order to prevent leaking sensitive information and "confused
+      deputy" problem in general, special care should be considered when
+      translating between the various layers in <xref target="compo"></xref>
+      or when aggregating data retrieved from various sources. Typically,
+      authorization and authentication checks should be performed to ensure
+      that a data is available to an authorized entity. The network operator
+      must enforce means to protect privacy-related information included in
+      customer-facing models.</t>
 
       <t>To detect misalignment between layers that might be induced by
       misbehaving nodes, upper layers should continuously monitor the
@@ -1203,6 +1221,11 @@ Notifications (including feedback)
       the perceived service by the above layer. Typically, such checks are the
       responsibility of the service diagnosis (<xref
       target="diag"></xref>).</t>
+
+      <t>When a YANG module includes security-related parameters, it is
+      recommended to include the relevant information as part of the service
+      assurance to track the correct functioning of the security mechanisms.
+      </t>
 
       <t>Additional considerations are discussed in the following
       subsections.</t>
@@ -1214,9 +1237,14 @@ Notifications (including feedback)
         providers. The characterization of a service disruption (including,
         mean time between failures, mean time to repair), the escalation
         procedure, and penalties are usually documented in contractual
-        agreements (e.g., Section 2.1 of <xref target="RFC4176"></xref>).
-        Misbehaving peer providers will thus be identified and appropriate
-        countermeasures will be applied.</t>
+        agreements (e.g., as described in Section 2.1 of <xref
+        target="RFC4176"></xref>). Misbehaving peer providers will thus be
+        identified and appropriate countermeasures will be applied.</t>
+
+        <t>The communication protocols that make use of a service model
+        between a customer and an operator are out of scope. Relevant security
+        considerations should be discussed in the specification documents of
+        these protocols. </t>
       </section>
 
       <section title="Network Level">
@@ -1232,7 +1260,12 @@ Notifications (including feedback)
             <t>Some service models may include a traffic isolation clause,
             appropriate technology-specific actions must be enforced at the
             underlying network (and thus involved network devices) to avoid
-            that such traffic is accessible to non-authorized parties.</t>
+            that such traffic is accessible to non-authorized parties. In
+            particular, network models may indicate whether encryption is
+            enabled and if so, expose a list of supported encryption schemes
+            and parameters. Refer for example to the encryption feature
+            defined in <xref target="I-D.ietf-opsawg-vpn-common"></xref> and
+            its use in <xref target="I-D.ietf-opsawg-l3sm-l3nm"></xref>.</t>
           </list></t>
       </section>
 
@@ -1240,6 +1273,10 @@ Notifications (including feedback)
         <t>Network operators should monitor and audit their networks to detect
         misbehaving nodes and abnormal behaviors. For example, OAM discussed
         in <xref target="diag"></xref> can be used for that purpose.</t>
+
+        <t>Access to some data requires specific access privilege levels.
+        Devices must check that a required access privilege is provided before
+        granting access to specific data or performing specific actions. </t>
       </section>
     </section>
 
@@ -1255,8 +1292,8 @@ Notifications (including feedback)
 
       <t>Many thanks to Robert Wilton for the detailed AD review.</t>
 
-      <t>Thanks to &Eacute;ric Vyncke, Roman Danyliw, and Erik Kline for the
-      IESG review.</t>
+      <t>Thanks to &Eacute;ric Vyncke, Roman Danyliw, Erik Kline, and Benjamin
+      Kaduk for the IESG review.</t>
     </section>
 
     <section title="Contributors">
@@ -1309,6 +1346,10 @@ Notifications (including feedback)
 
     <references title="Informative References">
       <?rfc include="reference.RFC.8199"?>
+
+      <?rfc include='reference.I-D.ietf-opsawg-vpn-common'?>
+
+      <?rfc include='reference.RFC.8525'?>
 
       <?rfc include='reference.RFC.8342'?>
 
@@ -1579,8 +1620,8 @@ Notifications (including feedback)
         <t><list style="symbols">
             <t>Network Topologies Model: <xref target="RFC8345"></xref>
             defines a base model for network topology and inventories. Network
-            topology data include link resource, node resource, and
-            terminate-point resources.</t>
+            topology data include link, node, and terminate-point
+            resources.</t>
 
             <t>TE Topology Model: <xref target="RFC8795"></xref> defines a
             YANG data model for representing and manipulating TE topologies.
@@ -1659,12 +1700,28 @@ Notifications (including feedback)
       </section>
 
       <section title="Device Models: Samples">
-        <t>Network Element models (<xref target="device"></xref>) are used to
-        describe how a service can be implemented by activating and tweaking a
-        set of functions (enabled in one or multiple devices, or hosted in
-        cloud infrastructures) that are involved in the service delivery.
-        <xref target="device"></xref> uses IETF-defined data models as an
-        example.<figure anchor="device"
+        <t>Network Element models (listed in <xref target="device"></xref>)
+        are used to describe how a service can be implemented by activating
+        and tweaking a set of functions (enabled in one or multiple devices,
+        or hosted in cloud infrastructures) that are involved in the service
+        delivery. For example, the L3VPN service will involve many PEs and
+        require manipulating the following modules: </t>
+
+        <t><list style="symbols">
+            <t>Routing management <xref target="RFC8349"></xref></t>
+
+            <t>BGP <xref target="I-D.ietf-idr-bgp-model"></xref></t>
+
+            <t>PIM <xref target="I-D.ietf-pim-yang"></xref></t>
+
+            <t>NAT management <xref target="RFC8512"></xref></t>
+
+            <t>QoS management <xref
+            target="I-D.ietf-rtgwg-qos-model"></xref></t>
+
+            <t>ACLs <xref target="RFC8519"></xref></t>
+          </list><xref target="device"></xref> uses IETF-defined data models
+        as an example.<figure anchor="device"
             title="Network Element Modules Overview">
             <artwork><![CDATA[                                        +------------------------+
                                       +-+     Device Model       |
@@ -1764,7 +1821,7 @@ Notifications (including feedback)
             </list></t>
         </section>
 
-        <section title="Some Device Model Examples">
+        <section anchor="sample" title="Some Device Model Examples">
           <t>The following provides an overview of some device models that can
           be used within a network. This list is not comprehensive.<list
               hangIndent="11" style="hanging">
