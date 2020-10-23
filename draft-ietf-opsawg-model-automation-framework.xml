@@ -237,7 +237,7 @@
           actions, allowing that decision-making process to continuously
           adjust a network (and thus, the involved resources) to deliver the
           service that conforms to the intended parameters (service
-          objectives). </t>
+          objectives).</t>
         </list></t>
 
       <t>This framework is drawn from a network operator perspective
@@ -676,38 +676,41 @@ Notifications (including feedback)
     <section anchor="compo" title="Functional Blocks and Interactions">
       <t>The architectural considerations described in <xref
       target="concept"></xref> lead to the architecture described in this
-      section and illustrated in <xref target="arc"></xref>.</t>
+      section and illustrated in <xref target="arc"></xref>. </t>
 
       <figure anchor="arc" title="Service and Network Lifecycle Management">
         <artwork align="center"><![CDATA[                  +------------------+
 ................. |                  |
-   Service level  |                  |
-                  V                  |
-    E2E          E2E                E2E              E2E
-  Service --> Service --------->  Service   -----> Service -----+
-  Exposure    Creation     ^    Optimization   ^  Diagnosis     |
-             /Modification |                   |                |
-                  |        |Diff               |                V
-   Multi-layer    |        |         E2E       |               E2E
-   Multi-domain   |        |        Service    |            Service
-   Service Mapping|        +------ Assurance --+         Decommission
-                  |                     ^
-................. |<-----------------+  |
-   Network level  |                  |  +-------+
-                  V                  |          |
-              Specific           Specific       |
-              Service  -------->  Service <--+  |
-              Creation     ^    Optimization |  |
-            /Modification  |                 |  |
-                  |        |Diff             |  |
-                  |        |      Specific --+  |
-         Service  |        |       Service      |
-      Decomposing |        +----- Assurance ----+
-                  |                  ^
-................. |                  |  Aggregation
-   Device level   |                  +------------+
-                  V                               |
- Service       Intent                             |
+   Service level  |                  |                   
+                  V                  |                   
+    E2E          E2E                E2E                    E2E
+  Service --> Service --------->  Service  ------------>  Service 
+  Exposure    Creation     ^    Optimization   ^          Diagnosis
+             /Modification |                   |              ^    
+                ^ |        |Diff               |              |  
+      E2E       | |        |         E2E       |              |      
+    Service ----+ |        |        Service    |              |   
+   Decommission   |        +------ Assurance --+              | 
+                  |                     ^                     |  
+   Multi-layer    |                     |                     | 
+   Multi-domain   |                     |                     | 
+   Service Mapping|                     |                     |  
+................. |<-----------------+  |                     | 
+   Network level  |                  |  +-------+             v
+                  V                  |          |         Specific  
+              Specific           Specific       |          Service
+              Service  -------->  Service <--+  |         Diagnosis
+              Creation     ^    Optimization |  |             ^ 
+            /Modification  |                 |  |             |
+                  |        |Diff             |  |             |  
+                  |        |      Specific --+  |             |
+         Service  |        |       Service      |             |
+    Decomposition |        +----- Assurance ----+             |
+                  |                  ^                        |        
+................. |                  |  Aggregation           |   
+   Device level   |                  +------------+           |   
+                  V                               |           |   
+ Service       Intent                             |           v   
  Fulfillment   Config  ----> Config  ----> Performance ----> Fault
                Provision     Validation    Monitoring        Diagnostic
 ]]></artwork>
@@ -769,6 +772,9 @@ Notifications (including feedback)
           link, provide disjoint paths). This service modification can be
           issued following the same service model used by the service
           request.</t>
+
+          <t>Withdrawing a service is discussed in <xref
+          target="decom"></xref>.</t>
         </section>
 
         <section title="Service Assurance">
@@ -824,13 +830,16 @@ Notifications (including feedback)
           target="RFC8533"></xref>. These models can be used to provide
           consistent configuration, reporting, and presentation for the OAM
           mechanisms used to manage the network.</t>
+
+          <t>Refer to <xref target="dev-diag"></xref> for the device-specific
+          side.</t>
         </section>
 
         <section anchor="decom" title="Service Decommission">
           <t>Service decommission allows a customer to stop the service by
           removing the service from active status and thus releasing the
           network resources that were allocated to the service. Customers can
-          also use the service model to withdraw the registration to a
+          also use the service model to withdraw the subscription to a
           service.</t>
         </section>
       </section>
@@ -875,6 +884,9 @@ Notifications (including feedback)
           proprietary modules or do not support YANG at all), an adaptation
           layer is likely to be required at the network level so that these
           devices can be involved in the delivery of the network services.</t>
+
+          <t>This interface is also used to handle service withdrawal (<xref
+          target="decom"></xref>).</t>
         </section>
 
         <section title="Configuration Validation">
@@ -906,7 +918,7 @@ Notifications (including feedback)
           sources.</t>
         </section>
 
-        <section title="Fault Diagnostic">
+        <section anchor="dev-diag" title="Fault Diagnostic">
           <t>When configuration is in effect in a device, some devices may be
           mis-configured (e.g., device links are not consistent in both sides
           of the network connection) or network resources might be
@@ -1035,7 +1047,7 @@ Notifications (including feedback)
         or notifications (to notify subscribers about specific events or
         degradations as per agreed SLAs). Some of this information can be
         provided using, e.g., <xref
-        target="I-D.www-bess-yang-vpn-service-pm"></xref>. A target overall
+        target="I-D.www-opsawg-yang-vpn-service-pm"></xref>. A target overall
         model is depicted in <xref target="l3-target"></xref>.</t>
 
         <t><figure anchor="l3-target"
@@ -1205,13 +1217,13 @@ Notifications (including feedback)
       documents of each of these protocols.</t>
 
       <t>In order to prevent leaking sensitive information and "confused
-      deputy" problem in general, special care should be considered when
-      translating between the various layers in <xref target="compo"></xref>
-      or when aggregating data retrieved from various sources. Typically,
-      authorization and authentication checks should be performed to ensure
-      that a data is available to an authorized entity. The network operator
-      must enforce means to protect privacy-related information included in
-      customer-facing models.</t>
+      deputy" problem <xref target="Hardy"></xref> in general, special care
+      should be considered when translating between the various layers in
+      <xref target="compo"></xref> or when aggregating data retrieved from
+      various sources. Typically, authorization and authentication checks
+      should be performed to ensure that a data is available to an authorized
+      entity. The network operator must enforce means to protect
+      privacy-related information included in customer-facing models.</t>
 
       <t>To detect misalignment between layers that might be induced by
       misbehaving nodes, upper layers should continuously monitor the
@@ -1224,8 +1236,8 @@ Notifications (including feedback)
 
       <t>When a YANG module includes security-related parameters, it is
       recommended to include the relevant information as part of the service
-      assurance to track the correct functioning of the security mechanisms.
-      </t>
+      assurance to track the correct functioning of the security
+      mechanisms.</t>
 
       <t>Additional considerations are discussed in the following
       subsections.</t>
@@ -1244,7 +1256,7 @@ Notifications (including feedback)
         <t>The communication protocols that make use of a service model
         between a customer and an operator are out of scope. Relevant security
         considerations should be discussed in the specification documents of
-        these protocols. </t>
+        these protocols.</t>
       </section>
 
       <section title="Network Level">
@@ -1257,15 +1269,16 @@ Notifications (including feedback)
             may be triggered from the service level owing to the means
             discussed in <xref target="diag"></xref>.</t>
 
-            <t>Some service models may include a traffic isolation clause,
-            appropriate technology-specific actions must be enforced at the
-            underlying network (and thus involved network devices) to avoid
-            that such traffic is accessible to non-authorized parties. In
-            particular, network models may indicate whether encryption is
-            enabled and if so, expose a list of supported encryption schemes
-            and parameters. Refer for example to the encryption feature
-            defined in <xref target="I-D.ietf-opsawg-vpn-common"></xref> and
-            its use in <xref target="I-D.ietf-opsawg-l3sm-l3nm"></xref>.</t>
+            <t>Some service models may include a traffic isolation clause that
+            is passed down to the network level so that appropriate
+            technology-specific actions must be enforced at the underlying
+            network (and thus involved network devices) to avoid that such
+            traffic is accessible to non-authorized parties. In particular,
+            network models may indicate whether encryption is enabled and if
+            so, expose a list of supported encryption schemes and parameters.
+            Refer for example to the encryption feature defined in <xref
+            target="I-D.ietf-opsawg-vpn-common"></xref> and its use in <xref
+            target="I-D.ietf-opsawg-l3sm-l3nm"></xref>.</t>
           </list></t>
       </section>
 
@@ -1276,7 +1289,7 @@ Notifications (including feedback)
 
         <t>Access to some data requires specific access privilege levels.
         Devices must check that a required access privilege is provided before
-        granting access to specific data or performing specific actions. </t>
+        granting access to specific data or performing specific actions.</t>
       </section>
     </section>
 
@@ -1441,7 +1454,7 @@ Notifications (including feedback)
 
       <?rfc include='reference.I-D.ietf-opsawg-l3sm-l3nm'?>
 
-      <?rfc include='reference.I-D.www-bess-yang-vpn-service-pm'?>
+      <?rfc include='reference.I-D.www-opsawg-yang-vpn-service-pm'?>
 
       <?rfc include="reference.RFC.8795"?>
 
@@ -1513,6 +1526,20 @@ Notifications (including feedback)
           </author>
 
           <date day="19" month="March" year="2020" />
+        </front>
+      </reference>
+
+      <reference anchor="Hardy"
+                 target="https://dl.acm.org/doi/10.1145/54289.871709">
+        <front>
+          <title>The Confused Deputy: (or why capabilities might have been
+          invented)</title>
+
+          <author fullname="Norm Hardy  " surname="Hardy">
+            <organization></organization>
+          </author>
+
+          <date month="October" year="1988" />
         </front>
       </reference>
     </references>
@@ -1705,7 +1732,7 @@ Notifications (including feedback)
         and tweaking a set of functions (enabled in one or multiple devices,
         or hosted in cloud infrastructures) that are involved in the service
         delivery. For example, the L3VPN service will involve many PEs and
-        require manipulating the following modules: </t>
+        require manipulating the following modules:</t>
 
         <t><list style="symbols">
             <t>Routing management <xref target="RFC8349"></xref></t>
