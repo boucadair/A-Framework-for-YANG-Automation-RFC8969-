@@ -1,0 +1,34 @@
+                +------------------+
+............... |                  |
+ Service level  |                  |
+                V                  |
+  E2E          E2E                E2E                    E2E
+Service --> Service --------->  Service  ------------>  Service
+Exposure    Creation     ^    Optimization   ^          Diagnosis
+           /Modification |                   |              |
+              ^ |        |Diff               |              |
+    E2E       | |        |         E2E       |              |
+  Service ----+ |        |        Service    |              |
+ Decommission   |        +------ Assurance --+              |
+                |                     ^                     |
+ Multi-layer    |                     |                     |
+ Multi-domain   |                     |                     |
+ Service Mapping|                     |                     |
+............... |<-----------------+  |                     |
+ Network level  |                  |  +-------+             v
+                V                  |          |         Specific
+            Specific           Specific       |          Service
+            Service  -------->  Service <--+  |         Diagnosis
+            Creation     ^    Optimization |  |             |
+          /Modification  |                 |  |             |
+                |        |Diff             |  |             |
+                |        |      Specific --+  |             |
+       Service  |        |       Service      |             |
+  Decomposition |        +----- Assurance ----+             |
+                |                  ^                        |
+............... |                  |  Aggregation           |
+ Device level   |                  +------------+           |
+                V                               |           |
+Service      Intent                             |           v
+Fulfillment  Config  ----> Config  ----> Performance ----> Fault
+             Provision     Validation    Monitoring        Diagnostic
